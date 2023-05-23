@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-// For testing only, delete/change later
+// For testing only, delete/change
 public class Window_GameResources : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         GameResources.onResourceAmountChanged += UpdateResourceText;
         UpdateResourceText();
