@@ -10,8 +10,6 @@ public class ResourceNode : MonoBehaviour
     public ResourceNodeType resourceNodeType;
     private Sprite nodeSprite;
     private int amount;
-    
-    private CollectStone task;
 
     private void Awake() {
         nodeSprite = resourceNodeType.getSprite();
@@ -45,7 +43,5 @@ public class ResourceNode : MonoBehaviour
         Debug.Log("Clicked");
         selectedNode = this;
         onSelect?.Invoke();
-        task = GameObject.Find("Ant(1)").GetComponent<CollectStone>();
-        task.SetTarget(selectedNode.transform);
     }
 }

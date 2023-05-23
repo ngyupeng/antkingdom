@@ -15,22 +15,23 @@ public class CollectStone : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb; 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        target = transform;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("GetPath", 0f, 0.5f);   
+        ResourcePanelButton.onButtonClicked += SetTarget;
     }
 
     void GetPath()
     {
         if (seeker.IsDone())
              seeker.StartPath(rb.position, target.position, OnPathComplete);
-           
     }
 
-    public void SetTarget(Transform t) {
-        target = t;
+    public void SetTarget() {
+        target = ResourceNode.selectedNode.transform;
     }
 
 
