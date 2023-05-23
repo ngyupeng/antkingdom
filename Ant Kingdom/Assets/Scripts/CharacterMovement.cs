@@ -36,15 +36,12 @@ public class CharacterMovement : MonoBehaviour
         Vector3Int gridPosition = map.WorldToCell(mousePosition);
         if (map.HasTile(gridPosition)){
             destination = mousePosition;
-        }  
-        Debug.Log("Mouse Click111");
+        } 
     }
 
     void Update()
     {
         if (Vector3.Distance(transform.position, destination) > 0.1f)
-        transform.position = Vector3.MoveTowards(transform.position, destination, movementSpeed * Time.deltaTime);  
-        //Debug.Log("Destination" + " " + destination);
-        //Debug.Log("transform.position" + " " + transform.position);
+        transform.position = Vector3.MoveTowards(transform.position, destination, movementSpeed * Time.deltaTime); 
     }
 }
