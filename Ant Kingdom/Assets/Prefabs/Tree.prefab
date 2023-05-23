@@ -152,7 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0ae3cf97f421343a7603c164b40506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Tree
-  resourceType: {fileID: 30923213, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
-  node: {fileID: 503318835, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
-  amount: 15
+  resourceNodeType: {fileID: 11400000, guid: bcd6751469b7a8540915de0c1d385e86, type: 2}

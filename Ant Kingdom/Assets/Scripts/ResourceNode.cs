@@ -7,37 +7,37 @@ public class ResourceNode : MonoBehaviour
     public static ResourceNode selectedNode;
     public delegate void OnSelect();
     public static event OnSelect onSelect;
-    public string itemName;
-    public Sprite resourceType;
-    public Sprite node;
-    public int amount;
+    public ResourceNodeType resourceNodeType;
+    private Sprite nodeSprite;
+    private int amount;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Awake() {
+        nodeSprite = resourceNodeType.getSprite();
+        amount = resourceNodeType.getAmount();
     }
 
     public string getName() {
-        return itemName;
+        return resourceNodeType.getName();
     }
 
     public Sprite getSprite() {
-        return node;
+        return nodeSprite;
     } 
 
-    public Sprite getTypeSprite() {
-        return resourceType;
+    public Sprite getTypeIcon() {
+        return resourceNodeType.resource.getIcon();
     }
 
     public int getAmount() {
         return amount;
+    }
+
+    // When a unit needs to take a certain amount
+    // Returns amount taken.
+    public int takeAmount(int targetAmount) {
+        int takenAmount = Mathf.Min(amount, targetAmount);
+        amount -= takenAmount;
+        return takenAmount;
     }
     private void OnMouseDown() {
         Debug.Log("Clicked");

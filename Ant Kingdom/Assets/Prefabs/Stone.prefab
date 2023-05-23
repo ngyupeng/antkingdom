@@ -133,10 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0ae3cf97f421343a7603c164b40506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Stone
-  resourceType: {fileID: 30923213, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
-  node: {fileID: -1484722360, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
-  amount: 10
+  resourceNodeType: {fileID: 11400000, guid: fd5e79a9f15598e4b84cc0b1d4deb044, type: 2}
 --- !u!50 &-7163247183312696356
 Rigidbody2D:
   serializedVersion: 4
