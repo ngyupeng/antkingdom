@@ -25,7 +25,7 @@ public class PanelControl : MonoBehaviour
         ResourceNode node = ResourceNode.selectedNode;
         panelTransform.Find("itemDesc").GetComponent<TextMeshProUGUI>().text = node.getName();
         panelTransform.Find("nodeImage").GetComponent<Image>().sprite = node.getSprite();
-        // transform.Find("nodeImage").GetComponent<Image>().sprite = node.getSprite();
+        panelTransform.Find("resourceIcon").GetComponent<Image>().sprite = node.getResourceIcon();
         panelTransform.Find("amount").GetComponent<TextMeshProUGUI>().text = node.getAmount().ToString();
     }
 }

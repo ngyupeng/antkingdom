@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4682803540403200780}
   - component: {fileID: -5980010292532820964}
   - component: {fileID: -7163247183312696356}
+  - component: {fileID: -4931667746984973549}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -155,3 +156,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &-4931667746984973549
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997311034764665147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000023841858, y: 0.44154906}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.49999952, y: -0.3311512}
+    oldSize: {x: 0.5, y: 0.53125}
+    newSize: {x: 0.5, y: 0.53125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.53125}
+  m_EdgeRadius: 0

@@ -24,8 +24,8 @@ public class ResourceNode : MonoBehaviour
         return nodeSprite;
     } 
 
-    public Sprite getTypeIcon() {
-        return resourceNodeType.resource.getIcon();
+    public Sprite getResourceIcon() {
+        return resourceNodeType.getResourceIcon();
     }
 
     public int getAmount() {

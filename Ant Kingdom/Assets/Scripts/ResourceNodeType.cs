@@ -22,6 +22,10 @@ public class ResourceNodeType : ScriptableObject
         return node;
     } 
 
+    public Sprite getResourceIcon() {
+        return resource.getIcon();
+    }
+
     public int getAmount() {
         return amount;
     }
