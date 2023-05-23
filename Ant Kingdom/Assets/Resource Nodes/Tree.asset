@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ae80756265b8f49af5231619589c80, type: 3}
   m_Name: Tree
   m_EditorClassIdentifier: 
-  itemName: Tree
-  resourceType: {fileID: 503318835, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
+  nodeName: Tree
+  resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
   node: {fileID: 503318835, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
   amount: 10
