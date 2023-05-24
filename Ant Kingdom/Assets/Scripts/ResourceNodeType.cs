@@ -17,6 +17,9 @@ public class ResourceNodeType : ScriptableObject
     [SerializeField]
     private int defaultResourceAmount;
 
+    [SerializeField]
+    private BoundsInt area;
+
     public string getName() {
         return nodeName;
     }
@@ -31,5 +34,9 @@ public class ResourceNodeType : ScriptableObject
 
     public int getAmount() {
         return defaultResourceAmount;
+    }
+
+    public BoundsInt getArea() {
+        return area;
     }
 }

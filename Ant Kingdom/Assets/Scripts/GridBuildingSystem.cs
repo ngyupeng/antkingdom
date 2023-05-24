@@ -21,15 +21,16 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void Awake() {
         current = this;
-    }
-
-    private void Start() {
         string tilePath = @"BuildingTiles\";
         tileBases.Add(TileType.Empty, null);
         tileBases.Add(TileType.Taken, Resources.Load<TileBase>(tilePath + "White Tile"));
         tileBases.Add(TileType.Green, Resources.Load<TileBase>(tilePath + "Green Tile"));
         tileBases.Add(TileType.Red, Resources.Load<TileBase>(tilePath + "Red Tile"));
-        Debug.Log("Grid Started");
+        Debug.Log("Grid Awoke");
+    }
+
+    private void Start() {
+
     }
 
     private void Update() {
@@ -52,6 +53,7 @@ public class GridBuildingSystem : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Escape)) {
             ClearArea();
             Destroy(tempBuilding.gameObject);
+            tempBuilding = null;
         }
     }
 
@@ -85,12 +87,26 @@ public class GridBuildingSystem : MonoBehaviour
         }
     }
 
+    public void SetBuildingTilesAvailable(BoundsInt area) {
+        SetTilesBlock(area, TileType.Empty, BuildingTilemap);
+    }
+
+    public void SetBuildingTilesUnavailable(BoundsInt area) {
+        SetTilesBlock(area, TileType.Taken, BuildingTilemap);
+    }
+
     #endregion
 
     #region Building Placement
 
     public void InitialiseWithBuilding(GameObject building) {
-        tempBuilding = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
+        if (tempBuilding != null) {
+            Destroy(tempBuilding.gameObject);
+            tempBuilding = null;
+        }
+        Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
+        tempBuilding = Instantiate(building, cellPos, Quaternion.identity).GetComponent<Building>();
         FollowBuilding();
     }
 

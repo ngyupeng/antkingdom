@@ -13,9 +13,21 @@ public class ResourceNode : MonoBehaviour
     private Sprite nodeSprite;
     private int amount;
 
+    private BoundsInt area;
+
     private void Awake() {
         nodeSprite = resourceNodeType.getSprite();
         amount = resourceNodeType.getAmount();
+    }
+
+    private void Start() {
+        InitArea();
+    }
+
+    private void InitArea() {
+        area = resourceNodeType.getArea();
+        area.position = GridBuildingSystem.current.gridLayout.WorldToCell(gameObject.transform.position);
+        GridBuildingSystem.current.SetBuildingTilesUnavailable(area);
     }
 
     public string getName() {
@@ -40,6 +52,10 @@ public class ResourceNode : MonoBehaviour
         int takenAmount = Mathf.Min(amount, targetAmount);
         amount -= takenAmount;
         return takenAmount;
+    }
+
+    private void setAreaAvailable() {
+
     }
     private void OnMouseDown() {
         Debug.Log("Clicked");
