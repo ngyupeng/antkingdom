@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeName: Tree
   resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
-  node: {fileID: 503318835, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
-  amount: 10
+  nodeSprite: {fileID: 503318835, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
+  defaultResourceAmount: 15

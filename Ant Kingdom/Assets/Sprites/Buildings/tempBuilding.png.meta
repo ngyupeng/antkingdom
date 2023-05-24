@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 56af99f313eff3f46b9277193f41555f
+guid: 59e5f1a681db633428dc15c8d6a03848
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tree
+      name: tempBuilding_0
       rect:
         serializedVersion: 2
         x: 23
-        y: 48
-        width: 26
-        height: 36
+        y: 77
+        width: 36
+        height: 44
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,50 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 307242827095eba489eedf88b6c8908b
-      internalID: 503318835
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stone
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 61
-        width: 16
-        height: 17
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 457ab8b1a112f954a813aec549efdbe3
-      internalID: -1484722360
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Water
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 16
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e5bf32c1085d3334fa213bd70ef3e55d
-      internalID: 30923213
+      spriteID: 6b27cedf9e844064ca3ec181f4fa2a92
+      internalID: -710428204
       vertices: []
       indices: 
       edges: []
@@ -190,9 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Stone: -1484722360
-      Tree: 503318835
-      Water: 30923213
+      tempBuilding_0: -710428204
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

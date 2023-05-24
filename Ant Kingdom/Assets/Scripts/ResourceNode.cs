@@ -7,7 +7,9 @@ public class ResourceNode : MonoBehaviour
     public static ResourceNode selectedNode;
     public delegate void OnSelect();
     public static event OnSelect onSelect;
-    public ResourceNodeType resourceNodeType;
+    
+    [SerializeField]
+    private ResourceNodeType resourceNodeType;
     private Sprite nodeSprite;
     private int amount;
 

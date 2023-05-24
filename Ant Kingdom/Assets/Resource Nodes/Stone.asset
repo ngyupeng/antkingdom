@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeName: Stone
   resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
-  node: {fileID: -1484722360, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
-  amount: 15
+  nodeSprite: {fileID: -1484722360, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
+  defaultResourceAmount: 10
