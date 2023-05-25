@@ -6,21 +6,28 @@ using TMPro;
 public class PanelControl : MonoBehaviour
 {
     private GameObject panel;
+    private GameObject uiBlock;
     private Transform panelTransform;
 
     private void Awake()
     {
-        panelTransform = transform.GetChild(0);
+        uiBlock = transform.GetChild(0).gameObject;
+        panelTransform = transform.GetChild(1);
         panel = panelTransform.gameObject;
         ResourceNode.onSelect += updateActive;
-        GameResources.onResourceAmountChanged += updateActive;
+        GameResources.onResourceAmountChanged += updateView;
     }
 
     public void updateActive() {
+        uiBlock.SetActive(true);
         panel.SetActive(true);
         updateView();
-        Debug.Log("Updated");
     }  
+
+    public void updateInactive() {
+        uiBlock.SetActive(false);
+        panel.SetActive(false);
+    }
 
     void updateView() {
         ResourceNode node = ResourceNode.selectedNode;

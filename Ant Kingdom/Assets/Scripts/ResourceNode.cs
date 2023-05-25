@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ResourceNode : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class ResourceNode : MonoBehaviour
 
     }
     private void OnMouseDown() {
-        Debug.Log("Clicked");
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         selectedNode = this;
         onSelect?.Invoke();
     }
