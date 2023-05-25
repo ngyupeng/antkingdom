@@ -11,7 +11,7 @@ public class CollectStone : MonoBehaviour
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
-
+    
     Seeker seeker;
     Rigidbody2D rb; 
     // Start is called before the first frame update
@@ -20,7 +20,6 @@ public class CollectStone : MonoBehaviour
         target = transform;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        InvokeRepeating("GetPath", 0f, 0.5f);   
         ResourcePanelButton.onButtonClicked += SetTarget;
     }
 
@@ -32,6 +31,8 @@ public class CollectStone : MonoBehaviour
 
     public void SetTarget() {
         target = ResourceNode.selectedNode.transform;
+        Invoke("GetPath",0f);
+        Invoke("UpdateResource", 5f);
     }
 
 
@@ -41,6 +42,22 @@ public class CollectStone : MonoBehaviour
         {
             path = p;
             currentWaypoint = 0;
+        }
+    }
+
+    void UpdateResource()
+    {
+        GameResources.ResourceType type = ResourceNode.selectedNode.getName() == "Stone"
+                    ? GameResources.ResourceType.Stone 
+                    : GameResources.ResourceType.Wood;
+        GameResources.AddResourceAmount(
+                 type, ResourceNode.selectedNode.getAmount());
+        if (type == GameResources.ResourceType.Wood)
+        {
+            Debug.Log("Wood Amount: " + GameResources.GetResourceAmount(type));
+        } else
+        {
+            Debug.Log("Stone Amount: " + GameResources.GetResourceAmount(type));
         }
     }
 
@@ -69,6 +86,7 @@ public class CollectStone : MonoBehaviour
         {
             currentWaypoint++;
         }
+           
 
     }
 }
