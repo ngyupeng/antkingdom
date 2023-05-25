@@ -16,8 +16,8 @@ public class ResourceNode : MonoBehaviour
     private BoundsInt area;
 
     private void Awake() {
-        nodeSprite = resourceNodeType.getSprite();
-        amount = resourceNodeType.getAmount();
+        nodeSprite = resourceNodeType.GetSprite();
+        amount = resourceNodeType.GetAmount();
     }
 
     private void Start() {
@@ -25,36 +25,40 @@ public class ResourceNode : MonoBehaviour
     }
 
     private void InitArea() {
-        area = resourceNodeType.getArea();
+        area = resourceNodeType.GetArea();
         area.position = GridBuildingSystem.current.gridLayout.WorldToCell(gameObject.transform.position);
         GridBuildingSystem.current.SetBuildingTilesUnavailable(area);
     }
 
-    public string getName() {
-        return resourceNodeType.getName();
+    public string GetName() {
+        return resourceNodeType.GetName();
     }
 
-    public Sprite getSprite() {
+    public Sprite GetSprite() {
         return nodeSprite;
     } 
 
-    public Sprite getResourceIcon() {
-        return resourceNodeType.getResourceIcon();
+    public Resource GetResource() {
+        return resourceNodeType.GetResource();
     }
 
-    public int getAmount() {
+    public Sprite GetResourceIcon() {
+        return resourceNodeType.GetResourceIcon();
+    }
+
+    public int GetAmount() {
         return amount;
     }
 
     // When a unit needs to take a certain amount
     // Returns amount taken.
-    public int takeAmount(int targetAmount) {
+    public int TakeAmount(int targetAmount) {
         int takenAmount = Mathf.Min(amount, targetAmount);
         amount -= takenAmount;
         return takenAmount;
     }
 
-    private void setAreaAvailable() {
+    private void SetAreaAvailable() {
 
     }
     private void OnMouseDown() {

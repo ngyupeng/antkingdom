@@ -6,6 +6,7 @@ using Pathfinding;
 public class CollectStone : MonoBehaviour
 {
     public Transform target;
+    public ResourceNode targetNode;
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
     Path path;
@@ -30,7 +31,8 @@ public class CollectStone : MonoBehaviour
     }
 
     public void SetTarget() {
-        target = ResourceNode.selectedNode.transform;
+        targetNode = ResourceNode.selectedNode;
+        target= targetNode.transform;
         Invoke("GetPath",0f);
         Invoke("UpdateResource", 5f);
     }
@@ -47,18 +49,11 @@ public class CollectStone : MonoBehaviour
 
     void UpdateResource()
     {
-        GameResources.ResourceType type = ResourceNode.selectedNode.getName() == "Stone"
-                    ? GameResources.ResourceType.Stone 
-                    : GameResources.ResourceType.Wood;
+        Resource resource = targetNode.GetResource();
+        GameResources.ResourceType type = resource.GetResourceType();
         GameResources.AddResourceAmount(
-                 type, ResourceNode.selectedNode.getAmount());
-        if (type == GameResources.ResourceType.Wood)
-        {
-            Debug.Log("Wood Amount: " + GameResources.GetResourceAmount(type));
-        } else
-        {
-            Debug.Log("Stone Amount: " + GameResources.GetResourceAmount(type));
-        }
+                 type, targetNode.TakeAmount(1));
+        Debug.Log(resource.GetName() + " Amount: " + GameResources.GetResourceAmount(type));
     }
 
     // Update is called once per frame

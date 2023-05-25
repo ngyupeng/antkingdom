@@ -14,14 +14,14 @@ public class Resource : ScriptableObject
     [SerializeField]
     private Sprite resourceIcon;
 
-    public GameResources.ResourceType getResourceType() {
+    public GameResources.ResourceType GetResourceType() {
         return resourceType;
     }
-    public string getName() {
+    public string GetName() {
         return resourceName;
     }
 
-    public Sprite getIcon() {
+    public Sprite GetIcon() {
         return resourceIcon;
     }
 }

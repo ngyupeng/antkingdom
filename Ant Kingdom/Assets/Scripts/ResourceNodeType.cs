@@ -20,23 +20,27 @@ public class ResourceNodeType : ScriptableObject
     [SerializeField]
     private BoundsInt area;
 
-    public string getName() {
+    public string GetName() {
         return nodeName;
     }
 
-    public Sprite getSprite() {
+    public Resource GetResource() {
+        return resource;
+    }
+
+    public Sprite GetSprite() {
         return nodeSprite;
     } 
 
-    public Sprite getResourceIcon() {
-        return resource.getIcon();
+    public Sprite GetResourceIcon() {
+        return resource.GetIcon();
     }
 
-    public int getAmount() {
+    public int GetAmount() {
         return defaultResourceAmount;
     }
 
-    public BoundsInt getArea() {
+    public BoundsInt GetArea() {
         return area;
     }
 }
