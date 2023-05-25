@@ -19,7 +19,7 @@ public class ResourcePanelVisibility : MonoBehaviour, IPointerEnterHandler, IPoi
     void Update()
     {
         activeTime += Time.deltaTime;
-        if (activeTime > Time.deltaTime * 5 && Input.GetMouseButtonDown(0) && !inContext) {
+        if (activeTime > Time.deltaTime && Input.GetMouseButtonDown(0) && !inContext) {
             GO.SetActive(inContext);
             activeTime = 0;
         }
