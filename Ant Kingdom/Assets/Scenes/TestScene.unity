@@ -1386,6 +1386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopTabs: {fileID: 827991902}
   itemPrefab: {fileID: 73933340331671437, guid: 6c530df0b5288f14185d0a1f599bcdd4, type: 3}
+  itemDetailsPrefab: {fileID: 5242551464542953603, guid: 42903829fc0923c40aae5108001e67be, type: 3}
 --- !u!1 &699747086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3989,7 +3990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223473308}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

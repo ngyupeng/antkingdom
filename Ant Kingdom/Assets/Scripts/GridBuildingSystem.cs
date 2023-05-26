@@ -26,7 +26,6 @@ public class GridBuildingSystem : MonoBehaviour
         tileBases.Add(TileType.Taken, Resources.Load<TileBase>(tilePath + "White Tile"));
         tileBases.Add(TileType.Green, Resources.Load<TileBase>(tilePath + "Green Tile"));
         tileBases.Add(TileType.Red, Resources.Load<TileBase>(tilePath + "Red Tile"));
-        Debug.Log("Grid Awoke");
     }
 
     private void Start() {
@@ -138,7 +137,6 @@ public class GridBuildingSystem : MonoBehaviour
 
         TempTilemap.SetTilesBlock(buildingArea, tileArray);
         prevArea = buildingArea;
-        print("Followed");
     }
 
     public bool CanTakeArea(BoundsInt area) {

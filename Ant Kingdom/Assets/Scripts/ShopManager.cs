@@ -11,6 +11,8 @@ public class ShopManager : MonoBehaviour
     private TabGroup shopTabs;
     [SerializeField]
     private GameObject itemPrefab;
+    [SerializeField]
+    private GameObject itemDetailsPrefab;
 
     #region Unity Methods
     private void Awake() {
@@ -33,14 +35,9 @@ public class ShopManager : MonoBehaviour
         ShopItem[] items = Resources.LoadAll<ShopItem>("Shop Items");
         shopItems.Add(BuildingType.ResourceBuilding, new List<ShopItem>());
         shopItems.Add(BuildingType.Housing, new List<ShopItem>());
-
-        int count = 0;
         foreach (var item in items) {
             shopItems[item.type].Add(item);
-            count++;
         }
-
-        Debug.Log(count);
     }
 
     private void Initialise() {
@@ -48,7 +45,12 @@ public class ShopManager : MonoBehaviour
             BuildingType key = shopItems.Keys.ToArray()[i];
             foreach (var item in shopItems[(BuildingType) i]) {
                 GameObject itemObject = Instantiate(itemPrefab, shopTabs.objectsToSwap[i].transform);
-                itemObject.GetComponent<ShopItemHolder>().Initialise(item);
+                ShopItemHolder itemHolder = itemObject.GetComponent<ShopItemHolder>();
+                GameObject holderObject = Instantiate(itemDetailsPrefab, shopHolder.transform);
+                ItemDetailsHolder detailsHolder = holderObject.GetComponent<ItemDetailsHolder>();
+
+                detailsHolder.InitialiseView(item);
+                itemHolder.Initialise(item, detailsHolder);
             }
         }
     }
