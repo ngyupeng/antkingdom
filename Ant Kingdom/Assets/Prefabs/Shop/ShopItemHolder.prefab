@@ -343,3 +343,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: {fileID: 73933340219671338}
   iconImage: {fileID: 73933339872397072}
+  floatingTextPrefab: {fileID: 3121837135998179061, guid: b0e076854250de943ad61717d6492bd4, type: 3}

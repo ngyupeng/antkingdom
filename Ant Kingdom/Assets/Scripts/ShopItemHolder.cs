@@ -16,8 +16,8 @@ public class ShopItemHolder : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public delegate void OnSelect();
     public static event OnSelect onSelect;
-
     private ItemDetailsHolder detailsHolder;
+    [SerializeField] private GameObject floatingTextPrefab;
     public void Initialise(ShopItem Item, ItemDetailsHolder holder) {
         item = Item;
 
@@ -29,19 +29,28 @@ public class ShopItemHolder : MonoBehaviour, IPointerClickHandler, IPointerEnter
     }
 
     public void OnPointerClick(PointerEventData data) {
+        if (!GameResources.HasResourceListAmounts(item.resourceCostsList)) {
+            // ShowNotEnoughResources();
+            return;
+        }
         GridBuildingSystem.current.InitialiseWithBuilding(item.prefab);
+        GridBuildingSystem.current.SetShopItem(item);
         onSelect?.Invoke();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         detailsHolder.SetHolderActive();
-        Debug.Log("Entered");
     }
  
     public void OnPointerExit(PointerEventData eventData)
     {
         detailsHolder.SetHolderInactive();
-        Debug.Log("Exited");
+    }
+    public void ShowNotEnoughResources() {
+        Vector3 mousePosition = Input.mousePosition;
+        var go = Instantiate(floatingTextPrefab, mousePosition, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = "Not Enough Resources!";
+        go.GetComponent<TextMesh>().color = Color.red;
     }
 }

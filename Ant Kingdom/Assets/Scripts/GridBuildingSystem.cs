@@ -17,6 +17,8 @@ public class GridBuildingSystem : MonoBehaviour
     private Vector3 prevPos;
     private BoundsInt prevArea;
 
+    [SerializeField] private GameObject floatingTextPrefab;
+
     #region Unity Methods
 
     private void Awake() {
@@ -48,10 +50,16 @@ public class GridBuildingSystem : MonoBehaviour
             if (tempBuilding.CanBePlaced()) {
                 tempBuilding.Place();
                 tempBuilding = null;
+            } else if (!GameResources.HasResourceListAmounts(tempBuilding.shopItem.resourceCostsList)) {
+                // ShowNotEnoughResources();
             }
         } else if (Input.GetKeyDown(KeyCode.Escape)) {
             ClearArea();
-            Destroy(tempBuilding.gameObject);
+            if (tempBuilding.Placed) {
+                tempBuilding.transform.position = tempBuilding.originPosition;
+            } else {
+                Destroy(tempBuilding.gameObject);
+            }
             tempBuilding = null;
         }
     }
@@ -109,6 +117,10 @@ public class GridBuildingSystem : MonoBehaviour
         FollowBuilding();
     }
 
+    public void SetShopItem(ShopItem item) {
+        tempBuilding.shopItem = item;
+    }
+
     public void ClearArea() {
         TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.size.z];
         FillTiles(toClear, TileType.Empty);
@@ -155,6 +167,17 @@ public class GridBuildingSystem : MonoBehaviour
     public void TakeArea(BoundsInt area) {
         SetTilesBlock(area, TileType.Empty, TempTilemap);
         SetTilesBlock(area, TileType.Taken, BuildingTilemap);
+    }
+
+    #endregion
+
+    #region Miscellaneous
+
+    public void ShowNotEnoughResources() {
+        Vector3 mousePosition = Input.mousePosition;
+        var go = Instantiate(floatingTextPrefab, mousePosition, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = "Not Enough Resources!";
+        go.GetComponent<TextMesh>().color = Color.red;
     }
 
     #endregion

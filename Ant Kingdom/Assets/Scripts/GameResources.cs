@@ -29,4 +29,34 @@ public static class GameResources
     public static int GetResourceAmount(ResourceType resourceType) {
         return resourceAmountData[resourceType];
     }
+
+    public static bool HasResourceAmount(ResourceType resourceType, int amount) {
+        return resourceAmountData[resourceType] >= amount;
+    }
+
+    public static bool HasResourceListAmounts(ResourceCost[] resourceCosts) {
+        // Check if enough resources
+        foreach (var resourceCost in resourceCosts) {
+            ResourceType resourceType = resourceCost.resource.GetResourceType();
+            int amount = resourceCost.cost;
+            if (!HasResourceAmount(resourceType, amount)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static bool UseResourceListAmounts(ResourceCost[] resourceCosts) {
+        // Check if enough resources
+        if (!HasResourceListAmounts(resourceCosts)) return false;
+
+        // Deplete resources
+        foreach (var resourceCost in resourceCosts) {
+            ResourceType resourceType = resourceCost.resource.GetResourceType();
+            int amount = resourceCost.cost;
+            AddResourceAmount(resourceType, -amount);
+        }
+        return true;
+    }
 }

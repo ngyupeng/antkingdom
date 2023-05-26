@@ -7,12 +7,5 @@ public class GameHandler : MonoBehaviour
     private void Awake()
     {
         GameResources.Init();
-        Debug.Log("Handler Awake");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -68,12 +68,10 @@ public class ShopManager : MonoBehaviour
 
     public void SetShopActive() {
         shopHolder.SetActive(true);
-        Debug.Log("Shop Set Active");
     }
 
     public void SetShopInactive() {
         shopHolder.SetActive(false);
-        Debug.Log("Shop Set Inacative");
     }
 
     #endregion
