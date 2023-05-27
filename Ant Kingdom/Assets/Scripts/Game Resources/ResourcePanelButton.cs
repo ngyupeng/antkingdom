@@ -7,7 +7,7 @@ public class ResourcePanelButton : MonoBehaviour
     public delegate void OnButtonClicked();
     public static event OnButtonClicked onButtonClicked;
 
-    public void doStuff() {
+    public void CollectResources() {
         onButtonClicked?.Invoke();
     }
 }

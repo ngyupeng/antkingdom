@@ -1705,7 +1705,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 712791692}
         m_TargetAssemblyTypeName: ResourcePanelButton, Assembly-CSharp
-        m_MethodName: doStuff
+        m_MethodName: CollectResources
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1717,7 +1717,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1881626617}
         m_TargetAssemblyTypeName: PanelControl, Assembly-CSharp
-        m_MethodName: updateInactive
+        m_MethodName: UpdateInactive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

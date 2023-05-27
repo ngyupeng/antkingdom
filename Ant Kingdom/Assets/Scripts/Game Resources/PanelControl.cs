@@ -14,22 +14,22 @@ public class PanelControl : MonoBehaviour
         uiBlock = transform.GetChild(0).gameObject;
         panelTransform = transform.GetChild(1);
         panel = panelTransform.gameObject;
-        ResourceNode.onSelect += updateActive;
-        GameResources.onResourceAmountChanged += updateView;
+        ResourceNode.onSelect += UpdateActive;
+        GameResources.onResourceAmountChanged += UpdateView;
     }
 
-    public void updateActive() {
+    public void UpdateActive() {
         uiBlock.SetActive(true);
         panel.SetActive(true);
-        updateView();
+        UpdateView();
     }  
 
-    public void updateInactive() {
+    public void UpdateInactive() {
         uiBlock.SetActive(false);
         panel.SetActive(false);
     }
 
-    void updateView() {
+    void UpdateView() {
         ResourceNode node = ResourceNode.selectedNode;
         panelTransform.Find("itemDesc").GetComponent<TextMeshProUGUI>().text = node.GetName();
         panelTransform.Find("nodeImage").GetComponent<Image>().sprite = node.GetSprite();

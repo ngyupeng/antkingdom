@@ -163,17 +163,6 @@ public class GridBuildingSystem : MonoBehaviour
     }
 
     #endregion
-
-    #region Miscellaneous
-
-    public void ShowNotEnoughResources() {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var go = Instantiate(floatingTextPrefab, mousePosition, Quaternion.identity, transform);
-        go.GetComponent<TextMeshPro>().text = "Not Enough Resources!";
-        go.GetComponent<TextMeshPro>().color = Color.red;
-    }
-
-    #endregion
 }
 
 public enum TileType {
