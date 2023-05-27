@@ -52,7 +52,7 @@ public class CollectStone : MonoBehaviour
         Resource resource = targetNode.GetResource();
         GameResources.ResourceType type = resource.GetResourceType();
         GameResources.AddResourceAmount(
-                 type, targetNode.TakeAmount(1));
+                 type, targetNode.TakeAmount(10));
         Debug.Log(resource.GetName() + " Amount: " + GameResources.GetResourceAmount(type));
     }
 

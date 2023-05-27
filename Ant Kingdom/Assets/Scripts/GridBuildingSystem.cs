@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class GridBuildingSystem : MonoBehaviour
 {
@@ -50,8 +51,6 @@ public class GridBuildingSystem : MonoBehaviour
             if (tempBuilding.CanBePlaced()) {
                 tempBuilding.Place();
                 tempBuilding = null;
-            } else if (!GameResources.HasResourceListAmounts(tempBuilding.shopItem.resourceCostsList)) {
-                // ShowNotEnoughResources();
             }
         } else if (Input.GetKeyDown(KeyCode.Escape)) {
             ClearArea();
@@ -132,19 +131,13 @@ public class GridBuildingSystem : MonoBehaviour
         tempBuilding.area.position = gridLayout.WorldToCell(tempBuilding.gameObject.transform.position);
         BoundsInt buildingArea = tempBuilding.area;
 
-        TileBase[] baseArray = GetTilesBlock(buildingArea, BuildingTilemap);
-        TileBase[] baseMainArray = GetTilesBlock(buildingArea, MainTilemap);
-
-        int size = baseArray.Length;
+        int size = buildingArea.size.x * buildingArea.size.y;
         TileBase[] tileArray = new TileBase[size];
 
-        for (int i = 0; i < baseArray.Length; i++) {
-            if (baseMainArray[i] != tileBases[TileType.Empty] && baseArray[i] != tileBases[TileType.Taken]) {
-                tileArray[i] = tileBases[TileType.Green];
-            } else {
-                FillTiles(tileArray, TileType.Red);
-                break;
-            }
+        if (CanTakeArea(buildingArea)) {
+            FillTiles(tileArray, TileType.Green);
+        } else {
+            FillTiles(tileArray, TileType.Red);
         }
 
         TempTilemap.SetTilesBlock(buildingArea, tileArray);
@@ -174,10 +167,10 @@ public class GridBuildingSystem : MonoBehaviour
     #region Miscellaneous
 
     public void ShowNotEnoughResources() {
-        Vector3 mousePosition = Input.mousePosition;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var go = Instantiate(floatingTextPrefab, mousePosition, Quaternion.identity, transform);
-        go.GetComponent<TextMesh>().text = "Not Enough Resources!";
-        go.GetComponent<TextMesh>().color = Color.red;
+        go.GetComponent<TextMeshPro>().text = "Not Enough Resources!";
+        go.GetComponent<TextMeshPro>().color = Color.red;
     }
 
     #endregion

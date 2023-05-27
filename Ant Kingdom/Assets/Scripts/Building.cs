@@ -18,6 +18,8 @@ public class Building : MonoBehaviour
 
     #region Build Methods
 
+    // This should only be called when player tries to place building,
+    // otherwise the "not enough resources" text will popup.
     public bool CanBePlaced() {
         Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
@@ -25,7 +27,7 @@ public class Building : MonoBehaviour
 
         if (!Placed) {
             return GridBuildingSystem.current.CanTakeArea(areaTemp) 
-                && GameResources.HasResourceListAmounts(shopItem.resourceCostsList);
+                && GameResources.RequireResourceListAmounts(shopItem.resourceCostsList);
         } 
 
         return GridBuildingSystem.current.CanTakeArea(areaTemp);
@@ -37,9 +39,13 @@ public class Building : MonoBehaviour
         areaTemp.position = positionInt;
         originPosition = positionInt;
         
+        // If item is from shop, it requires resources.
         if (!Placed) {
-            GameResources.UseResourceListAmounts(shopItem.resourceCostsList);
+            if (!GameResources.UseResourceListAmounts(shopItem.resourceCostsList)) {
+                return;
+            }
         }
+
         Placed = true;
         GridBuildingSystem.current.TakeArea(areaTemp);
     }

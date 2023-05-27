@@ -29,8 +29,7 @@ public class ShopItemHolder : MonoBehaviour, IPointerClickHandler, IPointerEnter
     }
 
     public void OnPointerClick(PointerEventData data) {
-        if (!GameResources.HasResourceListAmounts(item.resourceCostsList)) {
-            // ShowNotEnoughResources();
+        if (!GameResources.RequireResourceListAmounts(item.resourceCostsList)) {
             return;
         }
         GridBuildingSystem.current.InitialiseWithBuilding(item.prefab);
@@ -48,9 +47,10 @@ public class ShopItemHolder : MonoBehaviour, IPointerClickHandler, IPointerEnter
         detailsHolder.SetHolderInactive();
     }
     public void ShowNotEnoughResources() {
-        Vector3 mousePosition = Input.mousePosition;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Debug.Log(mousePosition.x + " " + mousePosition.y + " " + mousePosition.z);
         var go = Instantiate(floatingTextPrefab, mousePosition, Quaternion.identity, transform);
-        go.GetComponent<TextMesh>().text = "Not Enough Resources!";
-        go.GetComponent<TextMesh>().color = Color.red;
+        go.GetComponent<TextMeshPro>().text = "Not Enough Resources!";
+        go.GetComponent<TextMeshPro>().color = Color.red;
     }
 }

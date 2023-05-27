@@ -62,7 +62,7 @@ public class ResourceNode : MonoBehaviour
     private void SetAreaAvailable() {
 
     }
-    private void OnMouseDown() {
+    private void OnMouseUp() {
         if (EventSystem.current.IsPointerOverGameObject()) return;
         selectedNode = this;
         onSelect?.Invoke();

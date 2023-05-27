@@ -12,6 +12,9 @@ public static class GameResources
     
     public delegate void OnResourceAmountChanged();
     public static event OnResourceAmountChanged onResourceAmountChanged;
+
+    public delegate void OnNotEnoughResources();
+    public static event OnNotEnoughResources onNotEnoughResources;
     private static Dictionary<ResourceType, int> resourceAmountData;
 
     public static void Init() {
@@ -47,9 +50,21 @@ public static class GameResources
         return true;
     }
 
+    // This will only be called when the resources need to be used
+    // Used for generating popup text for now
+    public static bool RequireResourceListAmounts(ResourceCost[] resourceCosts) {
+        bool canAfford = HasResourceListAmounts(resourceCosts);
+
+        if (!canAfford) {
+            onNotEnoughResources?.Invoke();
+            return false;
+        }
+
+        return true;
+    }
+
     public static bool UseResourceListAmounts(ResourceCost[] resourceCosts) {
-        // Check if enough resources
-        if (!HasResourceListAmounts(resourceCosts)) return false;
+        if (!RequireResourceListAmounts(resourceCosts)) return false;
 
         // Deplete resources
         foreach (var resourceCost in resourceCosts) {
