@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6714850997787091437}
   - component: {fileID: -141827002156325054}
   - component: {fileID: 2488459372864616459}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TempBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5899642180146306306}
   - component: {fileID: 8704496228544113818}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Building : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class Building : MonoBehaviour
 
         Placed = true;
         GridBuildingSystem.current.TakeArea(areaTemp);
+        AstarPath.active.Scan();
     }
 
     #endregion
