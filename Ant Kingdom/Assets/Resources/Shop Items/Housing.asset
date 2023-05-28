@@ -20,5 +20,5 @@ MonoBehaviour:
     cost: 10
   buildTime: 10
   type: 1
-  icon: {fileID: 30923213, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
+  icon: {fileID: -710428204, guid: 59e5f1a681db633428dc15c8d6a03848, type: 3}
   prefab: {fileID: 2097490753873986982, guid: 1f81a043e6c4f3441b1925ba045df84d, type: 3}
