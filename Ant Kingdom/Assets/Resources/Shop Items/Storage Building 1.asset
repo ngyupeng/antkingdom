@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac07dbb42b6fb304cb655e4a9a4da4d1, type: 3}
-  m_Name: Housing
+  m_Name: Storage Building 1
   m_EditorClassIdentifier: 
-  itemName: House
+  itemName: Storage Building
   resourceCostsList:
   - resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
-    cost: 8
-  - resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
-    cost: 10
-  buildTime: 10
-  type: 1
-  icon: {fileID: 30923213, guid: 56af99f313eff3f46b9277193f41555f, type: 3}
+    cost: 5
+  buildTime: 5
+  type: 0
+  icon: {fileID: -710428204, guid: 59e5f1a681db633428dc15c8d6a03848, type: 3}
   prefab: {fileID: 2097490753873986982, guid: 1f81a043e6c4f3441b1925ba045df84d, type: 3}
