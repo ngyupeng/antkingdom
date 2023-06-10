@@ -9443,7 +9443,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1881626617}
         m_TargetAssemblyTypeName: PanelControl, Assembly-CSharp
-        m_MethodName: updateInactive
+        m_MethodName: UpdateInactive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
