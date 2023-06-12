@@ -53,8 +53,8 @@ public class GridBuildingSystem : MonoBehaviour
                 tempBuilding = null;
             }
         } else if (Input.GetKeyDown(KeyCode.Escape)) {
-            ClearArea();
-            if (tempBuilding.Placed) {
+            ClearTempArea();
+            if (tempBuilding.bought) {
                 tempBuilding.transform.position = tempBuilding.originPosition;
             } else {
                 Destroy(tempBuilding.gameObject);
@@ -120,14 +120,18 @@ public class GridBuildingSystem : MonoBehaviour
         tempBuilding.shopItem = item;
     }
 
-    public void ClearArea() {
+    public void SetBuilding(Building building) {
+        tempBuilding = building;
+    }
+
+    public void ClearTempArea() {
         TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.size.z];
         FillTiles(toClear, TileType.Empty);
         TempTilemap.SetTilesBlock(prevArea, toClear);
     }
  
     private void FollowBuilding() {
-        ClearArea();
+        ClearTempArea();
         tempBuilding.area.position = gridLayout.WorldToCell(tempBuilding.gameObject.transform.position);
         BoundsInt buildingArea = tempBuilding.area;
 
@@ -160,6 +164,11 @@ public class GridBuildingSystem : MonoBehaviour
     public void TakeArea(BoundsInt area) {
         SetTilesBlock(area, TileType.Empty, TempTilemap);
         SetTilesBlock(area, TileType.Taken, BuildingTilemap);
+    }
+
+    
+    public void ClearMainArea(BoundsInt area) {
+        SetTilesBlock(area, TileType.Empty, BuildingTilemap);
     }
 
     #endregion

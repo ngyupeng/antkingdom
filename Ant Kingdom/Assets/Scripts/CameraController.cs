@@ -13,6 +13,9 @@ public class CameraController : MonoBehaviour
 
     Vector3 dragOrigin;
 
+    [SerializeField]
+    private Collider2D boundary;
+
     private bool active = false;
     private void Update() {
         PanCamera();
@@ -28,7 +31,10 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetMouseButton(0) && active) {
             Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
-            cam.transform.position += difference;
+            Vector3 targetPosition = cam.transform.position + difference;
+            targetPosition.x = Mathf.Clamp(targetPosition.x, boundary.bounds.min.x, boundary.bounds.max.x);
+            targetPosition.y = Mathf.Clamp(targetPosition.y, boundary.bounds.min.y, boundary.bounds.max.y);
+            cam.transform.position = targetPosition;
         }
 
         else {

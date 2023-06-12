@@ -2,16 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.EventSystems;
 
 public class Building : MonoBehaviour
 {
     public ShopItem shopItem;
     public Vector3 originPosition;
 
-    // This checks whether it has already been placed once 
-    // i.e. if it is a building directly from the shop or not
-    public bool Placed { get; private set; }
+    // This checks whether it has already been bought
+    public bool bought { get; private set; }
+    public bool placed { get; private set; }
     public BoundsInt area;
+
+    private PolygonCollider2D col;
+
+    public delegate void OnSelect();
+    public static event OnSelect onSelect;
+
+    void Awake() {
+        col = gameObject.GetComponent<PolygonCollider2D>();
+        col.enabled = false;
+    }
     void Start()
     {
         
@@ -26,7 +37,7 @@ public class Building : MonoBehaviour
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
 
-        if (!Placed) {
+        if (!bought) {
             return GridBuildingSystem.current.CanTakeArea(areaTemp) 
                 && GameResources.RequireResourceListAmounts(shopItem.resourceCostsList);
         } 
@@ -41,16 +52,33 @@ public class Building : MonoBehaviour
         originPosition = positionInt;
         
         // If item is from shop, it requires resources.
-        if (!Placed) {
+        if (!bought) {
             if (!GameResources.UseResourceListAmounts(shopItem.resourceCostsList)) {
                 return;
             }
         }
 
-        Placed = true;
+        bought = true;
+        placed = true;
+        col.enabled = true;
         GridBuildingSystem.current.TakeArea(areaTemp);
         AstarPath.active.Scan();
     }
 
+    public void MoveBuilding() {
+        placed = false;
+        col.enabled = false;
+        GridBuildingSystem.current.ClearMainArea(area);
+        GridBuildingSystem.current.SetBuilding(this);
+    }
+
     #endregion
+    
+    private void OnMouseUp() {
+        Debug.Log("Building Clicked");
+        if (!placed) return;
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+        BuildingUIControl.selectedBuilding = this;
+        onSelect?.Invoke();
+    }
 }
