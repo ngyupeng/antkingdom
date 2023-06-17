@@ -62,7 +62,7 @@ public class GridBuildingSystem : MonoBehaviour
                 }
             }
             isClicking = false;
-        } else if (Input.GetKeyDown(KeyCode.Escape)) {
+        } else if (Input.GetKeyDown(KeyCode.Q)) {
             ClearTempArea();
             tempBuilding.CancelPlacement();
             tempBuilding = null;
