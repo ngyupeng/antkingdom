@@ -49,13 +49,11 @@ public class Building : MonoBehaviour
         Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
-        originPosition = positionInt;
+        originPosition = transform.localPosition;
         
         // If item is from shop, it requires resources.
         if (!bought) {
-            if (!GameResources.UseResourceListAmounts(shopItem.resourceCostsList)) {
-                return;
-            }
+            GameResources.UseResourceListAmounts(shopItem.resourceCostsList);
         }
 
         bought = true;
@@ -63,6 +61,16 @@ public class Building : MonoBehaviour
         col.enabled = true;
         GridBuildingSystem.current.TakeArea(areaTemp);
         AstarPath.active.Scan();
+    }
+
+    public void CancelPlacement() {
+        if (!bought) {
+            Destroy(gameObject);
+        } else {
+            placed = true;
+            col.enabled = true;
+            transform.localPosition = originPosition;
+        }
     }
 
     public void MoveBuilding() {
@@ -74,11 +82,21 @@ public class Building : MonoBehaviour
 
     #endregion
     
+    private bool isClicking;
+    private Vector3 clickPosition;
+    private void OnMouseDown() {
+        if (!placed) return;
+        isClicking = true;
+        clickPosition = Input.mousePosition;
+    }
+    // Should only do stuff if there is no dragging
     private void OnMouseUp() {
-        Debug.Log("Building Clicked");
         if (!placed) return;
         if (EventSystem.current.IsPointerOverGameObject()) return;
-        BuildingUIControl.selectedBuilding = this;
-        onSelect?.Invoke();
+        if (isClicking && clickPosition == Input.mousePosition) { 
+            BuildingUIControl.selectedBuilding = this;
+            onSelect?.Invoke();
+        }
+        isClicking = false;
     }
 }

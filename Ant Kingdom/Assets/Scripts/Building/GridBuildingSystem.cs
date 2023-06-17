@@ -12,13 +12,14 @@ public class GridBuildingSystem : MonoBehaviour
     public Tilemap MainTilemap;
     public Tilemap BuildingTilemap;
     public Tilemap TempTilemap;
+
+    // For blocking clicks on other objects in building mode
+    public GameObject UIBlock;
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
 
     private Building tempBuilding;
     private Vector3 prevPos;
     private BoundsInt prevArea;
-
-    [SerializeField] private GameObject floatingTextPrefab;
 
     #region Unity Methods
 
@@ -35,6 +36,8 @@ public class GridBuildingSystem : MonoBehaviour
 
     }
 
+    private bool isClicking;
+    private Vector3 clickPosition;
     private void Update() {
         if (!tempBuilding) return;
         Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -48,18 +51,23 @@ public class GridBuildingSystem : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0)) {
-            if (tempBuilding.CanBePlaced()) {
-                tempBuilding.Place();
-                tempBuilding = null;
+            isClicking = true;
+            clickPosition = Input.mousePosition;
+        } else if (Input.GetMouseButtonUp(0)) {
+            if (isClicking && clickPosition == Input.mousePosition) {
+                if (tempBuilding.CanBePlaced()) {
+                    tempBuilding.Place();
+                    tempBuilding = null;
+                    UIBlock.SetActive(false);
+                }
             }
+            isClicking = false;
         } else if (Input.GetKeyDown(KeyCode.Escape)) {
             ClearTempArea();
-            if (tempBuilding.bought) {
-                tempBuilding.transform.position = tempBuilding.originPosition;
-            } else {
-                Destroy(tempBuilding.gameObject);
-            }
+            tempBuilding.CancelPlacement();
             tempBuilding = null;
+            isClicking = false;
+            UIBlock.SetActive(false);
         }
     }
 
@@ -112,7 +120,7 @@ public class GridBuildingSystem : MonoBehaviour
         }
         Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
-        tempBuilding = Instantiate(building, cellPos, Quaternion.identity).GetComponent<Building>();
+        SetBuilding(Instantiate(building, cellPos, Quaternion.identity).GetComponent<Building>());
         FollowBuilding();
     }
 
@@ -120,8 +128,10 @@ public class GridBuildingSystem : MonoBehaviour
         tempBuilding.shopItem = item;
     }
 
+    // Call this for a new building instance
     public void SetBuilding(Building building) {
         tempBuilding = building;
+        UIBlock.SetActive(true);
     }
 
     public void ClearTempArea() {
