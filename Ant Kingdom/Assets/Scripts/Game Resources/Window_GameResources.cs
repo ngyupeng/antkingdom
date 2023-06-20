@@ -18,4 +18,8 @@ public class Window_GameResources : MonoBehaviour
             "STONE: " + GameResources.GetResourceAmount(GameResources.ResourceType.Stone) + "\n" +
             "WOOD: " + GameResources.GetResourceAmount(GameResources.ResourceType.Wood) + "\n";
     }
+
+    private void OnDisable() {
+        GameResources.onResourceAmountChanged -= UpdateResourceText;
+    }
 }

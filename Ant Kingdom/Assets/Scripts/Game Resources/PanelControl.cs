@@ -36,4 +36,9 @@ public class PanelControl : MonoBehaviour
         panelTransform.Find("resourceIcon").GetComponent<Image>().sprite = node.GetResourceIcon();
         panelTransform.Find("amount").GetComponent<TextMeshProUGUI>().text = node.GetAmount().ToString();
     }
+
+    private void OnDisable() {
+        ResourceNode.onSelect -= UpdateActive;
+        GameResources.onResourceAmountChanged -= UpdateView;
+    }
 }

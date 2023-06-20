@@ -25,4 +25,8 @@ public class TextPopupController : MonoBehaviour
     public void ShowNotEnoughResources() {
         ShowFloatingText("Not Enough Resources!", Color.red);
     }
+
+    private void OnDisable() {
+        GameResources.onNotEnoughResources -= ShowNotEnoughResources;
+    }
 }

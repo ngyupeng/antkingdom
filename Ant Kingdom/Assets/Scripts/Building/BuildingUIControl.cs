@@ -41,4 +41,8 @@ public class BuildingUIControl : MonoBehaviour
         BuildingOptions options = buildingOptionsInstance.GetComponent<BuildingOptions>();
         options.SetBuilding(selectedBuilding);
     }
+
+    private void OnDisable() {
+        Building.onSelect -= ShowBuildingOptions;
+    }
 }

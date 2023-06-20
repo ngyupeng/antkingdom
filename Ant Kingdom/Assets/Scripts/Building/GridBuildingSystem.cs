@@ -25,6 +25,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void Awake() {
         current = this;
+        tileBases = new Dictionary<TileType, TileBase>();
         string tilePath = @"BuildingTiles\";
         tileBases.Add(TileType.Empty, null);
         tileBases.Add(TileType.Taken, Resources.Load<TileBase>(tilePath + "White Tile"));
