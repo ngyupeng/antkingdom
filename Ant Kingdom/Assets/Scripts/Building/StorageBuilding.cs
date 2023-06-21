@@ -14,8 +14,17 @@ public class StorageBuilding : Building
     public override void DisplayInfo(BuildingInfoPanel panel) {
         base.DisplayInfo(panel);
         Debug.Log("Clicked Info");
-        panel.buildingSprite.sprite = storageStates.levels[level].buildingSprite;
-        DisplayStat(storageStates.storedResource.GetIcon(), "Storage Capacity", storageStates.levels[level].storageAmount, panel);
-        DisplayStat(storageStates.storedResource.GetIcon(), "Health", storageStates.levels[level].health, panel);
+        panel.buildingSprite.sprite = storageStates.storageLevels[level].buildingSprite;
+        DisplayStat(storageStates.storedResource.GetIcon(), "Storage Capacity", storageStates.storageLevels[level].storageAmount, panel);
+        DisplayStat(storageStates.storedResource.GetIcon(), "Health", storageStates.storageLevels[level].health, panel);
+    }
+
+    public override void DisplayUpgradeInfo(UpgradeInfoPanel panel) {
+        base.DisplayUpgradeInfo(panel);
+        panel.buildingSprite.sprite = storageStates.storageLevels[level].buildingSprite;
+        DisplayUpgradeStat(storageStates.storedResource.GetIcon(), "Storage Capacity", 
+            storageStates.storageLevels[level].storageAmount, storageStates.storageLevels[level + 1].storageAmount, panel);
+        DisplayUpgradeStat(storageStates.storedResource.GetIcon(), "Health", 
+            storageStates.storageLevels[level].health ,storageStates.storageLevels[level + 1].health, panel);
     }
 }

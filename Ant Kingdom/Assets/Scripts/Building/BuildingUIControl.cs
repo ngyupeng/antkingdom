@@ -15,10 +15,13 @@ public class BuildingUIControl : MonoBehaviour
 
     [SerializeField] 
     private GameObject buildingInfoPanel;
+    [SerializeField] 
+    private GameObject upgradeInfoPanel;
     private void Awake() {
         rectTransform = transform.GetComponent<RectTransform>();
         Building.onSelect += ShowBuildingOptions;
         BuildingOptions.onClickedInfo += ShowBuildingInfo;
+        BuildingOptions.onClickedUpgrade += ShowBuildingUpgradeInfo;
     }
 
     private void Update() {
@@ -50,8 +53,14 @@ public class BuildingUIControl : MonoBehaviour
         buildingInfoPanel.GetComponent<BuildingInfoPanel>().Initialise();
     }
 
+    public void ShowBuildingUpgradeInfo() {
+        upgradeInfoPanel.SetActive(true);
+        upgradeInfoPanel.GetComponent<UpgradeInfoPanel>().Initialise();
+    }
+
     private void OnDestroy() {
         Building.onSelect -= ShowBuildingOptions;
         BuildingOptions.onClickedInfo -= ShowBuildingInfo;
+        BuildingOptions.onClickedUpgrade -= ShowBuildingUpgradeInfo;
     }
 }

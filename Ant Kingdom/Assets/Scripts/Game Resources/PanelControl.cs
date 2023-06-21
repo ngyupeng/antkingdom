@@ -30,6 +30,8 @@ public class PanelControl : MonoBehaviour
     }
 
     void UpdateView() {
+        if (ResourceNode.selectedNode == null) return;
+
         ResourceNode node = ResourceNode.selectedNode;
         panelTransform.Find("itemDesc").GetComponent<TextMeshProUGUI>().text = node.GetName();
         panelTransform.Find("nodeImage").GetComponent<Image>().sprite = node.GetSprite();

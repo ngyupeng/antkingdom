@@ -20,7 +20,7 @@ public static class GameResources
     public static void Init() {
         resourceAmountData = new Dictionary<ResourceType, int>();
         foreach (ResourceType resourceType in System.Enum.GetValues(typeof(ResourceType))) {
-            resourceAmountData[resourceType] = 0;
+            resourceAmountData[resourceType] = 100;
         }
     }
 

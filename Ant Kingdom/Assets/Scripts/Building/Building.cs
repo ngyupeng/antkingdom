@@ -23,6 +23,7 @@ public class Building : MonoBehaviour
     protected void Awake() {
         col = gameObject.GetComponent<PolygonCollider2D>();
         col.enabled = false;
+        states.Initialise();
     }
 
     #region Build Methods
@@ -83,12 +84,34 @@ public class Building : MonoBehaviour
         panel.buildingTitle.text = states.buildingName + " (Level " + (level + 1).ToString() + ")";
         panel.description.text = states.description;
     }
+
+    public virtual void DisplayUpgradeInfo(UpgradeInfoPanel panel) {
+        panel.title.text = "Upgrade to Level " + (level + 1).ToString() + "";
+        panel.description.text = states.description;
+        panel.buildingName.text = states.buildingName;
+        
+        // Just in case, for testing purposes
+        if (level + 1 >= states.levels.Length) return;
+        
+        panel.upgradeTime.text = states.levels[level + 1].buildTime.ToString() + "s";
+
+        foreach (var resourceCost in states.levels[level + 1].resourceCostsList) {
+            GameObject itemObject = Instantiate(panel.upgradeCostHolderPrefab, panel.resourceList.transform);
+            itemObject.GetComponent<ResourceCostHolder>().Initialise(resourceCost.resource, resourceCost.cost);
+        }
+    }
     
     public void DisplayStat(Sprite iconSprite, string name, int amount, BuildingInfoPanel panel) {
         GameObject go = Instantiate(panel.statHolderPrefab, panel.statList.transform);
         go.GetComponent<BuildingStatHolder>().Initialise(iconSprite, name, amount);
     }
 
+    public void DisplayUpgradeStat(Sprite iconSprite, string name, int amount, int newAmount, UpgradeInfoPanel panel) {
+        GameObject go = Instantiate(panel.upgradeStatHolderPrefab, panel.statList.transform);
+        go.GetComponent<UpgradeStatHolder>().Initialise(iconSprite, name, amount, newAmount);
+    }
+
+    #region Clicking
     private bool isClicking;
     private Vector3 clickPosition;
     private void OnMouseDown() {
@@ -106,4 +129,6 @@ public class Building : MonoBehaviour
         }
         isClicking = false;
     }
+
+    #endregion
 }

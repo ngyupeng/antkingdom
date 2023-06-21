@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Wood Storage
   description: This is a wood storage.
+  storedResource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
   levels:
   - {fileID: 11400000, guid: b6b400e7c9cea0c4d8a8ea7e2d2d18c9, type: 2}
   - {fileID: 11400000, guid: 1c644ad7af7aab444b250e2830a24023, type: 2}
