@@ -32,4 +32,11 @@ public class UpgradeInfoPanel : MonoBehaviour
         building.DisplayUpgradeInfo(this);
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
+
+    public void UpgradeBuilding() {
+        if (building.CanUpgrade()) {
+            building.Upgrade();
+            gameObject.SetActive(false);
+        }
+    }
 }

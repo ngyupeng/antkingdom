@@ -16,17 +16,23 @@ public static class GameResources
     public delegate void OnNotEnoughResources();
     public static event OnNotEnoughResources onNotEnoughResources;
     private static Dictionary<ResourceType, int> resourceAmountData;
+    private static Dictionary<ResourceType, int> resourceCapacity;
 
     public static void Init() {
         resourceAmountData = new Dictionary<ResourceType, int>();
+        resourceCapacity = new Dictionary<ResourceType, int>();
         foreach (ResourceType resourceType in System.Enum.GetValues(typeof(ResourceType))) {
-            resourceAmountData[resourceType] = 100;
+            resourceAmountData[resourceType] = 50;
+            resourceCapacity[resourceType] = 50;
         }
     }
 
-    public static void AddResourceAmount(ResourceType resourceType, int amount) {
-        resourceAmountData[resourceType] += amount;
+    #region Resource Management
+    public static int AddResourceAmount(ResourceType resourceType, int amount) {
+        int amountChanged = Mathf.Min(amount, resourceCapacity[resourceType] - resourceAmountData[resourceType]);
+        resourceAmountData[resourceType] += amountChanged;
         onResourceAmountChanged?.Invoke();
+        return amountChanged;
     }
 
     public static int GetResourceAmount(ResourceType resourceType) {
@@ -74,4 +80,14 @@ public static class GameResources
         }
         return true;
     }
+
+    #endregion
+
+    #region Storage Management
+
+    public static void IncreaseStorage(ResourceType resourceType, int amount) {
+        resourceCapacity[resourceType] += amount;
+    }
+
+    #endregion
 }

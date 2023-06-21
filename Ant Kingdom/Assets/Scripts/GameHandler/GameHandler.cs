@@ -7,5 +7,6 @@ public class GameHandler : MonoBehaviour
     private void Awake()
     {
         GameResources.Init();
+        IconDatabase.Init();
     }
 }

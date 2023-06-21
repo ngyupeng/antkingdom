@@ -20,7 +20,7 @@ public class Building : MonoBehaviour
     public int level;
 
     public BuildingStates states;
-    protected void Awake() {
+    protected virtual void Awake() {
         col = gameObject.GetComponent<PolygonCollider2D>();
         col.enabled = false;
         states.Initialise();
@@ -86,13 +86,13 @@ public class Building : MonoBehaviour
     }
 
     public virtual void DisplayUpgradeInfo(UpgradeInfoPanel panel) {
-        panel.title.text = "Upgrade to Level " + (level + 1).ToString() + "";
+        panel.title.text = "Upgrade to Level " + (level + 2).ToString() + "";
         panel.description.text = states.description;
         panel.buildingName.text = states.buildingName;
         
         // Just in case, for testing purposes
         if (level + 1 >= states.levels.Length) return;
-        
+
         panel.upgradeTime.text = states.levels[level + 1].buildTime.ToString() + "s";
 
         foreach (var resourceCost in states.levels[level + 1].resourceCostsList) {
@@ -109,6 +109,18 @@ public class Building : MonoBehaviour
     public void DisplayUpgradeStat(Sprite iconSprite, string name, int amount, int newAmount, UpgradeInfoPanel panel) {
         GameObject go = Instantiate(panel.upgradeStatHolderPrefab, panel.statList.transform);
         go.GetComponent<UpgradeStatHolder>().Initialise(iconSprite, name, amount, newAmount);
+    }
+
+    public bool IsMaxLevel() {
+        return level + 1 == states.levels.Length;
+    }
+    public bool CanUpgrade() {
+        return !IsMaxLevel() && GameResources.RequireResourceListAmounts(states.levels[level + 1].resourceCostsList);
+    }
+
+    public virtual void Upgrade() {
+        GameResources.UseResourceListAmounts(states.levels[level + 1].resourceCostsList);
+        level++;
     }
 
     #region Clicking

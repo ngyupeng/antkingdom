@@ -6,7 +6,7 @@ public class StorageBuilding : Building
 {
     public StorageBuildingStates storageStates { get; private set; }
 
-    protected new void Awake() {
+    protected override void Awake() {
         base.Awake();
         storageStates = base.states as StorageBuildingStates;
     }
@@ -16,7 +16,7 @@ public class StorageBuilding : Building
         Debug.Log("Clicked Info");
         panel.buildingSprite.sprite = storageStates.storageLevels[level].buildingSprite;
         DisplayStat(storageStates.storedResource.GetIcon(), "Storage Capacity", storageStates.storageLevels[level].storageAmount, panel);
-        DisplayStat(storageStates.storedResource.GetIcon(), "Health", storageStates.storageLevels[level].health, panel);
+        DisplayStat(IconDatabase.GetIcon("Heart"), "Health", storageStates.storageLevels[level].health, panel);
     }
 
     public override void DisplayUpgradeInfo(UpgradeInfoPanel panel) {
@@ -24,7 +24,14 @@ public class StorageBuilding : Building
         panel.buildingSprite.sprite = storageStates.storageLevels[level].buildingSprite;
         DisplayUpgradeStat(storageStates.storedResource.GetIcon(), "Storage Capacity", 
             storageStates.storageLevels[level].storageAmount, storageStates.storageLevels[level + 1].storageAmount, panel);
-        DisplayUpgradeStat(storageStates.storedResource.GetIcon(), "Health", 
+        DisplayUpgradeStat(IconDatabase.GetIcon("Heart"), "Health", 
             storageStates.storageLevels[level].health ,storageStates.storageLevels[level + 1].health, panel);
+    }
+
+    public override void Upgrade()
+    {
+        base.Upgrade();
+        GameResources.IncreaseStorage(storageStates.storedResource.GetResourceType(), 
+            storageStates.storageLevels[level].storageAmount - storageStates.storageLevels[level - 1].storageAmount);
     }
 }

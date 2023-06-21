@@ -120,8 +120,8 @@ TextureImporter:
       name: Stat Change Arrow 1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 68
+        x: 4
+        y: 36
         width: 27
         height: 25
       alignment: 0
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5fd5be6a7edddd43b69ce3fa349fa16
-      internalID: 577385598
+      spriteID: da3fe1c39ecf39b4b8187bfea499f543
+      internalID: -1250520475
       vertices: []
       indices: 
       edges: []
@@ -141,8 +141,8 @@ TextureImporter:
       name: Stat Change Arrow 2
       rect:
         serializedVersion: 2
-        x: 51
-        y: 69
+        x: 35
+        y: 37
         width: 24
         height: 23
       alignment: 0
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45f3a60ade14c9f4b8eb3a183f4f8e2d
-      internalID: -240202251
+      spriteID: a712947a1a7695949a5c755d1880f14f
+      internalID: 36425287
       vertices: []
       indices: 
       edges: []
@@ -162,10 +162,10 @@ TextureImporter:
       name: Heart
       rect:
         serializedVersion: 2
-        x: 22
-        y: 40
-        width: 19
-        height: 16
+        x: 0
+        y: 3
+        width: 32
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f565a90fa9824d429f21ab3d924e3a0
-      internalID: 1610309470
+      spriteID: a06e4b56a765e6b4cb8569527d3eeabd
+      internalID: 929816835
       vertices: []
       indices: 
       edges: []
@@ -190,9 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Heart: 1610309470
-      Stat Change Arrow 1: 577385598
-      Stat Change Arrow 2: -240202251
+      Heart: 929816835
+      Stat Change Arrow 1: -1250520475
+      Stat Change Arrow 2: 36425287
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
