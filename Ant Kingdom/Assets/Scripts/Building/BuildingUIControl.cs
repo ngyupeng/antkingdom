@@ -13,9 +13,12 @@ public class BuildingUIControl : MonoBehaviour
     [SerializeField]
     private Camera uiCamera;
 
+    [SerializeField] 
+    private GameObject buildingInfoPanel;
     private void Awake() {
         rectTransform = transform.GetComponent<RectTransform>();
         Building.onSelect += ShowBuildingOptions;
+        BuildingOptions.onClickedInfo += ShowBuildingInfo;
     }
 
     private void Update() {
@@ -42,7 +45,13 @@ public class BuildingUIControl : MonoBehaviour
         options.SetBuilding(selectedBuilding);
     }
 
-    private void OnDisable() {
+    public void ShowBuildingInfo() {
+        buildingInfoPanel.SetActive(true);
+        buildingInfoPanel.GetComponent<BuildingInfoPanel>().Initialise();
+    }
+
+    private void OnDestroy() {
         Building.onSelect -= ShowBuildingOptions;
+        BuildingOptions.onClickedInfo -= ShowBuildingInfo;
     }
 }

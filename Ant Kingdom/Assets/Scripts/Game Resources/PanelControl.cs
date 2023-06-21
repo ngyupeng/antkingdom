@@ -37,7 +37,7 @@ public class PanelControl : MonoBehaviour
         panelTransform.Find("amount").GetComponent<TextMeshProUGUI>().text = node.GetAmount().ToString();
     }
 
-    private void OnDisable() {
+    private void OnDestroy() {
         ResourceNode.onSelect -= UpdateActive;
         GameResources.onResourceAmountChanged -= UpdateView;
     }

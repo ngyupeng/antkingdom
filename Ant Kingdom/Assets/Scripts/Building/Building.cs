@@ -8,8 +8,6 @@ public class Building : MonoBehaviour
 {
     public ShopItem shopItem;
     public Vector3 originPosition;
-
-    // This checks whether it has already been bought
     public bool bought { get; private set; }
     public bool placed { get; private set; }
     public BoundsInt area;
@@ -19,13 +17,12 @@ public class Building : MonoBehaviour
     public delegate void OnSelect();
     public static event OnSelect onSelect;
 
-    void Awake() {
+    public int level;
+
+    public BuildingStates states;
+    protected void Awake() {
         col = gameObject.GetComponent<PolygonCollider2D>();
         col.enabled = false;
-    }
-    void Start()
-    {
-        
     }
 
     #region Build Methods
@@ -82,6 +79,16 @@ public class Building : MonoBehaviour
 
     #endregion
     
+    public virtual void DisplayInfo(BuildingInfoPanel panel) {
+        panel.buildingTitle.text = states.buildingName + " (Level " + (level + 1).ToString() + ")";
+        panel.description.text = states.description;
+    }
+    
+    public void DisplayStat(Sprite iconSprite, string name, int amount, BuildingInfoPanel panel) {
+        GameObject go = Instantiate(panel.statHolderPrefab, panel.statList.transform);
+        go.GetComponent<BuildingStatHolder>().Initialise(iconSprite, name, amount);
+    }
+
     private bool isClicking;
     private Vector3 clickPosition;
     private void OnMouseDown() {

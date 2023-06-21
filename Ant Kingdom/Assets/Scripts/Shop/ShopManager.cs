@@ -76,7 +76,7 @@ public class ShopManager : MonoBehaviour
 
     #endregion
 
-    private void OnDisable() {
+    private void OnDestroy() {
         ShopItemHolder.onSelect -= SetShopInactive;
     }
 }

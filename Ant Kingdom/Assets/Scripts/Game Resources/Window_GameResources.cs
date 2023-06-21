@@ -19,7 +19,7 @@ public class Window_GameResources : MonoBehaviour
             "WOOD: " + GameResources.GetResourceAmount(GameResources.ResourceType.Wood) + "\n";
     }
 
-    private void OnDisable() {
+    private void OnDestroy() {
         GameResources.onResourceAmountChanged -= UpdateResourceText;
     }
 }

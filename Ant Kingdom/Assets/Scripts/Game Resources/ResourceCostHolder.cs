@@ -35,4 +35,8 @@ public class ResourceCostHolder : MonoBehaviour
             resourceName.color = Color.red;
         }
     }
+
+    private void OnDestroy () {
+         GameResources.onResourceAmountChanged -= UpdateTextColor;
+    }
 }

@@ -85,7 +85,7 @@ public class CollectStone : MonoBehaviour
 
     }
 
-    private void OnDisable() {
+    private void OnDestroy() {
         ResourcePanelButton.onButtonClicked -= SetTarget;
     }
 }
