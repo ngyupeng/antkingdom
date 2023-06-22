@@ -17,9 +17,11 @@ public class Building : MonoBehaviour
     public delegate void OnSelect();
     public static event OnSelect onSelect;
 
-    public int level;
+    public int level = 0;
 
     public BuildingStates states;
+
+    public bool isBuilding = false;
     protected virtual void Awake() {
         col = gameObject.GetComponent<PolygonCollider2D>();
         col.enabled = false;
@@ -111,6 +113,22 @@ public class Building : MonoBehaviour
         go.GetComponent<UpgradeStatHolder>().Initialise(iconSprite, name, amount, newAmount);
     }
 
+    public virtual void DisplayOptions(BuildingUIControl control) {
+        if (isBuilding) {
+            // Will be updated
+            return;
+        }
+
+        control.AddOptionButton(control.buildingMoveButtonPrefab);
+        control.AddOptionButton(control.buildingInfoButtonPrefab);
+        if (!IsMaxLevel()) {
+            control.AddOptionButton(control.buildingUpgradeButtonPrefab);
+        }
+    }
+
+    public string GetName() {
+        return states.buildingName;
+    }
     public bool IsMaxLevel() {
         return level + 1 == states.levels.Length;
     }

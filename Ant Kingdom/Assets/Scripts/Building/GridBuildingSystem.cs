@@ -54,7 +54,9 @@ public class GridBuildingSystem : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             isClicking = true;
             clickPosition = Input.mousePosition;
-        } else if (Input.GetMouseButtonUp(0)) {
+        } 
+
+        if (Input.GetMouseButtonUp(0)) {
             if (isClicking && clickPosition == Input.mousePosition) {
                 if (tempBuilding.CanBePlaced()) {
                     tempBuilding.Place();
@@ -63,7 +65,9 @@ public class GridBuildingSystem : MonoBehaviour
                 }
             }
             isClicking = false;
-        } else if (Input.GetKeyDown(KeyCode.Q)) {
+        } 
+        
+        if (Input.GetKeyDown(KeyCode.Q)) {
             ClearTempArea();
             tempBuilding.CancelPlacement();
             tempBuilding = null;

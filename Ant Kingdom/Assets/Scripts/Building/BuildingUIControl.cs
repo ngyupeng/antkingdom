@@ -17,35 +17,40 @@ public class BuildingUIControl : MonoBehaviour
     private GameObject buildingInfoPanel;
     [SerializeField] 
     private GameObject upgradeInfoPanel;
+    public GameObject buildingMoveButtonPrefab;
+    public GameObject buildingInfoButtonPrefab;
+    public GameObject buildingUpgradeButtonPrefab;
     private void Awake() {
         rectTransform = transform.GetComponent<RectTransform>();
         Building.onSelect += ShowBuildingOptions;
-        BuildingOptions.onClickedInfo += ShowBuildingInfo;
-        BuildingOptions.onClickedUpgrade += ShowBuildingUpgradeInfo;
+        BuildingMoveButton.onClickedMove += MoveBuilding;
+        BuildingInfoButton.onClickedInfo += ShowBuildingInfo;
+        BuildingUpgradeButton.onClickedUpgrade += ShowBuildingUpgradeInfo;
     }
 
     private void Update() {
-        if (buildingOptionsInstance != null) {
-            Vector2 initPosition;
-            Vector3 screenPoint = uiCamera.WorldToScreenPoint(selectedBuilding.transform.position);
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, screenPoint,
-                uiCamera, out initPosition);
-            buildingOptionsInstance.transform.localPosition = initPosition;
-        }
+  
+    }
+
+    private void MoveBuilding() {
+        selectedBuilding.MoveBuilding();
     }
 
     private void ShowBuildingOptions() {
         if (buildingOptionsInstance != null) {
             Destroy(buildingOptionsInstance);
         }
-        Vector2 initPosition;
-        Vector3 screenPoint = uiCamera.WorldToScreenPoint(selectedBuilding.transform.position);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, screenPoint,
-            uiCamera, out initPosition);
         buildingOptionsInstance = Instantiate(buildingOptionsPrefab, transform);
-        buildingOptionsInstance.transform.localPosition = initPosition;
         BuildingOptions options = buildingOptionsInstance.GetComponent<BuildingOptions>();
         options.SetBuilding(selectedBuilding);
+        selectedBuilding.DisplayOptions(this);
+    }
+
+    public void AddOptionButton(GameObject prefab) {
+        if (buildingOptionsInstance != null) {
+            BuildingOptions options = buildingOptionsInstance.GetComponent<BuildingOptions>();
+            Instantiate(prefab, options.buttonList.transform);
+        }
     }
 
     public void ShowBuildingInfo() {
@@ -60,7 +65,8 @@ public class BuildingUIControl : MonoBehaviour
 
     private void OnDestroy() {
         Building.onSelect -= ShowBuildingOptions;
-        BuildingOptions.onClickedInfo -= ShowBuildingInfo;
-        BuildingOptions.onClickedUpgrade -= ShowBuildingUpgradeInfo;
+        BuildingMoveButton.onClickedMove -= MoveBuilding;
+        BuildingInfoButton.onClickedInfo -= ShowBuildingInfo;
+        BuildingUpgradeButton.onClickedUpgrade -= ShowBuildingUpgradeInfo;
     }
 }
