@@ -62,9 +62,20 @@ public class ResourceNode : MonoBehaviour
     private void SetAreaAvailable() {
 
     }
+
+    private bool isClicking;
+    private Vector3 clickPosition;
+    private void OnMouseDown() {
+        isClicking = true;
+        clickPosition = Input.mousePosition;
+    }
+    // Should only do stuff if there is no dragging
     private void OnMouseUp() {
         if (EventSystem.current.IsPointerOverGameObject()) return;
-        selectedNode = this;
-        onSelect?.Invoke();
+        if (isClicking && clickPosition == Input.mousePosition) {
+            selectedNode = this;
+            onSelect?.Invoke();
+        }
+        isClicking = false;
     }
 }

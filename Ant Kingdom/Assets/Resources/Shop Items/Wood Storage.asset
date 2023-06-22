@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac07dbb42b6fb304cb655e4a9a4da4d1, type: 3}
   m_Name: Wood Storage
   m_EditorClassIdentifier: 
-  itemName: Storage Building
+  itemName: Wood Storage
   resourceCostsList:
   - resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
     cost: 5

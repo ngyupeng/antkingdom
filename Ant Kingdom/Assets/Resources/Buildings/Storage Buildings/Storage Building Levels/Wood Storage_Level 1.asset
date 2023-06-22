@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1c42df12b91104abba6307d1508e6f, type: 3}
+  m_Name: Wood Storage_Level 1
+  m_EditorClassIdentifier: 
+  resourceCostsList:
+  - resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
+    cost: 5
+  buildTime: 5
+  buildingSprite: {fileID: -710428204, guid: 59e5f1a681db633428dc15c8d6a03848, type: 3}
+  health: 100
+  storedResource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
+  storageAmount: 100
