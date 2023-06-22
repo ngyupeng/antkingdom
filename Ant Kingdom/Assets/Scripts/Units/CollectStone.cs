@@ -12,7 +12,6 @@ public class CollectStone : MonoBehaviour
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
-    public GameObject worker;
     
     Seeker seeker;
     Rigidbody2D rb; 
@@ -21,6 +20,7 @@ public class CollectStone : MonoBehaviour
     {
         target = transform;
         seeker = GetComponent<Seeker>();
+        rb = GetComponent<Rigidbody2D>();
         ResourcePanelButton.onButtonClicked += SetTarget;
     }
 
@@ -33,9 +33,6 @@ public class CollectStone : MonoBehaviour
     public void SetTarget() {
         targetNode = ResourceNode.selectedNode;
         target= targetNode.transform;
-        GameObject tempWorker = (GameObject)Instantiate(worker, new Vector3(2.45f, -2.2f, -1f), Quaternion.identity);
-        
-        rb = tempWorker.GetComponent<Rigidbody2D>();
         Invoke("GetPath",0f);
         Invoke("UpdateResource", 5f);
     }
@@ -47,7 +44,6 @@ public class CollectStone : MonoBehaviour
         {
             path = p;
             currentWaypoint = 0;
-            
         }
     }
 
