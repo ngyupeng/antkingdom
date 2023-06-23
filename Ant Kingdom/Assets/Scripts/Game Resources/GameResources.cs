@@ -81,6 +81,14 @@ public static class GameResources
         return true;
     }
 
+    public static void GetResourceListAmounts(ResourceCost[] resourceCosts) {
+        foreach (var resourceCost in resourceCosts) {
+            ResourceType resourceType = resourceCost.resource.GetResourceType();
+            int amount = resourceCost.cost;
+            AddResourceAmount(resourceType, amount);
+        }
+    }
+
     #endregion
 
     #region Storage Management

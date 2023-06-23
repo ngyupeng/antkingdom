@@ -28,9 +28,24 @@ public class StorageBuilding : Building
             storageStates.storageLevels[level].health ,storageStates.storageLevels[level + 1].health, panel);
     }
 
-    public override void Upgrade()
+    public override void StartBuilding()
     {
-        base.Upgrade();
+        base.StartBuilding();
+    }
+
+    public override void FinishBuilding()
+    {
+        base.FinishBuilding();
+    }
+
+    public override void StartUpgrade()
+    {
+        base.StartUpgrade();
+    }
+
+    public override void FinishUpgrade()
+    {
+        base.FinishUpgrade();
         GameResources.IncreaseStorage(storageStates.storedResource.GetResourceType(), 
             storageStates.storageLevels[level].storageAmount - storageStates.storageLevels[level - 1].storageAmount);
     }

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Pathfinding;
 using UnityEngine.EventSystems;
 
@@ -22,6 +24,7 @@ public class Building : MonoBehaviour
     public BuildingStates states;
 
     public bool isBuilding = false;
+    public TimerTooltip timerTooltip;
     protected virtual void Awake() {
         col = gameObject.GetComponent<PolygonCollider2D>();
         col.enabled = false;
@@ -53,10 +56,9 @@ public class Building : MonoBehaviour
         
         // If item is from shop, it requires resources.
         if (!bought) {
-            GameResources.UseResourceListAmounts(shopItem.resourceCostsList);
+            StartBuilding();
         }
 
-        bought = true;
         placed = true;
         col.enabled = true;
         GridBuildingSystem.current.TakeArea(areaTemp);
@@ -115,7 +117,7 @@ public class Building : MonoBehaviour
 
     public virtual void DisplayOptions(BuildingUIControl control) {
         if (isBuilding) {
-            // Will be updated
+            control.AddOptionButton(control.buildingInfoButtonPrefab);
             return;
         }
 
@@ -136,8 +138,39 @@ public class Building : MonoBehaviour
         return !IsMaxLevel() && GameResources.RequireResourceListAmounts(states.levels[level + 1].resourceCostsList);
     }
 
-    public virtual void Upgrade() {
+    public virtual void StartBuilding() {
+        isBuilding = true;
+        GameResources.UseResourceListAmounts(states.levels[0].resourceCostsList);
+        timerTooltip = BuildingUIControl.current.CreateTimer(this);
+        timerTooltip.InitTimer(TimeSpan.FromSeconds(states.levels[0].buildTime));
+        timerTooltip.timer.StartTimer();
+        timerTooltip.timer.TimerFinishedEvent.AddListener(delegate
+        {
+            FinishBuilding();
+            Destroy(timerTooltip.gameObject);
+        });
+    }
+
+    public virtual void FinishBuilding() {
+        isBuilding = false;
+        bought = true;
+    }
+
+    public virtual void StartUpgrade() {
+        isBuilding = true;
         GameResources.UseResourceListAmounts(states.levels[level + 1].resourceCostsList);
+        timerTooltip = BuildingUIControl.current.CreateTimer(this);
+        timerTooltip.InitTimer(TimeSpan.FromSeconds(states.levels[level + 1].buildTime));
+        timerTooltip.timer.StartTimer();
+        timerTooltip.timer.TimerFinishedEvent.AddListener(delegate
+        {
+            FinishUpgrade();
+            Destroy(timerTooltip.gameObject);
+        });
+    }
+
+    public virtual void FinishUpgrade() {
+        isBuilding = false;
         level++;
     }
 

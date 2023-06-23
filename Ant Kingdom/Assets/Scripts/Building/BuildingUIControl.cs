@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildingUIControl : MonoBehaviour
 {
+    public static BuildingUIControl current;
     public static Building selectedBuilding;
     [SerializeField]
     private GameObject buildingOptionsPrefab;
@@ -20,7 +21,9 @@ public class BuildingUIControl : MonoBehaviour
     public GameObject buildingMoveButtonPrefab;
     public GameObject buildingInfoButtonPrefab;
     public GameObject buildingUpgradeButtonPrefab;
+    public GameObject timerTooltipPrefab;
     private void Awake() {
+        current = this;
         rectTransform = transform.GetComponent<RectTransform>();
         Building.onSelect += ShowBuildingOptions;
         BuildingMoveButton.onClickedMove += MoveBuilding;
@@ -30,6 +33,14 @@ public class BuildingUIControl : MonoBehaviour
 
     private void Update() {
   
+    }
+
+    public TimerTooltip CreateTimer(Building building) {
+        GameObject go = Instantiate(timerTooltipPrefab, transform);
+        go.transform.SetAsFirstSibling();
+        TimerTooltip tooltip = go.GetComponent<TimerTooltip>();
+        tooltip.Initialise(building.gameObject, rectTransform, uiCamera);
+        return tooltip;
     }
 
     private void MoveBuilding() {
