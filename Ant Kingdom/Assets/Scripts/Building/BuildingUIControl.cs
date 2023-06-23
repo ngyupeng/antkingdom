@@ -34,15 +34,22 @@ public class BuildingUIControl : MonoBehaviour
 
     private void MoveBuilding() {
         selectedBuilding.MoveBuilding();
+        ClearBuildingSelection();
+    }
+
+    private void ClearBuildingSelection() {
+        if (buildingOptionsInstance != null) {
+            BuildingOptions options = buildingOptionsInstance.GetComponent<BuildingOptions>();
+            options.ClearBuildingSelection();
+        }
     }
 
     private void ShowBuildingOptions() {
-        if (buildingOptionsInstance != null) {
-            Destroy(buildingOptionsInstance);
-        }
+        ClearBuildingSelection();
         buildingOptionsInstance = Instantiate(buildingOptionsPrefab, transform);
         BuildingOptions options = buildingOptionsInstance.GetComponent<BuildingOptions>();
         options.SetBuilding(selectedBuilding);
+        GridBuildingSystem.current.HighlightBuildingArea(selectedBuilding);
         selectedBuilding.DisplayOptions(this);
     }
 
@@ -56,11 +63,13 @@ public class BuildingUIControl : MonoBehaviour
     public void ShowBuildingInfo() {
         buildingInfoPanel.SetActive(true);
         buildingInfoPanel.GetComponent<BuildingInfoPanel>().Initialise();
+        ClearBuildingSelection();
     }
 
     public void ShowBuildingUpgradeInfo() {
         upgradeInfoPanel.SetActive(true);
         upgradeInfoPanel.GetComponent<UpgradeInfoPanel>().Initialise();
+        ClearBuildingSelection();
     }
 
     private void OnDestroy() {

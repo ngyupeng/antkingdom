@@ -22,7 +22,7 @@ public class BuildingOptions : MonoBehaviour, IPointerExitHandler, IPointerEnter
         
         if (Input.GetMouseButtonUp(0)) {
             if (isClicking && clickPosition == Input.mousePosition && !inContext) {
-                Destroy(gameObject);
+                ClearBuildingSelection();
             }
             isClicking = false;
         }
@@ -32,6 +32,10 @@ public class BuildingOptions : MonoBehaviour, IPointerExitHandler, IPointerEnter
         buildingName.text = building.GetName() + " (Level " + (building.level + 1).ToString() + ")";
     }
 
+    public void ClearBuildingSelection() {
+        GridBuildingSystem.current.UnhighlightBuildingArea(building);
+        Destroy(gameObject);
+    }
     public void OnPointerExit(PointerEventData eventData) {
         inContext = false;
     }

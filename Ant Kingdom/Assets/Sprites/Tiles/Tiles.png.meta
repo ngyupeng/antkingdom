@@ -179,6 +179,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Grey Tile
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 104
+        width: 32
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844a0599b89afc44e91a5e040dd1b1f8
+      internalID: -1958303659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -191,6 +212,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Green Tile: 598277071
+      Grey Tile: -1958303659
       Red Tile: 1537685669
       White Tile: -374731491
   spritePackingTag: 

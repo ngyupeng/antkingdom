@@ -8,6 +8,5 @@ public class BuildingInfoButton : MonoBehaviour
     public static event OnClickedInfo onClickedInfo;
     public void ShowBuildingInfo() {
         onClickedInfo?.Invoke();
-        Destroy(transform.parent.transform.parent.gameObject);
     }
 }

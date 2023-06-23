@@ -8,6 +8,5 @@ public class BuildingMoveButton : MonoBehaviour
     public static event OnClickedMove onClickedMove;
     public void MoveBuilding() {
         onClickedMove?.Invoke();
-        Destroy(transform.parent.transform.parent.gameObject);
     }
 }
