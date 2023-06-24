@@ -21,6 +21,7 @@ public class BuildingUIControl : MonoBehaviour
     public GameObject buildingMoveButtonPrefab;
     public GameObject buildingInfoButtonPrefab;
     public GameObject buildingUpgradeButtonPrefab;
+    public GameObject buildingCancelButtonPrefab;
     public GameObject timerTooltipPrefab;
     private void Awake() {
         current = this;
@@ -29,6 +30,7 @@ public class BuildingUIControl : MonoBehaviour
         BuildingMoveButton.onClickedMove += MoveBuilding;
         BuildingInfoButton.onClickedInfo += ShowBuildingInfo;
         BuildingUpgradeButton.onClickedUpgrade += ShowBuildingUpgradeInfo;
+        BuildingCancelButton.onClickedCancel += CancelBuilding;
     }
 
     private void Update() {
@@ -83,10 +85,16 @@ public class BuildingUIControl : MonoBehaviour
         ClearBuildingSelection();
     }
 
+    public void CancelBuilding() {
+        selectedBuilding.CancelConstruction();
+        ClearBuildingSelection();
+    }
+
     private void OnDestroy() {
         Building.onSelect -= ShowBuildingOptions;
         BuildingMoveButton.onClickedMove -= MoveBuilding;
         BuildingInfoButton.onClickedInfo -= ShowBuildingInfo;
         BuildingUpgradeButton.onClickedUpgrade -= ShowBuildingUpgradeInfo;
+        BuildingCancelButton.onClickedCancel -= CancelBuilding;
     }
 }

@@ -30,6 +30,15 @@ public class BuildingOptions : MonoBehaviour, IPointerExitHandler, IPointerEnter
     public void SetBuilding(Building newBuilding) {
         building = newBuilding;
         buildingName.text = building.GetName() + " (Level " + (building.level + 1).ToString() + ")";
+        building.onStateChanged.AddListener(UpdateOptions);
+    }
+
+    public void UpdateOptions() {
+        buildingName.text = building.GetName() + " (Level " + (building.level + 1).ToString() + ")";
+        foreach (Transform child in buttonList.transform) {
+            Destroy(child.gameObject);
+        }
+        building.DisplayOptions(BuildingUIControl.current);
     }
 
     public void ClearBuildingSelection() {
@@ -42,5 +51,9 @@ public class BuildingOptions : MonoBehaviour, IPointerExitHandler, IPointerEnter
 
     public void OnPointerEnter(PointerEventData eventData) {
         inContext = true;
+    }
+
+    private void OnDestroy() {
+        building.onStateChanged.RemoveListener(UpdateOptions);
     }
 }

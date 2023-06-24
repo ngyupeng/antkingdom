@@ -25,10 +25,13 @@ public class Building : MonoBehaviour
 
     public bool isBuilding = false;
     public TimerTooltip timerTooltip;
+
+    public UnityEvent onStateChanged;
     protected virtual void Awake() {
         col = gameObject.GetComponent<PolygonCollider2D>();
         col.enabled = false;
         states.Initialise();
+        onStateChanged = new UnityEvent();
     }
 
     #region Build Methods
@@ -84,11 +87,20 @@ public class Building : MonoBehaviour
 
     #endregion
     
+    #region Building Info
     public virtual void DisplayInfo(BuildingInfoPanel panel) {
         panel.buildingTitle.text = states.buildingName + " (Level " + (level + 1).ToString() + ")";
         panel.description.text = states.description;
     }
+        
+    public void DisplayStat(Sprite iconSprite, string name, int amount, BuildingInfoPanel panel) {
+        GameObject go = Instantiate(panel.statHolderPrefab, panel.statList.transform);
+        go.GetComponent<BuildingStatHolder>().Initialise(iconSprite, name, amount);
+    }
 
+    #endregion
+
+    #region Building Upgrade Info
     public virtual void DisplayUpgradeInfo(UpgradeInfoPanel panel) {
         panel.title.text = "Upgrade to Level " + (level + 2).ToString() + "";
         panel.description.text = states.description;
@@ -104,19 +116,41 @@ public class Building : MonoBehaviour
             itemObject.GetComponent<ResourceCostHolder>().Initialise(resourceCost.resource, resourceCost.cost);
         }
     }
-    
-    public void DisplayStat(Sprite iconSprite, string name, int amount, BuildingInfoPanel panel) {
-        GameObject go = Instantiate(panel.statHolderPrefab, panel.statList.transform);
-        go.GetComponent<BuildingStatHolder>().Initialise(iconSprite, name, amount);
-    }
 
     public void DisplayUpgradeStat(Sprite iconSprite, string name, int amount, int newAmount, UpgradeInfoPanel panel) {
         GameObject go = Instantiate(panel.upgradeStatHolderPrefab, panel.statList.transform);
         go.GetComponent<UpgradeStatHolder>().Initialise(iconSprite, name, amount, newAmount);
     }
 
+    #endregion
+
+    #region Cancel Building
+
+    public virtual void CancelConstruction() {
+        if (!isBuilding) return;
+        if (!bought) {
+            CancelBuilding();
+        } else {
+            CancelUpgrade();
+        }
+        isBuilding = false;
+    }
+
+    public virtual void CancelBuilding() {
+        GameResources.GetResourceListAmounts(states.levels[0].resourceCostsList);
+        Destroy(timerTooltip.gameObject);
+        Destroy(gameObject);
+    }
+
+    public virtual void CancelUpgrade() {
+        GameResources.GetResourceListAmounts(states.levels[level + 1].resourceCostsList);
+        Destroy(timerTooltip.gameObject);
+    }
+
+    #endregion
     public virtual void DisplayOptions(BuildingUIControl control) {
         if (isBuilding) {
+            control.AddOptionButton(control.buildingCancelButtonPrefab);
             control.AddOptionButton(control.buildingInfoButtonPrefab);
             return;
         }
@@ -128,6 +162,7 @@ public class Building : MonoBehaviour
         }
     }
 
+    #region Value Functions
     public string GetName() {
         return states.buildingName;
     }
@@ -137,6 +172,8 @@ public class Building : MonoBehaviour
     public bool CanUpgrade() {
         return !IsMaxLevel() && GameResources.RequireResourceListAmounts(states.levels[level + 1].resourceCostsList);
     }
+
+    #endregion
 
     public virtual void StartBuilding() {
         isBuilding = true;
@@ -154,6 +191,7 @@ public class Building : MonoBehaviour
     public virtual void FinishBuilding() {
         isBuilding = false;
         bought = true;
+        onStateChanged.Invoke();
     }
 
     public virtual void StartUpgrade() {
@@ -172,6 +210,7 @@ public class Building : MonoBehaviour
     public virtual void FinishUpgrade() {
         isBuilding = false;
         level++;
+        onStateChanged.Invoke();
     }
 
     #region Clicking

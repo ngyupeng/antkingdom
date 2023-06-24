@@ -36,6 +36,8 @@ public class StorageBuilding : Building
     public override void FinishBuilding()
     {
         base.FinishBuilding();
+        GameResources.IncreaseStorage(storageStates.storedResource.GetResourceType(), 
+            storageStates.storageLevels[0].storageAmount);
     }
 
     public override void StartUpgrade()
