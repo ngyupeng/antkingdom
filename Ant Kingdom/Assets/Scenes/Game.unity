@@ -1206,7 +1206,7 @@ MonoBehaviour:
   buildingMoveButtonPrefab: {fileID: 7107896393192862959, guid: 5f02bc642fd2fbd4196946608cc87cd3, type: 3}
   buildingInfoButtonPrefab: {fileID: 456033830752458921, guid: 423e6e6ff7f5de4458d26ff7392744bc, type: 3}
   buildingUpgradeButtonPrefab: {fileID: 3896973368399366513, guid: 640dbe06b38ac1641b8376f942e74fc6, type: 3}
-  buildingCancelButtonPrefab: {fileID: 0}
+  buildingCancelButtonPrefab: {fileID: 4642388049902956419, guid: d31b2926fc55296438fd9d6a3f9eb42c, type: 3}
   timerTooltipPrefab: {fileID: 2720389554222164543, guid: fe72f6dcfea7c2547aa48d0e4a09c34f, type: 3}
 --- !u!4 &244840385 stripped
 Transform:
