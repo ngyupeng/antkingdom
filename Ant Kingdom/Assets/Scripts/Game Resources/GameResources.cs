@@ -16,6 +16,8 @@ public static class GameResources
 
     public delegate void OnNotEnoughResources();
     public static event OnNotEnoughResources onNotEnoughResources;
+    public delegate void OnResourceCapacityChanged();
+    public static event OnResourceCapacityChanged onResourceCapacityChanged;
     private static Dictionary<ResourceType, int> resourceAmountData;
     private static Dictionary<ResourceType, int> resourceCapacity;
 
@@ -38,6 +40,10 @@ public static class GameResources
 
     public static int GetResourceAmount(ResourceType resourceType) {
         return resourceAmountData[resourceType];
+    }
+
+    public static int GetResourceCapacity(ResourceType resourceType) {
+        return resourceCapacity[resourceType];
     }
 
     public static bool HasResourceAmount(ResourceType resourceType, int amount) {
@@ -96,6 +102,7 @@ public static class GameResources
 
     public static void IncreaseStorage(ResourceType resourceType, int amount) {
         resourceCapacity[resourceType] += amount;
+        onResourceCapacityChanged?.Invoke();
     }
 
     #endregion
