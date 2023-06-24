@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Menu
+      name: Stone Storage_0
       rect:
         serializedVersion: 2
-        x: 49
-        y: 33
-        width: 78
-        height: 78
+        x: 37
+        y: 32
+        width: 54
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,71 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50b0d765484a50245a1b2186a21973ed
-      internalID: 723936126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Menu Buttons
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 84
-        width: 46
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77a2426ce55c43c458509c8a3982bbb2
-      internalID: -938481577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Menu Buttons_2
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 65
-        width: 46
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 85ae30166341cc5499fc0082e0cf0ffc
-      internalID: 249623853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Menu Buttons_3
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 46
-        width: 46
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9643c50f4e3c22449b99d8c8f70af44f
-      internalID: 806574603
+      spriteID: 557dc2699db357c49b197f281c150fe5
+      internalID: 1843065308
       vertices: []
       indices: 
       edges: []
@@ -211,10 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Menu: 723936126
-      Menu Buttons: -938481577
-      Menu Buttons_2: 249623853
-      Menu Buttons_3: 806574603
+      Stone Storage_0: 1843065308
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

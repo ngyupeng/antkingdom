@@ -117,127 +117,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Building Buttons_0
+      name: Worker Walking_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 97
-        width: 30
-        height: 30
+        x: 2
+        y: 94
+        width: 14
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b8818897f4460a4eb9db44b0433e8d0
-      internalID: -747267024
+      spriteID: 875918cdcef28a64e88e716da9b723d6
+      internalID: 1873568632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Move Icon
+      name: Worker Walking_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
-        width: 32
-        height: 32
+        x: 18
+        y: 94
+        width: 15
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06c7e775479adf64b8ad3342660e92fe
-      internalID: 835335973
+      spriteID: 0e7f22baf1198ca4883dc67f487d0be0
+      internalID: -1296171717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Info Icon
+      name: Worker Walking_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 48
-        width: 32
-        height: 32
+        x: 2
+        y: 66
+        width: 14
+        height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2f8596a3e631d5428ff82bb5b016efa
-      internalID: -1312418890
+      spriteID: 8f3f80563672f654da9eb78c07eed8e6
+      internalID: -1089413094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Upgrade Icon
+      name: Worker Walking_3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 48
-        width: 32
-        height: 32
+        x: 19
+        y: 66
+        width: 14
+        height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4993202f966bcc041b89b6848a14f51a
-      internalID: 886201456
+      spriteID: 8c23735cd00d5184ebf72611755e49e4
+      internalID: -1288195452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Building Buttons_4
+      name: Worker Walking_4
       rect:
         serializedVersion: 2
-        x: 33
-        y: 1
-        width: 30
-        height: 30
+        x: 0
+        y: 29
+        width: 17
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32a13f1c99b0f6941a141007a7cab7af
-      internalID: -1289674687
+      spriteID: 6233188a21de74545b32de3fa129bc7a
+      internalID: 1265248959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cancel Icon
+      name: Worker Walking_5
       rect:
         serializedVersion: 2
-        x: 80
-        y: 96
-        width: 32
-        height: 32
+        x: 17
+        y: 29
+        width: 17
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 774eb872e1a517b41b25145e554519c2
-      internalID: 311474037
+      spriteID: a37eb203b6a434d4499de011942f14d5
+      internalID: -820980652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Worker Walking_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e25b7dd5a25ffeb4886942ffb5a2b7d3
+      internalID: -560920401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Worker Walking_7
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 0
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b6029383b69f044d9951136030fb2e5
+      internalID: -1451965589
       vertices: []
       indices: 
       edges: []
@@ -253,12 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Building Buttons_0: -747267024
-      Building Buttons_4: 835335973
-      Cancel Icon: 311474037
-      Info Icon: -1312418890
-      Move Icon: -1312418890
-      Upgrade Icon: 886201456
+      Worker Walking_0: 1873568632
+      Worker Walking_1: -1296171717
+      Worker Walking_2: -1089413094
+      Worker Walking_3: -1288195452
+      Worker Walking_4: 1265248959
+      Worker Walking_5: -820980652
+      Worker Walking_6: -560920401
+      Worker Walking_7: -1451965589
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

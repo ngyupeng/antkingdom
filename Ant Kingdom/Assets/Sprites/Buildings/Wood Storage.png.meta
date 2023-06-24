@@ -117,64 +117,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stat Change Arrow 1
+      name: Wood Storage_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 36
-        width: 27
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 36
+        y: 32
+        width: 55
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da3fe1c39ecf39b4b8187bfea499f543
-      internalID: -1250520475
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Stat Change Arrow 2
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 37
-        width: 24
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a712947a1a7695949a5c755d1880f14f
-      internalID: 36425287
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heart
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 32
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a06e4b56a765e6b4cb8569527d3eeabd
-      internalID: 929816835
+      spriteID: da6b2e2625b250b43bfe51b54156397b
+      internalID: 1409296744
       vertices: []
       indices: 
       edges: []
@@ -190,9 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Heart: 929816835
-      Stat Change Arrow 1: -1250520475
-      Stat Change Arrow 2: 36425287
+      Wood Storage_0: 1409296744
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
