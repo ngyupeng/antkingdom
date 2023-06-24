@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+    // test
     private Animator anim;
     public string[] staticDirections = {"Worker NW", "Worker SW", "Worker SE", "Worker NE"};
     public string[] walkingDirections = {"Worker NW Walking", "Worker SW Walking", "Worker SE Walking", "Worker NE Walking"};
