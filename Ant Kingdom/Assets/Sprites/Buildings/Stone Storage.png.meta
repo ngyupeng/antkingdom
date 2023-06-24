@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 855c14a901e51984884bf3a971e31f0e
+guid: bab95557d38bc11458c7d13470e2eb1e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,127 +117,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Building Buttons_0
+      name: Menu
       rect:
         serializedVersion: 2
-        x: 33
-        y: 97
-        width: 30
-        height: 30
+        x: 49
+        y: 33
+        width: 78
+        height: 78
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b8818897f4460a4eb9db44b0433e8d0
-      internalID: -747267024
+      spriteID: 50b0d765484a50245a1b2186a21973ed
+      internalID: 723936126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Move Icon
+      name: Menu Buttons
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
-        width: 32
-        height: 32
+        x: 137
+        y: 84
+        width: 46
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06c7e775479adf64b8ad3342660e92fe
-      internalID: 835335973
+      spriteID: 77a2426ce55c43c458509c8a3982bbb2
+      internalID: -938481577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Info Icon
+      name: Menu Buttons_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 48
-        width: 32
-        height: 32
+        x: 137
+        y: 65
+        width: 46
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2f8596a3e631d5428ff82bb5b016efa
-      internalID: -1312418890
+      spriteID: 85ae30166341cc5499fc0082e0cf0ffc
+      internalID: 249623853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Upgrade Icon
+      name: Menu Buttons_3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 48
-        width: 32
-        height: 32
+        x: 137
+        y: 46
+        width: 46
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4993202f966bcc041b89b6848a14f51a
-      internalID: 886201456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Building Buttons_4
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 1
-        width: 30
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 32a13f1c99b0f6941a141007a7cab7af
-      internalID: -1289674687
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cancel Icon
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 774eb872e1a517b41b25145e554519c2
-      internalID: 311474037
+      spriteID: 9643c50f4e3c22449b99d8c8f70af44f
+      internalID: 806574603
       vertices: []
       indices: 
       edges: []
@@ -253,12 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Building Buttons_0: -747267024
-      Building Buttons_4: 835335973
-      Cancel Icon: 311474037
-      Info Icon: -1312418890
-      Move Icon: -1312418890
-      Upgrade Icon: 886201456
+      Menu: 723936126
+      Menu Buttons: -938481577
+      Menu Buttons_2: 249623853
+      Menu Buttons_3: 806574603
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
