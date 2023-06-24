@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac07dbb42b6fb304cb655e4a9a4da4d1, type: 3}
-  m_Name: Stone Storage
+  m_Name: Food Storage
   m_EditorClassIdentifier: 
-  itemName: Storage Building
+  itemName: Food Storage
   type: 0
-  prefab: {fileID: 3903484398244372066, guid: 3f10390e94dae284fa849c90d23f0c92, type: 3}
-  states: {fileID: 11400000, guid: fb253140a4f16de45bb93bd3aaab1097, type: 2}
+  prefab: {fileID: 6063061810125123584, guid: 389ccf04decfacb4fa824fba67dabbd8, type: 3}
+  states: {fileID: 11400000, guid: 6f07f5f5b459c634ea04e4890b936b23, type: 2}

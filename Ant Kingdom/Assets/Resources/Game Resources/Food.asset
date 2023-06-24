@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac07dbb42b6fb304cb655e4a9a4da4d1, type: 3}
-  m_Name: Housing
+  m_Script: {fileID: 11500000, guid: 44799894082c37f4e975ca2f2a6b6b37, type: 3}
+  m_Name: Food
   m_EditorClassIdentifier: 
-  itemName: House
-  type: 1
-  prefab: {fileID: 2097490753873986982, guid: 1f81a043e6c4f3441b1925ba045df84d, type: 3}
-  states: {fileID: 11400000, guid: fb253140a4f16de45bb93bd3aaab1097, type: 2}
+  resourceName: Food
+  resourceType: 2
+  resourceIcon: {fileID: -520171005, guid: cdc151b8deb21e345b7a499a711dd212, type: 3}

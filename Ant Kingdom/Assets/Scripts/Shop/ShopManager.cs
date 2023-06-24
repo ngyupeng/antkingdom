@@ -37,6 +37,7 @@ public class ShopManager : MonoBehaviour
         shopItems.Add(BuildingType.Housing, new List<ShopItem>());
         foreach (var item in items) {
             shopItems[item.type].Add(item);
+            item.Init();
         }
     }
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cdc151b8deb21e345b7a499a711dd212
+guid: 39b2ad591cf4b4e4bb6946ab45bc152d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,64 +117,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stone_Icon
+      name: Food Storage_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 39
+        y: 40
+        width: 51
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57df4ead7b33619439291866671e857d
-      internalID: -445818865
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wood_Icon
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42be8e07f8047774e9e03138d7fe3284
-      internalID: 126228080
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Food_Icon
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab26db744b2dd584f947790aed11c46d
-      internalID: -520171005
+      spriteID: 143b3fa3ed8bc814f8d76e018f959a8e
+      internalID: -516260768
       vertices: []
       indices: 
       edges: []
@@ -190,9 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Food_Icon: -520171005
-      Stone_Icon: -445818865
-      Wood_Icon: 126228080
+      Food Storage_0: -516260768
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

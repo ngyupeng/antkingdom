@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a1c42df12b91104abba6307d1508e6f, type: 3}
-  m_Name: Wood Storage_Level 3
+  m_Name: Food Storage_Level 1
   m_EditorClassIdentifier: 
   resourceCostsList:
   - resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
-    cost: 20
-  - resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
-    cost: 12
-  buildTime: 15
-  buildingSprite: {fileID: 1409296744, guid: 1e2a0be9c141ff547b4343a2af76352d, type: 3}
-  health: 400
-  storageAmount: 350
+    cost: 10
+  buildTime: 5
+  buildingSprite: {fileID: -516260768, guid: 39b2ad591cf4b4e4bb6946ab45bc152d, type: 3}
+  health: 100
+  storageAmount: 100
