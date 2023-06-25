@@ -8,17 +8,20 @@ public class ResourceNode : MonoBehaviour
     public static ResourceNode selectedNode;
     public delegate void OnSelect();
     public static event OnSelect onSelect;
+    public delegate void OnResourceNodeRegen();
+    public static event OnResourceNodeRegen onResourceNodeRegen;
     
     [SerializeField]
     private ResourceNodeType resourceNodeType;
-    private Sprite nodeSprite;
     private int amount;
+    [SerializeField]
+    private SpriteRenderer sprite;
 
     private BoundsInt area;
 
     private void Awake() {
-        nodeSprite = resourceNodeType.GetSprite();
         amount = resourceNodeType.GetAmount();
+        InvokeRepeating("RegenerateResources", 0f, 10f);
     }
 
     private void Start() {
@@ -36,7 +39,7 @@ public class ResourceNode : MonoBehaviour
     }
 
     public Sprite GetSprite() {
-        return nodeSprite;
+        return sprite.sprite;
     } 
 
     public Resource GetResource() {
@@ -45,6 +48,21 @@ public class ResourceNode : MonoBehaviour
 
     public Sprite GetResourceIcon() {
         return resourceNodeType.GetResourceIcon();
+    }
+
+    public void RegenerateSingleResourceAmount() {
+        if (amount < resourceNodeType.GetAmount()) {
+            amount++;
+            UpdateSprite();
+            onResourceNodeRegen?.Invoke();
+        }
+    }
+
+    public void RegenerateResources() {
+        if (amount < resourceNodeType.GetAmount()) {
+            amount = resourceNodeType.GetAmount();
+            UpdateSprite();
+        }
     }
 
     public int GetAmount() {
@@ -56,11 +74,20 @@ public class ResourceNode : MonoBehaviour
     public int TakeAmount(int targetAmount) {
         int takenAmount = Mathf.Min(amount, targetAmount);
         amount -= takenAmount;
+        UpdateSprite();
         return takenAmount;
     }
 
     private void SetAreaAvailable() {
 
+    }
+
+    private void UpdateSprite() {
+        if (amount == 0) {
+            sprite.sprite = resourceNodeType.GetDepletedSprite();
+        } else {
+            sprite.sprite = resourceNodeType.GetSprite();
+        }
     }
 
     private bool isClicking;

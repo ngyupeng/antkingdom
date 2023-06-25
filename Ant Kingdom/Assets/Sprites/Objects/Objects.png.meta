@@ -120,7 +120,7 @@ TextureImporter:
       name: Tree
       rect:
         serializedVersion: 2
-        x: 23
+        x: 39
         y: 48
         width: 26
         height: 36
@@ -141,7 +141,7 @@ TextureImporter:
       name: Stone
       rect:
         serializedVersion: 2
-        x: 84
+        x: 100
         y: 61
         width: 16
         height: 17
@@ -162,7 +162,7 @@ TextureImporter:
       name: Water
       rect:
         serializedVersion: 2
-        x: 42
+        x: 58
         y: 16
         width: 32
         height: 32
@@ -179,6 +179,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Stone Depleted
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 85
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229b3ecd18d411f449e1d473906e1a7a
+      internalID: 1491640166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tree Depleted
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 48
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7b4032abad302c439b6d8920b198994
+      internalID: 1569835374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -191,7 +233,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Stone: -1484722360
+      Stone Depleted: 1491640166
       Tree: 503318835
+      Tree Depleted: 1569835374
       Water: 30923213
   spritePackingTag: 
   pSDRemoveMatte: 0

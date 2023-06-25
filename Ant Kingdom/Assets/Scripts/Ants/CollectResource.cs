@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class CollectStone : MonoBehaviour
+public class CollectResource : MonoBehaviour
 {
-    // test
     public Transform target;
     public ResourceNode targetNode;
     public float speed = 200f;
@@ -22,7 +21,6 @@ public class CollectStone : MonoBehaviour
         target = transform;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        ResourcePanelButton.onButtonClicked += SetTarget;
     }
 
     void GetPath()
@@ -31,9 +29,8 @@ public class CollectStone : MonoBehaviour
              seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
 
-    public void SetTarget() {
-        targetNode = ResourceNode.selectedNode;
-        target= targetNode.transform;
+    public void SetTarget(GameObject targetObject) {
+        target = targetObject.transform;
         Invoke("GetPath",0f);
         Invoke("UpdateResource", 5f);
     }
@@ -43,6 +40,7 @@ public class CollectStone : MonoBehaviour
     {
         if(!p.error)
         {
+            Debug.Log("Pathcomplete");
             path = p;
             currentWaypoint = 0;
         }
@@ -84,9 +82,5 @@ public class CollectStone : MonoBehaviour
         }
            
 
-    }
-
-    private void OnDestroy() {
-        ResourcePanelButton.onButtonClicked -= SetTarget;
     }
 }

@@ -228,3 +228,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceNodeType: {fileID: 11400000, guid: bcd6751469b7a8540915de0c1d385e86, type: 2}
+  sprite: {fileID: 6192397230308796943}

@@ -14,6 +14,7 @@ public class PanelControl : MonoBehaviour
         uiBlock = transform.GetChild(0).gameObject;
         panelTransform = transform.GetChild(1);
         panel = panelTransform.gameObject;
+        ResourceNode.onResourceNodeRegen += UpdateView;
         ResourceNode.onSelect += UpdateActive;
         GameResources.onResourceAmountChanged += UpdateView;
     }
@@ -40,6 +41,7 @@ public class PanelControl : MonoBehaviour
     }
 
     private void OnDestroy() {
+        ResourceNode.onResourceNodeRegen -= UpdateView;
         ResourceNode.onSelect -= UpdateActive;
         GameResources.onResourceAmountChanged -= UpdateView;
     }
