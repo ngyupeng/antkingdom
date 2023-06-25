@@ -5,6 +5,13 @@ using Pathfinding;
 
 public class CollectResource : MonoBehaviour
 {
+    private enum State {
+        Idle,
+        MovingToResourceNode,
+        GatheringResources,
+        MovingToBase
+    }
+    private State state;
     public Transform target;
     public ResourceNode targetNode;
     public float speed = 200f;
@@ -12,12 +19,14 @@ public class CollectResource : MonoBehaviour
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
+    bool isIdle = true;
     
     Seeker seeker;
     Rigidbody2D rb; 
     // Start is called before the first frame update
     void Awake()
     {
+        state = State.Idle;
         target = transform;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
@@ -25,14 +34,20 @@ public class CollectResource : MonoBehaviour
 
     void GetPath()
     {
-        if (seeker.IsDone())
-             seeker.StartPath(rb.position, target.position, OnPathComplete);
+        if (seeker.IsDone()) {
+            seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
     }
 
+    public void SetTargetNode(ResourceNode node) {
+        targetNode = node;
+        SetTarget(node.gameObject);
+        state = State.MovingToResourceNode;
+    }
     public void SetTarget(GameObject targetObject) {
+        isIdle = false;
         target = targetObject.transform;
         Invoke("GetPath",0f);
-        Invoke("UpdateResource", 5f);
     }
 
 
@@ -40,7 +55,6 @@ public class CollectResource : MonoBehaviour
     {
         if(!p.error)
         {
-            Debug.Log("Pathcomplete");
             path = p;
             currentWaypoint = 0;
         }
@@ -50,9 +64,36 @@ public class CollectResource : MonoBehaviour
     {
         Resource resource = targetNode.GetResource();
         GameResources.ResourceType type = resource.GetResourceType();
-        GameResources.AddResourceAmount(
-                 type, targetNode.TakeAmount(10));
-        Debug.Log(resource.GetName() + " Amount: " + GameResources.GetResourceAmount(type));
+        // Check how much it can take, then take as much as the capacity allows
+        int amount = targetNode.CanTakeAmount(10);
+        targetNode.TakeAmount(GameResources.AddResourceAmount(type, amount));
+        isIdle = true;
+    }
+
+    void Update() {
+        switch (state) {
+            case State.Idle:
+                break;
+            case State.MovingToResourceNode:
+                if (isIdle) {
+                    isIdle = false;
+                    Invoke("UpdateResource", 2f);
+                    state = State.GatheringResources;
+                }
+                break;
+            case State.GatheringResources:
+                if (isIdle) {
+                    SetTarget(AntSpawner.instance.nest.gameObject);
+                    state = State.MovingToBase;
+                }
+                break;
+            case State.MovingToBase:
+                if (isIdle) {
+                    AntManager.AddIdleAnt();
+                    Destroy(gameObject);
+                }
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -64,6 +105,8 @@ public class CollectResource : MonoBehaviour
         if (currentWaypoint >= path.vectorPath.Count)
         {
             reachedEndOfPath = true;
+            path = null;
+            isIdle = true;
             return;
         } else 
         {
@@ -80,7 +123,5 @@ public class CollectResource : MonoBehaviour
         {
             currentWaypoint++;
         }
-           
-
     }
 }

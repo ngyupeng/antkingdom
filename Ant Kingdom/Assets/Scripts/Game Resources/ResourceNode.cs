@@ -78,6 +78,10 @@ public class ResourceNode : MonoBehaviour
         return takenAmount;
     }
 
+    public int CanTakeAmount(int targetAmount) {
+        return Mathf.Min(amount, targetAmount);
+    }
+
     private void SetAreaAvailable() {
 
     }

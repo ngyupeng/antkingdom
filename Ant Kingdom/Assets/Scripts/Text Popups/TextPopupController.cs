@@ -11,6 +11,7 @@ public class TextPopupController : MonoBehaviour
     private void Awake() {
         rectTransform = transform.GetComponent<RectTransform>();
         GameResources.onNotEnoughResources += ShowNotEnoughResources;
+        AntManager.onNoIdleAnts += ShowNotEnoughIdleAnts;
     }
 
     public void ShowFloatingText(string text, Color color) {
@@ -18,7 +19,7 @@ public class TextPopupController : MonoBehaviour
         RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, Input.mousePosition, uiCamera, out mousePosition);
         var go = Instantiate(floatingTextPrefab, transform);
         go.transform.localPosition = mousePosition;
-        go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Not Enough Resources!";
+        go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
         go.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
     }
 
@@ -26,7 +27,12 @@ public class TextPopupController : MonoBehaviour
         ShowFloatingText("Not Enough Resources!", Color.red);
     }
 
+    public void ShowNotEnoughIdleAnts() {
+        ShowFloatingText("Not Enough Idle Ants!", Color.red);
+    }
+
     private void OnDestroy() {
         GameResources.onNotEnoughResources -= ShowNotEnoughResources;
+        AntManager.onNoIdleAnts -= ShowNotEnoughIdleAnts;
     }
 }

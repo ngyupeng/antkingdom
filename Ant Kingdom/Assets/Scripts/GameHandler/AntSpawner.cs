@@ -13,6 +13,6 @@ public class AntSpawner : MonoBehaviour
     }
 
     public GameObject SpawnAnt() {
-        return Instantiate(antPrefab, transform.position, Quaternion.identity);
+        return Instantiate(antPrefab, nest.transform.position, Quaternion.identity);
     }
 }

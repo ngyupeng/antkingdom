@@ -8,8 +8,9 @@ public class ResourcePanelButton : MonoBehaviour
     public static event OnButtonClicked onButtonClicked;
 
     public void CollectResources() {
+        if (!AntManager.UseIdleAnt()) return;
         GameObject ant = AntSpawner.instance.SpawnAnt();
         CollectResource cr = ant.GetComponent<CollectResource>();
-        cr.SetTarget(ResourceNode.selectedNode.gameObject);
+        cr.SetTargetNode(ResourceNode.selectedNode);
     }
 }
