@@ -31,6 +31,7 @@ public class GridBuildingSystem : MonoBehaviour
         tileBases.Add(TileType.Taken, Resources.Load<TileBase>(tilePath + "White Tile"));
         tileBases.Add(TileType.Green, Resources.Load<TileBase>(tilePath + "Green Tile"));
         tileBases.Add(TileType.Red, Resources.Load<TileBase>(tilePath + "Red Tile"));
+        tileBases.Add(TileType.Grey, Resources.Load<TileBase>(tilePath + "Grey Tile"));
     }
 
     private void Start() {
@@ -129,10 +130,6 @@ public class GridBuildingSystem : MonoBehaviour
         FollowBuilding();
     }
 
-    public void SetShopItem(ShopItem item) {
-        tempBuilding.shopItem = item;
-    }
-
     // Call this for a new building instance
     public void SetBuilding(Building building) {
         tempBuilding = building;
@@ -186,6 +183,14 @@ public class GridBuildingSystem : MonoBehaviour
         SetTilesBlock(area, TileType.Empty, BuildingTilemap);
     }
 
+    public void HighlightBuildingArea(Building building) {
+        SetTilesBlock(building.area, TileType.Grey, TempTilemap);
+    }
+
+    public void UnhighlightBuildingArea(Building building) {
+        SetTilesBlock(building.area, TileType.Empty, TempTilemap);
+    }
+
     #endregion
 }
 
@@ -193,5 +198,6 @@ public enum TileType {
     Empty,
     Taken,
     Green,
-    Red
+    Red,
+    Grey
 }

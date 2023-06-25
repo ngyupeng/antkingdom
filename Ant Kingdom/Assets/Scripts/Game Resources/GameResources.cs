@@ -8,6 +8,7 @@ public static class GameResources
     public enum ResourceType {
         Wood,
         Stone,
+        Food
     }
     
     public delegate void OnResourceAmountChanged();
@@ -15,6 +16,8 @@ public static class GameResources
 
     public delegate void OnNotEnoughResources();
     public static event OnNotEnoughResources onNotEnoughResources;
+    public delegate void OnResourceCapacityChanged();
+    public static event OnResourceCapacityChanged onResourceCapacityChanged;
     private static Dictionary<ResourceType, int> resourceAmountData;
     private static Dictionary<ResourceType, int> resourceCapacity;
 
@@ -39,6 +42,10 @@ public static class GameResources
         return resourceAmountData[resourceType];
     }
 
+    public static int GetResourceCapacity(ResourceType resourceType) {
+        return resourceCapacity[resourceType];
+    }
+
     public static bool HasResourceAmount(ResourceType resourceType, int amount) {
         return resourceAmountData[resourceType] >= amount;
     }
@@ -58,6 +65,19 @@ public static class GameResources
 
     // This will only be called when the resources need to be used
     // Used for generating popup text for now
+    public static bool RequireResourceAmount(ResourceType resourceType, int amount) {
+        bool canAfford = HasResourceAmount(resourceType, amount);
+
+        if (!canAfford) {
+            onNotEnoughResources?.Invoke();
+            return false;
+        }
+
+        return true;
+    }
+
+    // This will only be called when the resources need to be used
+    // Used for generating popup text for now
     public static bool RequireResourceListAmounts(ResourceCost[] resourceCosts) {
         bool canAfford = HasResourceListAmounts(resourceCosts);
 
@@ -66,6 +86,14 @@ public static class GameResources
             return false;
         }
 
+        return true;
+    }
+
+    public static bool UseResourceAmount(ResourceType resourceType, int amount) {
+        if (!RequireResourceAmount(resourceType, amount)) return false;
+
+        // Deplete resources
+        AddResourceAmount(resourceType, -amount);
         return true;
     }
 
@@ -81,12 +109,21 @@ public static class GameResources
         return true;
     }
 
+    public static void GetResourceListAmounts(ResourceCost[] resourceCosts) {
+        foreach (var resourceCost in resourceCosts) {
+            ResourceType resourceType = resourceCost.resource.GetResourceType();
+            int amount = resourceCost.cost;
+            AddResourceAmount(resourceType, amount);
+        }
+    }
+
     #endregion
 
     #region Storage Management
 
     public static void IncreaseStorage(ResourceType resourceType, int amount) {
         resourceCapacity[resourceType] += amount;
+        onResourceCapacityChanged?.Invoke();
     }
 
     #endregion

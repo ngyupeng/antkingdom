@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: Wood Storage
   m_EditorClassIdentifier: 
   itemName: Wood Storage
-  resourceCostsList:
-  - resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
-    cost: 5
-  buildTime: 5
   type: 0
-  icon: {fileID: 1626422800, guid: 0ff28e9125c60e146805209fd42dd7cd, type: 3}
-  prefab: {fileID: 2097490753873986982, guid: 1f81a043e6c4f3441b1925ba045df84d, type: 3}
+  prefab: {fileID: 5978486177961104884, guid: d32a62b8ef2431d4ea50d25dd1586a89, type: 3}
+  states: {fileID: 11400000, guid: 256c1513b48efe443947da67cc833d42, type: 2}

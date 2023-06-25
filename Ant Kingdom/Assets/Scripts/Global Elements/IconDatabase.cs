@@ -10,11 +10,12 @@ public static class IconDatabase
         iconDictionary = new Dictionary<string, Sprite>();
         string iconPath = @"UI Icons\";
         Sprite[] all = Resources.LoadAll<Sprite>(iconPath + "UI Icons");
-        Debug.Log("Awake Icon");
         foreach (var icon in all) {
-            Debug.Log("Test: " + icon.name);
             if (icon.name == "Heart") {
                 iconDictionary.Add("Heart", icon);
+            }
+            if (icon.name == "Ant") {
+                iconDictionary.Add("Ant", icon);
             }
         }
     }

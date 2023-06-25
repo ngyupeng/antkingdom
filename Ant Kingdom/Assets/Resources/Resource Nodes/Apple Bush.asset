@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ae80756265b8f49af5231619589c80, type: 3}
+  m_Name: Apple Bush
+  m_EditorClassIdentifier: 
+  nodeName: Apple Bush
+  resource: {fileID: 11400000, guid: ddfc341955a2a24458fce81b0ec74d4d, type: 2}
+  nodeSprite: {fileID: 1977188913, guid: 232e77165a6afbc47bad8d80d3ec3732, type: 3}
+  defaultResourceAmount: 20
+  area:
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Size: {x: 1, y: 1, z: 1}

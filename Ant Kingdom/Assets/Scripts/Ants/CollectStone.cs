@@ -5,6 +5,7 @@ using Pathfinding;
 
 public class CollectStone : MonoBehaviour
 {
+    // test
     public Transform target;
     public ResourceNode targetNode;
     public float speed = 200f;

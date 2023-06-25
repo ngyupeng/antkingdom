@@ -8,5 +8,6 @@ public class GameHandler : MonoBehaviour
     {
         GameResources.Init();
         IconDatabase.Init();
+        AntManager.Init();
     }
 }

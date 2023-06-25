@@ -35,7 +35,7 @@ public class UpgradeInfoPanel : MonoBehaviour
 
     public void UpgradeBuilding() {
         if (building.CanUpgrade()) {
-            building.Upgrade();
+            building.StartUpgrade();
             gameObject.SetActive(false);
         }
     }

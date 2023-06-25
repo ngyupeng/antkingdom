@@ -18,7 +18,6 @@ MonoBehaviour:
   - resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
     cost: 12
   buildTime: 15
-  buildingSprite: {fileID: -710428204, guid: 59e5f1a681db633428dc15c8d6a03848, type: 3}
+  buildingSprite: {fileID: -1945683115, guid: ee398c017fd81f74b9e8226ccbf3578c, type: 3}
   health: 400
-  storedResource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
   storageAmount: 350

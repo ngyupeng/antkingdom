@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39313865eb3fe4c4abf95e3cc1727fcf, type: 3}
+  m_Name: Food Storage States
+  m_EditorClassIdentifier: 
+  buildingName: Food Storage
+  description: This is a food storage.
+  levels:
+  - {fileID: 11400000, guid: 46f009e706a6d2342ba5ccd6b4b08d70, type: 2}
+  - {fileID: 11400000, guid: d3842771a69a9c64ab9567d819e2f571, type: 2}
+  - {fileID: 11400000, guid: 6b184466667e68142a7c37b566d13c57, type: 2}
+  storedResource: {fileID: 11400000, guid: ddfc341955a2a24458fce81b0ec74d4d, type: 2}

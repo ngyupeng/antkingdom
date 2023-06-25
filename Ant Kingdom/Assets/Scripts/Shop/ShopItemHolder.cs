@@ -33,7 +33,6 @@ public class ShopItemHolder : MonoBehaviour, IPointerClickHandler, IPointerEnter
             return;
         }
         GridBuildingSystem.current.InitialiseWithBuilding(item.prefab);
-        GridBuildingSystem.current.SetShopItem(item);
         onSelect?.Invoke();
     }
 

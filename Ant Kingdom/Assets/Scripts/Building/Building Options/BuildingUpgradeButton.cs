@@ -9,6 +9,5 @@ public class BuildingUpgradeButton : MonoBehaviour
 
     public void ShowBuildingUpgradeInfo() {
         onClickedUpgrade?.Invoke();
-        Destroy(transform.parent.transform.parent.gameObject);
     }
 }

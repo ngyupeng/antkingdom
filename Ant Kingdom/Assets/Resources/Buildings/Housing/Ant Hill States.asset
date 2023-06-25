@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4335f7e74617e634cb3510c403b28c22, type: 3}
+  m_Name: Ant Hill States
+  m_EditorClassIdentifier: 
+  buildingName: Ant Hill
+  description: An ant hill to increase the housing capacity for ants.
+  levels:
+  - {fileID: 11400000, guid: c3b4fab569470f748b43ecd08a22b00d, type: 2}
+  - {fileID: 11400000, guid: 134d48d3f4ea5cc41bc8886b89ce41ea, type: 2}
+  - {fileID: 11400000, guid: 323da2b73480f934e824fd59c19a5734, type: 2}

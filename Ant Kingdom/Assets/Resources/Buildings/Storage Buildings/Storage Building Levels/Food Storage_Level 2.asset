@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac07dbb42b6fb304cb655e4a9a4da4d1, type: 3}
-  m_Name: Housing
+  m_Script: {fileID: 11500000, guid: 8a1c42df12b91104abba6307d1508e6f, type: 3}
+  m_Name: Food Storage_Level 2
   m_EditorClassIdentifier: 
-  itemName: House
   resourceCostsList:
   - resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
-    cost: 8
+    cost: 15
   - resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
     cost: 10
   buildTime: 10
-  type: 1
-  icon: {fileID: -710428204, guid: 59e5f1a681db633428dc15c8d6a03848, type: 3}
-  prefab: {fileID: 2097490753873986982, guid: 1f81a043e6c4f3441b1925ba045df84d, type: 3}
+  buildingSprite: {fileID: -516260768, guid: 39b2ad591cf4b4e4bb6946ab45bc152d, type: 3}
+  health: 200
+  storageAmount: 200

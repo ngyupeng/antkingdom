@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildingUIControl : MonoBehaviour
 {
+    public static BuildingUIControl current;
     public static Building selectedBuilding;
     [SerializeField]
     private GameObject buildingOptionsPrefab;
@@ -17,32 +18,55 @@ public class BuildingUIControl : MonoBehaviour
     private GameObject buildingInfoPanel;
     [SerializeField] 
     private GameObject upgradeInfoPanel;
+    [SerializeField]
+    private GameObject breedingPanel;
     public GameObject buildingMoveButtonPrefab;
     public GameObject buildingInfoButtonPrefab;
     public GameObject buildingUpgradeButtonPrefab;
+    public GameObject buildingCancelButtonPrefab;
+    public GameObject buildingBreedButtonPrefab;
+    public GameObject timerTooltipPrefab;
     private void Awake() {
+        current = this;
         rectTransform = transform.GetComponent<RectTransform>();
         Building.onSelect += ShowBuildingOptions;
         BuildingMoveButton.onClickedMove += MoveBuilding;
         BuildingInfoButton.onClickedInfo += ShowBuildingInfo;
         BuildingUpgradeButton.onClickedUpgrade += ShowBuildingUpgradeInfo;
+        BuildingCancelButton.onClickedCancel += CancelBuilding;
+        BuildingBreedButton.onClickedBreed += ShowBreedingPanel;
     }
 
     private void Update() {
   
     }
 
+    public TimerTooltip CreateTimer(Building building) {
+        GameObject go = Instantiate(timerTooltipPrefab, transform);
+        go.transform.SetAsFirstSibling();
+        TimerTooltip tooltip = go.GetComponent<TimerTooltip>();
+        tooltip.InitialiseWithBuilding(building.gameObject, rectTransform, uiCamera);
+        return tooltip;
+    }
+
     private void MoveBuilding() {
         selectedBuilding.MoveBuilding();
+        ClearBuildingSelection();
+    }
+
+    private void ClearBuildingSelection() {
+        if (buildingOptionsInstance != null) {
+            BuildingOptions options = buildingOptionsInstance.GetComponent<BuildingOptions>();
+            options.ClearBuildingSelection();
+        }
     }
 
     private void ShowBuildingOptions() {
-        if (buildingOptionsInstance != null) {
-            Destroy(buildingOptionsInstance);
-        }
+        ClearBuildingSelection();
         buildingOptionsInstance = Instantiate(buildingOptionsPrefab, transform);
         BuildingOptions options = buildingOptionsInstance.GetComponent<BuildingOptions>();
         options.SetBuilding(selectedBuilding);
+        GridBuildingSystem.current.HighlightBuildingArea(selectedBuilding);
         selectedBuilding.DisplayOptions(this);
     }
 
@@ -56,11 +80,23 @@ public class BuildingUIControl : MonoBehaviour
     public void ShowBuildingInfo() {
         buildingInfoPanel.SetActive(true);
         buildingInfoPanel.GetComponent<BuildingInfoPanel>().Initialise();
+        ClearBuildingSelection();
     }
 
     public void ShowBuildingUpgradeInfo() {
         upgradeInfoPanel.SetActive(true);
         upgradeInfoPanel.GetComponent<UpgradeInfoPanel>().Initialise();
+        ClearBuildingSelection();
+    }
+
+    public void CancelBuilding() {
+        selectedBuilding.CancelConstruction();
+        ClearBuildingSelection();
+    }
+
+    public void ShowBreedingPanel() {
+        breedingPanel.SetActive(true);
+        ClearBuildingSelection();
     }
 
     private void OnDestroy() {
@@ -68,5 +104,7 @@ public class BuildingUIControl : MonoBehaviour
         BuildingMoveButton.onClickedMove -= MoveBuilding;
         BuildingInfoButton.onClickedInfo -= ShowBuildingInfo;
         BuildingUpgradeButton.onClickedUpgrade -= ShowBuildingUpgradeInfo;
+        BuildingCancelButton.onClickedCancel -= CancelBuilding;
+        BuildingBreedButton.onClickedBreed -= ShowBreedingPanel;
     }
 }

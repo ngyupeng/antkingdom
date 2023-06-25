@@ -12,13 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac07dbb42b6fb304cb655e4a9a4da4d1, type: 3}
   m_Name: Stone Storage
   m_EditorClassIdentifier: 
-  itemName: Storage Building
-  resourceCostsList:
-  - resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
-    cost: 5
-  - resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
-    cost: 7
-  buildTime: 5
+  itemName: Stone Storage
   type: 0
-  icon: {fileID: -857645408, guid: 0ff28e9125c60e146805209fd42dd7cd, type: 3}
-  prefab: {fileID: 2097490753873986982, guid: 1f81a043e6c4f3441b1925ba045df84d, type: 3}
+  prefab: {fileID: 3903484398244372066, guid: 3f10390e94dae284fa849c90d23f0c92, type: 3}
+  states: {fileID: 11400000, guid: fb253140a4f16de45bb93bd3aaab1097, type: 2}

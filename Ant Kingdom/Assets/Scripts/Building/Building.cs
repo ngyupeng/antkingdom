@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Pathfinding;
 using UnityEngine.EventSystems;
 
 public class Building : MonoBehaviour
 {
-    public ShopItem shopItem;
     public Vector3 originPosition;
-    public bool bought { get; private set; }
-    public bool placed { get; private set; }
+    public bool bought { get; protected set; }
+    public bool placed { get; protected set; }
     public BoundsInt area;
 
-    private PolygonCollider2D col;
+    protected PolygonCollider2D col;
 
     public delegate void OnSelect();
     public static event OnSelect onSelect;
@@ -22,10 +23,14 @@ public class Building : MonoBehaviour
     public BuildingStates states;
 
     public bool isBuilding = false;
+    public TimerTooltip timerTooltip;
+
+    public UnityEvent onStateChanged;
     protected virtual void Awake() {
         col = gameObject.GetComponent<PolygonCollider2D>();
         col.enabled = false;
         states.Initialise();
+        onStateChanged = new UnityEvent();
     }
 
     #region Build Methods
@@ -39,7 +44,7 @@ public class Building : MonoBehaviour
 
         if (!bought) {
             return GridBuildingSystem.current.CanTakeArea(areaTemp) 
-                && GameResources.RequireResourceListAmounts(shopItem.resourceCostsList);
+                && GameResources.RequireResourceListAmounts(states.levels[0].resourceCostsList);
         } 
 
         return GridBuildingSystem.current.CanTakeArea(areaTemp);
@@ -53,10 +58,9 @@ public class Building : MonoBehaviour
         
         // If item is from shop, it requires resources.
         if (!bought) {
-            GameResources.UseResourceListAmounts(shopItem.resourceCostsList);
+            StartBuilding();
         }
 
-        bought = true;
         placed = true;
         col.enabled = true;
         GridBuildingSystem.current.TakeArea(areaTemp);
@@ -82,11 +86,20 @@ public class Building : MonoBehaviour
 
     #endregion
     
+    #region Building Info
     public virtual void DisplayInfo(BuildingInfoPanel panel) {
         panel.buildingTitle.text = states.buildingName + " (Level " + (level + 1).ToString() + ")";
         panel.description.text = states.description;
     }
+        
+    public void DisplayStat(Sprite iconSprite, string name, int amount, BuildingInfoPanel panel) {
+        GameObject go = Instantiate(panel.statHolderPrefab, panel.statList.transform);
+        go.GetComponent<BuildingStatHolder>().Initialise(iconSprite, name, amount);
+    }
 
+    #endregion
+
+    #region Building Upgrade Info
     public virtual void DisplayUpgradeInfo(UpgradeInfoPanel panel) {
         panel.title.text = "Upgrade to Level " + (level + 2).ToString() + "";
         panel.description.text = states.description;
@@ -102,20 +115,42 @@ public class Building : MonoBehaviour
             itemObject.GetComponent<ResourceCostHolder>().Initialise(resourceCost.resource, resourceCost.cost);
         }
     }
-    
-    public void DisplayStat(Sprite iconSprite, string name, int amount, BuildingInfoPanel panel) {
-        GameObject go = Instantiate(panel.statHolderPrefab, panel.statList.transform);
-        go.GetComponent<BuildingStatHolder>().Initialise(iconSprite, name, amount);
-    }
 
     public void DisplayUpgradeStat(Sprite iconSprite, string name, int amount, int newAmount, UpgradeInfoPanel panel) {
         GameObject go = Instantiate(panel.upgradeStatHolderPrefab, panel.statList.transform);
         go.GetComponent<UpgradeStatHolder>().Initialise(iconSprite, name, amount, newAmount);
     }
 
+    #endregion
+
+    #region Cancel Building
+
+    public virtual void CancelConstruction() {
+        if (!isBuilding) return;
+        if (!bought) {
+            CancelBuilding();
+        } else {
+            CancelUpgrade();
+        }
+        isBuilding = false;
+    }
+
+    public virtual void CancelBuilding() {
+        GameResources.GetResourceListAmounts(states.levels[0].resourceCostsList);
+        Destroy(timerTooltip.gameObject);
+        Destroy(gameObject);
+    }
+
+    public virtual void CancelUpgrade() {
+        GameResources.GetResourceListAmounts(states.levels[level + 1].resourceCostsList);
+        Destroy(timerTooltip.gameObject);
+    }
+
+    #endregion
     public virtual void DisplayOptions(BuildingUIControl control) {
         if (isBuilding) {
-            // Will be updated
+            control.AddOptionButton(control.buildingCancelButtonPrefab);
+            control.AddOptionButton(control.buildingInfoButtonPrefab);
             return;
         }
 
@@ -126,6 +161,7 @@ public class Building : MonoBehaviour
         }
     }
 
+    #region Value Functions
     public string GetName() {
         return states.buildingName;
     }
@@ -136,9 +172,44 @@ public class Building : MonoBehaviour
         return !IsMaxLevel() && GameResources.RequireResourceListAmounts(states.levels[level + 1].resourceCostsList);
     }
 
-    public virtual void Upgrade() {
+    #endregion
+
+    public virtual void StartBuilding() {
+        isBuilding = true;
+        GameResources.UseResourceListAmounts(states.levels[0].resourceCostsList);
+        timerTooltip = BuildingUIControl.current.CreateTimer(this);
+        timerTooltip.InitTimer(TimeSpan.FromSeconds(states.levels[0].buildTime));
+        timerTooltip.timer.StartTimer();
+        timerTooltip.timer.TimerFinishedEvent.AddListener(delegate
+        {
+            FinishBuilding();
+            Destroy(timerTooltip.gameObject);
+        });
+    }
+
+    public virtual void FinishBuilding() {
+        isBuilding = false;
+        bought = true;
+        onStateChanged.Invoke();
+    }
+
+    public virtual void StartUpgrade() {
+        isBuilding = true;
         GameResources.UseResourceListAmounts(states.levels[level + 1].resourceCostsList);
+        timerTooltip = BuildingUIControl.current.CreateTimer(this);
+        timerTooltip.InitTimer(TimeSpan.FromSeconds(states.levels[level + 1].buildTime));
+        timerTooltip.timer.StartTimer();
+        timerTooltip.timer.TimerFinishedEvent.AddListener(delegate
+        {
+            FinishUpgrade();
+            Destroy(timerTooltip.gameObject);
+        });
+    }
+
+    public virtual void FinishUpgrade() {
+        isBuilding = false;
         level++;
+        onStateChanged.Invoke();
     }
 
     #region Clicking
