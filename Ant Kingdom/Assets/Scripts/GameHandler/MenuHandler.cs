@@ -11,6 +11,7 @@ public class MenuHandler : MonoBehaviour
         // Toggle active
         if (Input.GetKeyDown(KeyCode.Escape)) {
             menu.SetActive(!menu.activeSelf);
+            menu.transform.SetAsLastSibling();
         }
     }
 }
