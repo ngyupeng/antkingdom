@@ -27,7 +27,7 @@ public class Housing : Building
             housingStates.housingLevels[level].health ,housingStates.housingLevels[level + 1].health, panel);
     }
 
-        public override void FinishBuilding()
+    public override void FinishBuilding()
     {
         base.FinishBuilding();
         AntManager.AddAntCapacity(housingStates.housingLevels[0].antCapacity);

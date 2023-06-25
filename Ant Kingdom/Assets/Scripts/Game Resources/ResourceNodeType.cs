@@ -13,9 +13,11 @@ public class ResourceNodeType : ScriptableObject
 
     [SerializeField]
     private Sprite nodeSprite;
+    [SerializeField]
+    private Sprite depletedNodeSprite;
     
     [SerializeField]
-    private int defaultResourceAmount;
+    private int maxResourceAmount;
 
     [SerializeField]
     private BoundsInt area;
@@ -32,12 +34,16 @@ public class ResourceNodeType : ScriptableObject
         return nodeSprite;
     } 
 
+    public Sprite GetDepletedSprite() {
+        return depletedNodeSprite;
+    }
+
     public Sprite GetResourceIcon() {
         return resource.GetIcon();
     }
 
     public int GetAmount() {
-        return defaultResourceAmount;
+        return maxResourceAmount;
     }
 
     public BoundsInt GetArea() {

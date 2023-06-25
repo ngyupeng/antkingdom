@@ -15,7 +15,8 @@ MonoBehaviour:
   nodeName: Apple Bush
   resource: {fileID: 11400000, guid: ddfc341955a2a24458fce81b0ec74d4d, type: 2}
   nodeSprite: {fileID: 1977188913, guid: 232e77165a6afbc47bad8d80d3ec3732, type: 3}
-  defaultResourceAmount: 20
+  depletedNodeSprite: {fileID: -1039198764, guid: 232e77165a6afbc47bad8d80d3ec3732, type: 3}
+  maxResourceAmount: 20
   area:
     m_Position: {x: 0, y: 0, z: 0}
     m_Size: {x: 1, y: 1, z: 1}
