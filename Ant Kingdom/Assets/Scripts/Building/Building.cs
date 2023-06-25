@@ -74,6 +74,9 @@ public class Building : MonoBehaviour
             placed = true;
             col.enabled = true;
             transform.localPosition = originPosition;
+            Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
+            area.position = positionInt;
+            GridBuildingSystem.current.TakeArea(area);
         }
     }
 

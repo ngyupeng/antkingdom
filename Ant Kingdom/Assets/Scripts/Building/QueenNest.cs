@@ -8,6 +8,7 @@ public class QueenNest : Building
         col = gameObject.GetComponent<PolygonCollider2D>();
         bought = true;
         placed = true;
+        originPosition = transform.localPosition;
         states.Initialise();
         onStateChanged = new UnityEvent();
     }

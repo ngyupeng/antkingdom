@@ -10,6 +10,11 @@ public class MenuHandler : MonoBehaviour
     {
         // Toggle active
         if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (menu.activeSelf) {
+                GridBuildingSystem.current.setMenuInactive();
+            } else {
+                GridBuildingSystem.current.setMenuActive();
+            }
             menu.SetActive(!menu.activeSelf);
             menu.transform.SetAsLastSibling();
         }

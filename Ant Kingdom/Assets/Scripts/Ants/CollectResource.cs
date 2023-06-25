@@ -102,7 +102,7 @@ public class CollectResource : MonoBehaviour
         if (path == null)
             return;
         
-        if (currentWaypoint >= path.vectorPath.Count)
+        if (currentWaypoint >= path.vectorPath.Count || Vector2.Distance(rb.position, target.transform.position) <= 1f)
         {
             reachedEndOfPath = true;
             path = null;

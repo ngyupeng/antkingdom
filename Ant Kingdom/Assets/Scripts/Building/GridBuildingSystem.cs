@@ -20,6 +20,7 @@ public class GridBuildingSystem : MonoBehaviour
     private Building tempBuilding;
     private Vector3 prevPos;
     private BoundsInt prevArea;
+    private bool isMenuActive;
 
     #region Unity Methods
 
@@ -41,6 +42,7 @@ public class GridBuildingSystem : MonoBehaviour
     private bool isClicking;
     private Vector3 clickPosition;
     private void Update() {
+        if (isMenuActive) return;
         if (!tempBuilding) return;
         Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
@@ -78,6 +80,18 @@ public class GridBuildingSystem : MonoBehaviour
     }
 
     #endregion 
+    
+    public bool isActive() {
+        return tempBuilding != null;
+    }
+
+    public void setMenuActive() {
+        isMenuActive = true;
+    }
+
+    public void setMenuInactive() {
+        isMenuActive = false;
+    }
 
     #region Tilemap Management
 

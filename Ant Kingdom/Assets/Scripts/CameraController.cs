@@ -24,7 +24,9 @@ public class CameraController : MonoBehaviour
 
     private void PanCamera() {
         if (Input.GetMouseButtonDown(0)) {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (EventSystem.current.IsPointerOverGameObject() && !GridBuildingSystem.current.isActive()) {
+                return;
+            }
             dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
             active = true;
         }
