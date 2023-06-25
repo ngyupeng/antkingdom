@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
     public UnityEvent TimerFinishedEvent;
 
     public void Initialise(TimeSpan time) {
+        isRunning = false;
         timeToFinish = time;
         TimerFinishedEvent = new UnityEvent();
     }
@@ -26,9 +27,9 @@ public class Timer : MonoBehaviour
             if (secondsLeft > 0) {
                 secondsLeft -= Time.deltaTime;
             } else {
-                TimerFinishedEvent.Invoke();
                 isRunning = false;
                 secondsLeft = 0;
+                TimerFinishedEvent.Invoke();
             }
         }
     }
@@ -49,7 +50,7 @@ public class Timer : MonoBehaviour
         } else if (secondsLeft > 0) {
             text += Mathf.FloorToInt((float) secondsLeft) + "s";
         } else {
-            text = "Completed";
+            text = "Done";
         }
 
         return text;

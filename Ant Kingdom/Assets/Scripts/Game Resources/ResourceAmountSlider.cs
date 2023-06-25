@@ -31,7 +31,6 @@ public class ResourceAmountSlider : MonoBehaviour, IPointerEnterHandler, IPointe
         float previousValue = slider.value;
         float newValue = (float) GameResources.GetResourceAmount(resource.GetResourceType()) 
             / GameResources.GetResourceCapacity(resource.GetResourceType());
-        Debug.Log(resource.GetName() + " " + newValue.ToString());
         StartCoroutine(AnimateSliderOverTime(1f, previousValue, newValue));
         currentAmount = GameResources.GetResourceAmount(resource.GetResourceType());
         resourceAmount.text = currentAmount.ToString();

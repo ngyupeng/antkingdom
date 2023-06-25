@@ -14,26 +14,40 @@ public class TimerTooltip : MonoBehaviour
     [SerializeField] private Slider progressSlider;
     [SerializeField] private TextMeshProUGUI timeLeftText;
 
-    public void Initialise(GameObject go, RectTransform rectTrans, Camera cam) {
+    public void InitialiseWithBuilding(GameObject go, RectTransform rectTrans, Camera cam) {
         attachedObject = go;
         rectTransform = rectTrans;
         uiCamera = cam;
-        timer = gameObject.AddComponent<Timer>();
+        timer = TimerHandler.instance.CreateTimer();
+    }
+    public void Init() {
+        timer = TimerHandler.instance.CreateTimer();
     }
     public void InitTimer(TimeSpan time) {
         timer.Initialise(time);
     }
+
+    public void RestartTimer() {
+        timer.StartTimer();
+    }
+
     private void Update() {
-        Vector2 initPosition;
-        Vector3 screenPoint = Camera.main.WorldToScreenPoint(attachedObject.transform.position);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, screenPoint,
-            uiCamera, out initPosition);
-        gameObject.transform.localPosition = initPosition;
+        if (attachedObject != null) {
+            Vector2 initPosition;
+            Vector3 screenPoint = Camera.main.WorldToScreenPoint(attachedObject.transform.position);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, screenPoint,
+                uiCamera, out initPosition);
+            gameObject.transform.localPosition = initPosition;
+        }
         FixedUpdate();
     }
 
     private void FixedUpdate() {
         progressSlider.value = (float) (1.0 - timer.secondsLeft / timer.timeToFinish.TotalSeconds);
         timeLeftText.text = timer.DisplayTime();
+    }
+
+    private void OnDestroy() {
+        Destroy(timer);
     }
 }

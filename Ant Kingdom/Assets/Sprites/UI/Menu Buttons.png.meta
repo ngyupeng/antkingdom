@@ -209,7 +209,7 @@ TextureImporter:
         width: 48
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,6 +217,27 @@ TextureImporter:
       bones: []
       spriteID: 0eb7672827756084d91accde3e6f2c16
       internalID: 639889256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minus Button
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ba1cd3b9ffe90e4e870c9dd0dbb9d98
+      internalID: -386259045
       vertices: []
       indices: 
       edges: []
@@ -236,6 +257,7 @@ TextureImporter:
       Menu Buttons: -938481577
       Menu Buttons_2: 249623853
       Menu Buttons_3: 806574603
+      Minus Button: -386259045
       Popup Tooltip: 639889256
   spritePackingTag: 
   pSDRemoveMatte: 0

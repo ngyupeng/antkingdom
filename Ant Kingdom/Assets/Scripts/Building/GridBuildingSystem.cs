@@ -130,10 +130,6 @@ public class GridBuildingSystem : MonoBehaviour
         FollowBuilding();
     }
 
-    public void SetShopItem(ShopItem item) {
-        tempBuilding.shopItem = item;
-    }
-
     // Call this for a new building instance
     public void SetBuilding(Building building) {
         tempBuilding = building;

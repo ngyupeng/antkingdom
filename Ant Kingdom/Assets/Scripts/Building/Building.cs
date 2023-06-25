@@ -8,13 +8,12 @@ using UnityEngine.EventSystems;
 
 public class Building : MonoBehaviour
 {
-    public ShopItem shopItem;
     public Vector3 originPosition;
-    public bool bought { get; private set; }
-    public bool placed { get; private set; }
+    public bool bought { get; protected set; }
+    public bool placed { get; protected set; }
     public BoundsInt area;
 
-    private PolygonCollider2D col;
+    protected PolygonCollider2D col;
 
     public delegate void OnSelect();
     public static event OnSelect onSelect;
@@ -45,7 +44,7 @@ public class Building : MonoBehaviour
 
         if (!bought) {
             return GridBuildingSystem.current.CanTakeArea(areaTemp) 
-                && GameResources.RequireResourceListAmounts(shopItem.resourceCostsList);
+                && GameResources.RequireResourceListAmounts(states.levels[0].resourceCostsList);
         } 
 
         return GridBuildingSystem.current.CanTakeArea(areaTemp);

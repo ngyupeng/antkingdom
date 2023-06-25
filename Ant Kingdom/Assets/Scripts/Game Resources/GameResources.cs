@@ -65,6 +65,19 @@ public static class GameResources
 
     // This will only be called when the resources need to be used
     // Used for generating popup text for now
+    public static bool RequireResourceAmount(ResourceType resourceType, int amount) {
+        bool canAfford = HasResourceAmount(resourceType, amount);
+
+        if (!canAfford) {
+            onNotEnoughResources?.Invoke();
+            return false;
+        }
+
+        return true;
+    }
+
+    // This will only be called when the resources need to be used
+    // Used for generating popup text for now
     public static bool RequireResourceListAmounts(ResourceCost[] resourceCosts) {
         bool canAfford = HasResourceListAmounts(resourceCosts);
 
@@ -73,6 +86,14 @@ public static class GameResources
             return false;
         }
 
+        return true;
+    }
+
+    public static bool UseResourceAmount(ResourceType resourceType, int amount) {
+        if (!RequireResourceAmount(resourceType, amount)) return false;
+
+        // Deplete resources
+        AddResourceAmount(resourceType, -amount);
         return true;
     }
 

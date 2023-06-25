@@ -13,7 +13,6 @@ public class StorageBuilding : Building
 
     public override void DisplayInfo(BuildingInfoPanel panel) {
         base.DisplayInfo(panel);
-        Debug.Log("Clicked Info");
         panel.buildingSprite.sprite = storageStates.storageLevels[level].buildingSprite;
         DisplayStat(storageStates.storedResource.GetIcon(), "Storage Capacity", storageStates.storageLevels[level].storageAmount, panel);
         DisplayStat(IconDatabase.GetIcon("Heart"), "Health", storageStates.storageLevels[level].health, panel);

@@ -18,10 +18,13 @@ public class BuildingUIControl : MonoBehaviour
     private GameObject buildingInfoPanel;
     [SerializeField] 
     private GameObject upgradeInfoPanel;
+    [SerializeField]
+    private GameObject breedingPanel;
     public GameObject buildingMoveButtonPrefab;
     public GameObject buildingInfoButtonPrefab;
     public GameObject buildingUpgradeButtonPrefab;
     public GameObject buildingCancelButtonPrefab;
+    public GameObject buildingBreedButtonPrefab;
     public GameObject timerTooltipPrefab;
     private void Awake() {
         current = this;
@@ -31,6 +34,7 @@ public class BuildingUIControl : MonoBehaviour
         BuildingInfoButton.onClickedInfo += ShowBuildingInfo;
         BuildingUpgradeButton.onClickedUpgrade += ShowBuildingUpgradeInfo;
         BuildingCancelButton.onClickedCancel += CancelBuilding;
+        BuildingBreedButton.onClickedBreed += ShowBreedingPanel;
     }
 
     private void Update() {
@@ -41,7 +45,7 @@ public class BuildingUIControl : MonoBehaviour
         GameObject go = Instantiate(timerTooltipPrefab, transform);
         go.transform.SetAsFirstSibling();
         TimerTooltip tooltip = go.GetComponent<TimerTooltip>();
-        tooltip.Initialise(building.gameObject, rectTransform, uiCamera);
+        tooltip.InitialiseWithBuilding(building.gameObject, rectTransform, uiCamera);
         return tooltip;
     }
 
@@ -90,11 +94,17 @@ public class BuildingUIControl : MonoBehaviour
         ClearBuildingSelection();
     }
 
+    public void ShowBreedingPanel() {
+        breedingPanel.SetActive(true);
+        ClearBuildingSelection();
+    }
+
     private void OnDestroy() {
         Building.onSelect -= ShowBuildingOptions;
         BuildingMoveButton.onClickedMove -= MoveBuilding;
         BuildingInfoButton.onClickedInfo -= ShowBuildingInfo;
         BuildingUpgradeButton.onClickedUpgrade -= ShowBuildingUpgradeInfo;
         BuildingCancelButton.onClickedCancel -= CancelBuilding;
+        BuildingBreedButton.onClickedBreed -= ShowBreedingPanel;
     }
 }
