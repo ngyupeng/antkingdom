@@ -14,6 +14,9 @@ public static class IconDatabase
             if (icon.name == "Heart") {
                 iconDictionary.Add("Heart", icon);
             }
+            if (icon.name == "Ant") {
+                iconDictionary.Add("Ant", icon);
+            }
         }
     }
 

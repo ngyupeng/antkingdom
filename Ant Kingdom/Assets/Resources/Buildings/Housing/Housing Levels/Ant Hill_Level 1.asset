@@ -9,15 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a1c42df12b91104abba6307d1508e6f, type: 3}
-  m_Name: Wood Storage_Level 3
+  m_Script: {fileID: 11500000, guid: ec88921d5f23f1e40ae1e15a6242b16d, type: 3}
+  m_Name: Ant Hill_Level 1
   m_EditorClassIdentifier: 
   resourceCostsList:
   - resource: {fileID: 11400000, guid: f63f225461118da49b31aa2e357bb5b0, type: 2}
-    cost: 20
-  - resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
-    cost: 12
-  buildTime: 15
-  buildingSprite: {fileID: -1945683115, guid: ee398c017fd81f74b9e8226ccbf3578c, type: 3}
-  health: 400
-  storageAmount: 350
+    cost: 25
+  buildTime: 5
+  buildingSprite: {fileID: -928601083, guid: 0132a9ec4f7dc874b9de832d863cdf3a, type: 3}
+  health: 200
+  antCapacity: 5

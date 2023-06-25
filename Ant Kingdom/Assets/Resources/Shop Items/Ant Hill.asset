@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac07dbb42b6fb304cb655e4a9a4da4d1, type: 3}
-  m_Name: Housing
+  m_Name: Ant Hill
   m_EditorClassIdentifier: 
-  itemName: House
+  itemName: Ant Hill
   type: 1
-  prefab: {fileID: 2097490753873986982, guid: 1f81a043e6c4f3441b1925ba045df84d, type: 3}
-  states: {fileID: 11400000, guid: fb253140a4f16de45bb93bd3aaab1097, type: 2}
+  prefab: {fileID: 8742910507300422820, guid: 225da7a24d392944b94417e0f449f53d, type: 3}
+  states: {fileID: 11400000, guid: 158a3e80276a81b46b72c6b1afae6cd8, type: 2}

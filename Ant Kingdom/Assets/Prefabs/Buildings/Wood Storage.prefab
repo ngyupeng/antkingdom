@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2178907328082483242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.1, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 1409296744, guid: 1e2a0be9c141ff547b4343a2af76352d, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -1945683115, guid: ee398c017fd81f74b9e8226ccbf3578c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,10 +145,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.57391655, y: 0.2659207}
-      - {x: -0.0034269094, y: 0.5359142}
-      - {x: -0.5744383, y: 0.205347}
-      - {x: -0.014462657, y: -0.050458103}
+    - - {x: 0.8971795, y: 0.38714436}
+      - {x: 0.045062542, y: 0.87534034}
+      - {x: -0.7199066, y: 0.41546798}
+      - {x: 0.082516246, y: 0.04652086}
 --- !u!60 &3706048819355891225
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -174,12 +174,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.03712493, y: 1.3526876}
-      - {x: -0.51621747, y: 1.0779812}
-      - {x: -0.54012305, y: 0.23748049}
-      - {x: -0.044075787, y: 0.011877596}
+    - - {x: 0.6362252, y: 0.7433944}
+      - {x: 0.45068276, y: 1.2035517}
+      - {x: 0.21706766, y: 1.4005047}
+      - {x: 0.22226259, y: 1.5567424}
+      - {x: -0.194882, y: 1.7625664}
+      - {x: -0.77142507, y: 1.2326525}
+      - {x: -0.7179177, y: 0.4476014}
+      - {x: 0.052903116, y: 0.052285492}
       - {x: 0.53448045, y: 0.28906298}
-      - {x: 0.50217366, y: 1.1149659}
+      - {x: 0.86733997, y: 0.41575968}
+      - {x: 0.89546406, y: 0.6182005}
 --- !u!50 &3595051374113388304
 Rigidbody2D:
   serializedVersion: 4
@@ -213,7 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bce8a880467564ab2b9f1c3d52468c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopItem: {fileID: 0}
   originPosition: {x: 0, y: 0, z: 0}
   area:
     m_Position: {x: 0, y: 0, z: 0}
