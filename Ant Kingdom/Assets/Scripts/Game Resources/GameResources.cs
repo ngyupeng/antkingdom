@@ -25,7 +25,7 @@ public static class GameResources
         resourceAmountData = new Dictionary<ResourceType, int>();
         resourceCapacity = new Dictionary<ResourceType, int>();
         foreach (ResourceType resourceType in System.Enum.GetValues(typeof(ResourceType))) {
-            resourceAmountData[resourceType] = 50;
+            resourceAmountData[resourceType] = 0;
             resourceCapacity[resourceType] = 50;
         }
     }

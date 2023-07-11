@@ -140,6 +140,7 @@ public class Building : MonoBehaviour
 
     public virtual void CancelBuilding() {
         GameResources.GetResourceListAmounts(states.levels[0].resourceCostsList);
+        GridBuildingSystem.current.ClearMainArea(area);
         Destroy(timerTooltip.gameObject);
         Destroy(gameObject);
     }
