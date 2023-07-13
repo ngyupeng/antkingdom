@@ -13,13 +13,15 @@ public class BreedingInstance : MonoBehaviour
     public Image antImage;
     public TimerTooltip timerTooltip;
     private bool isAddQueued = false;
-    public void Initialise(AntData nAntData) {
+    private bool isActive = false;
+    private BreedingQueue queue;
+    public void Initialise(AntData nAntData, BreedingQueue bQueue) {
+        queue = bQueue;
         antData = nAntData;
         antImage.sprite = antData.sprite;
         number = 1;
         timerTooltip.Init();
         timerTooltip.InitTimer(TimeSpan.FromSeconds(antData.breedingTime));
-        timerTooltip.timer.StartTimer();
         timerTooltip.timer.TimerFinishedEvent.AddListener(delegate
         {
             if (AntManager.CanAddAnts(1)) {
@@ -30,6 +32,15 @@ public class BreedingInstance : MonoBehaviour
                 isAddQueued = true;
             }
         });
+        timerTooltip.gameObject.SetActive(false);
+        queue.StartBreeding();
+    }
+
+    public void StartBreeding() {
+        if (isActive) return;
+        isActive = true;
+        timerTooltip.gameObject.SetActive(true);
+        timerTooltip.timer.StartTimer();
     }
 
     public void TryAddAnt() {
@@ -53,7 +64,7 @@ public class BreedingInstance : MonoBehaviour
         number--;
         UpdateAmountText();
         if (number == 0) {
-            Destroy(gameObject);
+            queue.DestroyInstance(gameObject);
         }
     }
 
