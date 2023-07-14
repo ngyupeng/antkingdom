@@ -11,6 +11,7 @@ public class BuildingInfoPanel : MonoBehaviour
     public GameObject statList;
     public TextMeshProUGUI description;
     public GameObject statHolderPrefab;
+    public GameObject antCountList;
     public Building building;
 
     public void Initialise() {

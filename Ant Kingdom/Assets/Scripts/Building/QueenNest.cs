@@ -14,6 +14,7 @@ public class QueenNest : Building
     }
     private void Start() {
         area.position = GridBuildingSystem.current.gridLayout.WorldToCell(transform.position);
+        GridBuildingSystem.current.TakeArea(area);
     }
     public override void DisplayInfo(BuildingInfoPanel panel) {
         base.DisplayInfo(panel);
