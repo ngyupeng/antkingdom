@@ -13,6 +13,7 @@ public class BuildingInfoPanel : MonoBehaviour
     public GameObject statHolderPrefab;
     public GameObject antCountList;
     public Building building;
+    public DescriptionHolder descriptionHolder;
 
     public void Initialise() {
         foreach (Transform child in statList.transform) {
@@ -24,5 +25,10 @@ public class BuildingInfoPanel : MonoBehaviour
         building = nBuilding;
         building.DisplayInfo(this);
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+    }
+
+    private void OnEnable() {
+        descriptionHolder.ToggleOnDescription();
+        antCountList.SetActive(false);
     }
 }

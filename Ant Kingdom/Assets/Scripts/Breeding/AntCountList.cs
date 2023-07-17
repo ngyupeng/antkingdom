@@ -42,6 +42,19 @@ public class AntCountList : MonoBehaviour
         }
     }
 
+    public void ConfirmReduce() {
+        foreach (Transform child in content) {
+            AntCountInstance countInstance = child.gameObject.GetComponent<AntCountInstance>();
+            countInstance.ConfirmReduce();
+        }
+    }
+
+    public void CancelReduce() {
+        foreach (Transform child in content) {
+            AntCountInstance countInstance = child.gameObject.GetComponent<AntCountInstance>();
+            countInstance.Reset();
+        }
+    }
     public void CreateInstance(AntManager.AntType type, int index = -1) {
         GameObject go = Instantiate(antCountInstancePrefab, content);
         AntCountInstance instance = go.GetComponent<AntCountInstance>();

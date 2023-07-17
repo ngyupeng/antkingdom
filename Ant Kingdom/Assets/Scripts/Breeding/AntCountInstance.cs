@@ -12,6 +12,9 @@ public class AntCountInstance : MonoBehaviour
     public TextMeshProUGUI antCountText;
     public Image antImage;
 
+    public delegate void OnDecreaseCount();
+    public static event OnDecreaseCount onDecreaseCount;
+
     private void Awake() {
         AntManager.onIdleAntNumberChanged += UpdateView;
     }
@@ -23,13 +26,15 @@ public class AntCountInstance : MonoBehaviour
     }
 
     public void UpdateView() {
-        antCount = AntManager.GetAntCount(ant.antType);
+        antCount = AntManager.GetIdleAntCount(ant.antType);
         if (reduceCount > antCount) {
             reduceCount = antCount;
         }
         antCountText.text = (antCount - reduceCount).ToString() + "x";
         if (reduceCount > 0) {
             antCountText.color = Color.red;
+        } else {
+            antCountText.color = Color.black;
         }
     }
 
@@ -41,11 +46,16 @@ public class AntCountInstance : MonoBehaviour
     public void DecreaseCount() {
         reduceCount++;
         UpdateView();
+        onDecreaseCount?.Invoke();
     }
 
     public void ConfirmReduce() {
-        AntManager.UseIdleAnts(ant.antType, reduceCount);
+        AntManager.AddAntAmount(ant.antType, -reduceCount);
         reduceCount = 0;
+        UpdateView();
+        if (AntManager.GetIdleAntCount(ant.antType) == 0) {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDestroy() {

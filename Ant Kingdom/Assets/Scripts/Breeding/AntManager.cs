@@ -18,7 +18,7 @@ public static class AntManager
     private static int antCapacity;
     public delegate void OnAntNumberChanged();
     public static event OnAntNumberChanged onAntNumberChanged;
-     public delegate void OnIdleAntNumberChanged();
+    public delegate void OnIdleAntNumberChanged();
     public static event OnIdleAntNumberChanged onIdleAntNumberChanged;
     public delegate void OnNoIdleAnts();
     public static event OnNoIdleAnts onNoIdleAnts;
