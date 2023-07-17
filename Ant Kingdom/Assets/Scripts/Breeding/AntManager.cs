@@ -63,6 +63,10 @@ public static class AntManager
     public static int GetIdleAntCount(AntType antType) {
         return idleAntCount[antType];
     }
+
+    public static int GetTotalIdleAnts() {
+        return idleAnts;
+    }
     public static AntData GetAntData(AntType antType) {
         return antDataMap[antType];
     }

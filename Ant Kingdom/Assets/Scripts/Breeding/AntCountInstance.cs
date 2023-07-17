@@ -21,7 +21,7 @@ public class AntCountInstance : MonoBehaviour
     public void Init(AntData antD) {
         ant = antD;
         antImage.sprite = ant.sprite;
-        antCount = AntManager.GetAntCount(ant.antType);
+        antCount = AntManager.GetIdleAntCount(ant.antType);
         antCountText.text = antCount.ToString() + "x";
     }
 
