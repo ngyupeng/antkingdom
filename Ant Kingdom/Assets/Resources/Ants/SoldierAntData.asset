@@ -15,5 +15,7 @@ MonoBehaviour:
   antName: Soldier Ant
   foodCost: 30
   breedingTime: 10
-  sprite: {fileID: 829048164, guid: 4030bef4e3ed4b74686c7a7fd2d3d957, type: 3}
+  sprite: {fileID: 1945679338, guid: 146559358ec97a44391ef7253424af9e, type: 3}
   antType: 1
+  defence: 30
+  successRate: 0.7

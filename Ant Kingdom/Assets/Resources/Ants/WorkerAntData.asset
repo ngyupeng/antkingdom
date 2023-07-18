@@ -15,5 +15,7 @@ MonoBehaviour:
   antName: Worker Ant
   foodCost: 10
   breedingTime: 5
-  sprite: {fileID: 829048164, guid: 4030bef4e3ed4b74686c7a7fd2d3d957, type: 3}
+  sprite: {fileID: 2051063367, guid: 146559358ec97a44391ef7253424af9e, type: 3}
   antType: 0
+  defence: 20
+  successRate: 0.2
