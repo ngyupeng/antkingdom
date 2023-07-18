@@ -10,4 +10,6 @@ public class AntData : ScriptableObject
     public float breedingTime;
     public Sprite sprite;
     public AntManager.AntType antType;
+    public float defence;
+    public float successRate;
 }

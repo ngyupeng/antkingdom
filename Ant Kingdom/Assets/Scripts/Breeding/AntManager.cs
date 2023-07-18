@@ -7,7 +7,7 @@ public static class AntManager
     public enum AntType {
         WorkerAnt,
         SoldierAnt,
-        ExplorerAnt
+        EngineerAnt
     }
     private static Dictionary<AntType, int> antCount;
     private static Dictionary<AntType, int> idleAntCount;
