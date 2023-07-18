@@ -8,8 +8,8 @@ public class ResourceNode : MonoBehaviour
     public static ResourceNode selectedNode;
     public delegate void OnSelect();
     public static event OnSelect onSelect;
-    public delegate void OnResourceNodeRegen();
-    public static event OnResourceNodeRegen onResourceNodeRegen;
+    public delegate void OnResourceNodeAmountChanged();
+    public static event OnResourceNodeAmountChanged onResourceNodeAmountChanged;
     
     [SerializeField]
     private ResourceNodeType resourceNodeType;
@@ -54,7 +54,7 @@ public class ResourceNode : MonoBehaviour
         if (amount < resourceNodeType.GetAmount()) {
             amount++;
             UpdateSprite();
-            onResourceNodeRegen?.Invoke();
+            onResourceNodeAmountChanged?.Invoke();
         }
     }
 
@@ -62,6 +62,7 @@ public class ResourceNode : MonoBehaviour
         if (amount < resourceNodeType.GetAmount()) {
             amount = resourceNodeType.GetAmount();
             UpdateSprite();
+            onResourceNodeAmountChanged?.Invoke();
         }
     }
 
@@ -75,6 +76,7 @@ public class ResourceNode : MonoBehaviour
         int takenAmount = Mathf.Min(amount, targetAmount);
         amount -= takenAmount;
         UpdateSprite();
+        onResourceNodeAmountChanged?.Invoke();
         return takenAmount;
     }
 

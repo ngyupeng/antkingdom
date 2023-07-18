@@ -89,7 +89,7 @@ public class CollectResource : MonoBehaviour
                 break;
             case State.MovingToBase:
                 if (isIdle) {
-                    AntManager.AddIdleAnt();
+                    AntManager.AddIdleAnt(AntManager.AntType.WorkerAnt);
                     Destroy(gameObject);
                 }
                 break;

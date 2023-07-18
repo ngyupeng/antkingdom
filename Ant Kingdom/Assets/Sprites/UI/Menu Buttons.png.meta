@@ -230,7 +230,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -238,6 +238,48 @@ TextureImporter:
       bones: []
       spriteID: 4ba1cd3b9ffe90e4e870c9dd0dbb9d98
       internalID: -386259045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Button
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 49
+        width: 39
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb06c669f0601641af7079e2a6d0f7b
+      internalID: -164843935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green Button
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 33
+        width: 39
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07fe6119cc7f37844a8f5b57970a17fd
+      internalID: -538906959
       vertices: []
       indices: 
       edges: []
@@ -253,12 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Green Button: -538906959
       Menu: 723936126
       Menu Buttons: -938481577
       Menu Buttons_2: 249623853
       Menu Buttons_3: 806574603
       Minus Button: -386259045
       Popup Tooltip: 639889256
+      Red Button: -164843935
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

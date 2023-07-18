@@ -16,6 +16,8 @@ public class Housing : Building
         panel.buildingSprite.sprite = housingStates.housingLevels[level].buildingSprite;
         DisplayStat(IconDatabase.GetIcon("Ant"), "Ant Capacity", housingStates.housingLevels[level].antCapacity, panel);
         DisplayStat(IconDatabase.GetIcon("Heart"), "Health", housingStates.housingLevels[level].health, panel);
+        
+        panel.antCountList.SetActive(true);
     }
 
     public override void DisplayUpgradeInfo(UpgradeInfoPanel panel) {
