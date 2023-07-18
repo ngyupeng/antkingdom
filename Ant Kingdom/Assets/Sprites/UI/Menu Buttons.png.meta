@@ -121,7 +121,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 49
-        y: 33
+        y: 213
         width: 78
         height: 78
       alignment: 0
@@ -142,7 +142,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 137
-        y: 84
+        y: 264
         width: 46
         height: 14
       alignment: 0
@@ -163,7 +163,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 137
-        y: 65
+        y: 245
         width: 46
         height: 14
       alignment: 0
@@ -184,7 +184,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 137
-        y: 46
+        y: 226
         width: 46
         height: 14
       alignment: 0
@@ -205,7 +205,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 135
-        y: 25
+        y: 205
         width: 48
         height: 14
       alignment: 0
@@ -226,7 +226,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
+        y: 260
         width: 32
         height: 32
       alignment: 0
@@ -247,11 +247,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5
-        y: 49
+        y: 229
         width: 39
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,7 +268,91 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5
-        y: 33
+        y: 213
+        width: 39
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07fe6119cc7f37844a8f5b57970a17fd
+      internalID: -538906959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest Screen
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 117
+        width: 142
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a042288152aa24ba0470956544030d
+      internalID: 2069886821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest Holder
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 87
+        width: 130
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652e93a70476b374886522985d4f324e
+      internalID: -627183261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quit Button
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 308
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf20e444c4a3e3b4486d7c5ab3705c50
+      internalID: 1804204815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grey Button
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 245
         width: 39
         height: 14
       alignment: 0
@@ -278,8 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07fe6119cc7f37844a8f5b57970a17fd
-      internalID: -538906959
+      spriteID: e864ad13f61e0b74c8a2dbc284fbba71
+      internalID: -925477827
       vertices: []
       indices: 
       edges: []
@@ -296,12 +380,16 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Green Button: -538906959
+      Grey Button: -925477827
       Menu: 723936126
       Menu Buttons: -938481577
       Menu Buttons_2: 249623853
       Menu Buttons_3: 806574603
       Minus Button: -386259045
       Popup Tooltip: 639889256
+      Quest Holder: -627183261
+      Quest Screen: 2069886821
+      Quit Button: 1804204815
       Red Button: -164843935
   spritePackingTag: 
   pSDRemoveMatte: 0

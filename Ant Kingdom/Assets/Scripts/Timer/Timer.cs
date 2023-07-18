@@ -14,6 +14,7 @@ public class Timer : MonoBehaviour
     public void Initialise(TimeSpan time) {
         isRunning = false;
         timeToFinish = time;
+        secondsLeft = timeToFinish.TotalSeconds;
         TimerFinishedEvent = new UnityEvent();
     }
 
