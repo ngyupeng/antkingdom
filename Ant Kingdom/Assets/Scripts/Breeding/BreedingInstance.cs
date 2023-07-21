@@ -26,7 +26,7 @@ public class BreedingInstance : MonoBehaviour
         {
             if (AntManager.CanAddAnts(1)) {
                 AddAnt();
-                timerTooltip.RestartTimer();
+                timerTooltip.StartTimer();
             } else {
                 AntManager.onAntNumberChanged += TryAddAnt;
                 isAddQueued = true;
@@ -47,7 +47,7 @@ public class BreedingInstance : MonoBehaviour
         if (AntManager.CanAddAnts(1)) {
             AntManager.onAntNumberChanged -= TryAddAnt;
             AddAnt();
-            timerTooltip.RestartTimer();
+            timerTooltip.StartTimer();
             isAddQueued = false;
         }
     }

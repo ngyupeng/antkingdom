@@ -12,6 +12,8 @@ public class TextPopupController : MonoBehaviour
         rectTransform = transform.GetComponent<RectTransform>();
         GameResources.onNotEnoughResources += ShowNotEnoughResources;
         AntManager.onNoIdleAnts += ShowNotEnoughIdleAnts;
+        QuestInstance.onAntCountOutsideLimits += ShowWrongAntCount;
+        QuestInstance.onNotEnoughAnts += ShowNoSelectedAnts;
     }
 
     public void ShowFloatingText(string text, Color color) {
@@ -31,8 +33,18 @@ public class TextPopupController : MonoBehaviour
         ShowFloatingText("Not Enough Idle Ants!", Color.red);
     }
 
+    public void ShowNoSelectedAnts() {
+        ShowFloatingText("Don't have selected ants!", Color.red);
+    }
+
+    public void ShowWrongAntCount() {
+        ShowFloatingText("Ant count outside allowed limits!", Color.red);
+    }
+
     private void OnDestroy() {
         GameResources.onNotEnoughResources -= ShowNotEnoughResources;
         AntManager.onNoIdleAnts -= ShowNotEnoughIdleAnts;
+        QuestInstance.onAntCountOutsideLimits -= ShowWrongAntCount;
+        QuestInstance.onNotEnoughAnts -= ShowNoSelectedAnts;
     }
 }

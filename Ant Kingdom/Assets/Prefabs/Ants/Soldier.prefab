@@ -229,3 +229,4 @@ MonoBehaviour:
   targetNode: {fileID: 0}
   speed: 200
   nextWaypointDistance: 3
+  type: 1

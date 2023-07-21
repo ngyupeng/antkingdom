@@ -10,4 +10,5 @@ public class QuestData : ScriptableObject
     public int completionTime;
     public int minAnts;
     public int maxAnts;
+    public float dangerLevel;
 }

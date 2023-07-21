@@ -27,8 +27,12 @@ public class TimerTooltip : MonoBehaviour
         timer.Initialise(time);
     }
 
-    public void RestartTimer() {
+    public void StartTimer() {
         timer.StartTimer();
+    }
+
+    public void ResetTimer() {
+        timer.Reset();
     }
 
     private void Update() {

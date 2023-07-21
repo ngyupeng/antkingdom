@@ -25,3 +25,4 @@ MonoBehaviour:
   completionTime: 30
   minAnts: 3
   maxAnts: 7
+  dangerLevel: 100

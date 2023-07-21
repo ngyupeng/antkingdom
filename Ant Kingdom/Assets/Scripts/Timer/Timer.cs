@@ -18,6 +18,11 @@ public class Timer : MonoBehaviour
         TimerFinishedEvent = new UnityEvent();
     }
 
+    public void Reset() {
+        isRunning = false;
+        secondsLeft = timeToFinish.TotalSeconds;
+    }
+
     public void StartTimer() {
         secondsLeft = timeToFinish.TotalSeconds;
         isRunning = true;

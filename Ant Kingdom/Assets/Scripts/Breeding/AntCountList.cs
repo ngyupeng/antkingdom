@@ -38,6 +38,8 @@ public class AntCountList : MonoBehaviour
                     CreateInstance(antType, index - 1);
                     hasType[antType] = true;
                 }
+            } else {
+                hasType[antType] = false;
             }
         }
     }

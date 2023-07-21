@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50432cbb2dcf45844bcd0c2a7319886a, type: 3}
   m_Name: Raid 1
   m_EditorClassIdentifier: 
-  questName: Raid 1
+  questName: Test Raid
   rewards:
   - resourceType: 0
     chance: 0.5
@@ -22,6 +22,7 @@ MonoBehaviour:
     chance: 0.3
     minAmount: 30
     maxAmount: 50
-  completionTime: 15
-  minAnts: 10
-  maxAnts: 20
+  completionTime: 5
+  minAnts: 2
+  maxAnts: 6
+  dangerLevel: 30

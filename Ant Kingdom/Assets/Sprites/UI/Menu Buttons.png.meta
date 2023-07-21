@@ -356,7 +356,7 @@ TextureImporter:
         width: 39
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -364,6 +364,69 @@ TextureImporter:
       bones: []
       spriteID: e864ad13f61e0b74c8a2dbc284fbba71
       internalID: -925477827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plus Button
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 308
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c4e06232ca2f747a6a3df3f6ae4891
+      internalID: -1583256890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blueish Button
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 197
+        width: 39
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0174c1bdde6a4dd4f88163ace8e8e465
+      internalID: 1588142992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest Rewards Screen
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 117
+        width: 90
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f925b849ba04964ea98b03c6e9a2f1f
+      internalID: 428793010
       vertices: []
       indices: 
       edges: []
@@ -379,6 +442,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Blueish Button: 1588142992
       Green Button: -538906959
       Grey Button: -925477827
       Menu: 723936126
@@ -386,8 +450,10 @@ TextureImporter:
       Menu Buttons_2: 249623853
       Menu Buttons_3: 806574603
       Minus Button: -386259045
+      Plus Button: -1583256890
       Popup Tooltip: 639889256
       Quest Holder: -627183261
+      Quest Rewards Screen: 428793010
       Quest Screen: 2069886821
       Quit Button: 1804204815
       Red Button: -164843935
