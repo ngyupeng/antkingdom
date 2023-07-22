@@ -11,5 +11,5 @@ public class AntData : ScriptableObject
     public Sprite sprite;
     public AntManager.AntType antType;
     public float defence;
-    public float successRate;
+    public float exploreEfficiency;
 }

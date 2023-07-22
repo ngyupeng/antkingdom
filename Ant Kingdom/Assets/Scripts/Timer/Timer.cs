@@ -14,7 +14,13 @@ public class Timer : MonoBehaviour
     public void Initialise(TimeSpan time) {
         isRunning = false;
         timeToFinish = time;
+        secondsLeft = timeToFinish.TotalSeconds;
         TimerFinishedEvent = new UnityEvent();
+    }
+
+    public void Reset() {
+        isRunning = false;
+        secondsLeft = timeToFinish.TotalSeconds;
     }
 
     public void StartTimer() {

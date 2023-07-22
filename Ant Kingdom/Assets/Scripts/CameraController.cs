@@ -45,6 +45,9 @@ public class CameraController : MonoBehaviour
     }
 
     private void ZoomCamera() {
+        if (EventSystem.current.IsPointerOverGameObject() && !GridBuildingSystem.current.isActive()) {
+            return;
+        }
         float newSize = cam.orthographicSize - zoomStep * Input.GetAxis("Mouse ScrollWheel");
         cam.orthographicSize = Mathf.Clamp(newSize, minCamSize, maxCamSize);
     }

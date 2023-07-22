@@ -8,7 +8,9 @@ public static class GameResources
     public enum ResourceType {
         Wood,
         Stone,
-        Food
+        Food,
+        Iron,
+        MagicCrystal
     }
     
     public delegate void OnResourceAmountChanged();
@@ -20,13 +22,21 @@ public static class GameResources
     public static event OnResourceCapacityChanged onResourceCapacityChanged;
     private static Dictionary<ResourceType, int> resourceAmountData;
     private static Dictionary<ResourceType, int> resourceCapacity;
+    private static Dictionary<ResourceType, Resource> resourceMap;
 
     public static void Init() {
         resourceAmountData = new Dictionary<ResourceType, int>();
         resourceCapacity = new Dictionary<ResourceType, int>();
+        resourceMap = new Dictionary<ResourceType, Resource>();
         foreach (ResourceType resourceType in System.Enum.GetValues(typeof(ResourceType))) {
             resourceAmountData[resourceType] = 500;
             resourceCapacity[resourceType] = 500;
+        }
+        
+        string resourcePath = @"Game Resources\";
+        Resource[] all = Resources.LoadAll<Resource>(resourcePath);
+        foreach (var resource in all) {
+            resourceMap[resource.GetResourceType()] = resource;
         }
     }
 
@@ -36,6 +46,10 @@ public static class GameResources
         resourceAmountData[resourceType] += amountChanged;
         onResourceAmountChanged?.Invoke();
         return amountChanged;
+    }
+
+    public static Resource GetResourceFromType(ResourceType resourceType) {
+        return resourceMap[resourceType];
     }
 
     public static int GetResourceAmount(ResourceType resourceType) {

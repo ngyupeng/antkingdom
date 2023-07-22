@@ -20,10 +20,9 @@ public class CollectResource : MonoBehaviour
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
     bool isIdle = true;
-    
     Seeker seeker;
     Rigidbody2D rb; 
-    // Start is called before the first frame update
+    public AntManager.AntType type;
     void Awake()
     {
         state = State.Idle;
@@ -89,7 +88,7 @@ public class CollectResource : MonoBehaviour
                 break;
             case State.MovingToBase:
                 if (isIdle) {
-                    AntManager.AddIdleAnt(AntManager.AntType.WorkerAnt);
+                    AntManager.AddIdleAnt(type);
                     Destroy(gameObject);
                 }
                 break;
@@ -102,7 +101,7 @@ public class CollectResource : MonoBehaviour
         if (path == null)
             return;
         
-        if (currentWaypoint >= path.vectorPath.Count || Vector2.Distance(rb.position, target.transform.position) <= 1f)
+        if (currentWaypoint >= path.vectorPath.Count)
         {
             reachedEndOfPath = true;
             path = null;

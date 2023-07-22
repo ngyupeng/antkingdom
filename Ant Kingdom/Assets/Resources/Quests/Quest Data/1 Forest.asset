@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50432cbb2dcf45844bcd0c2a7319886a, type: 3}
+  m_Name: 1 Forest
+  m_EditorClassIdentifier: 
+  questName: Forest Exploration
+  rewards:
+  - resourceType: 0
+    baseChance: 65
+    multiplier: 3
+    minAmount: 120
+    maxAmount: 160
+  - resourceType: 2
+    baseChance: 50
+    multiplier: 2
+    minAmount: 100
+    maxAmount: 130
+  completionTime: 15
+  minAnts: 5
+  maxAnts: 10
+  dangerLevel: 30

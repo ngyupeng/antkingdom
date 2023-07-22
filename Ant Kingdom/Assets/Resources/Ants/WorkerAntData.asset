@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: WorkerAntData
   m_EditorClassIdentifier: 
   antName: Worker Ant
-  foodCost: 10
+  foodCost: 15
   breedingTime: 5
   sprite: {fileID: 2051063367, guid: 146559358ec97a44391ef7253424af9e, type: 3}
   antType: 0
   defence: 20
-  successRate: 0.2
+  exploreEfficiency: 2

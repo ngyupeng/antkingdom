@@ -18,4 +18,4 @@ MonoBehaviour:
   sprite: {fileID: 138723772, guid: 146559358ec97a44391ef7253424af9e, type: 3}
   antType: 2
   defence: 50
-  successRate: 0.4
+  exploreEfficiency: 4

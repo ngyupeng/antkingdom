@@ -76,7 +76,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.99
+  m_Mass: 1
   m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   targetNode: {fileID: 0}
   speed: 200
   nextWaypointDistance: 0.3
+  type: 0
 --- !u!1 &2967354068794923230
 GameObject:
   m_ObjectHideFlags: 0

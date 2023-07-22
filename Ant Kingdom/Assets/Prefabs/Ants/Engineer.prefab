@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2927613321157694765}
   - component: {fileID: 3822127812312536236}
   - component: {fileID: 310316889411992840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ant_Types_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4320780134811560616}
   - component: {fileID: 2110218177139742939}
   - component: {fileID: 7419663625138995741}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Engineer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,4 +228,5 @@ MonoBehaviour:
   target: {fileID: 0}
   targetNode: {fileID: 0}
   speed: 200
-  nextWaypointDistance: 3
+  nextWaypointDistance: 0.3
+  type: 2

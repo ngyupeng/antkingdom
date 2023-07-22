@@ -21,7 +21,7 @@ public class ResourceNode : MonoBehaviour
 
     private void Awake() {
         amount = resourceNodeType.GetAmount();
-        InvokeRepeating("RegenerateResources", 0f, 10f);
+        InvokeRepeating("RegenerateResources", 0f, 20f);
     }
 
     private void Start() {
