@@ -8,7 +8,9 @@ public static class GameResources
     public enum ResourceType {
         Wood,
         Stone,
-        Food
+        Food,
+        Iron,
+        MagicCrystal
     }
     
     public delegate void OnResourceAmountChanged();

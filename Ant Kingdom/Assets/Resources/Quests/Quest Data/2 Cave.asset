@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50432cbb2dcf45844bcd0c2a7319886a, type: 3}
+  m_Name: 2 Cave
+  m_EditorClassIdentifier: 
+  questName: Cave Exploration
+  rewards:
+  - resourceType: 1
+    baseChance: 60
+    multiplier: 1.5
+    minAmount: 100
+    maxAmount: 150
+  - resourceType: 3
+    baseChance: 30
+    multiplier: 0.7
+    minAmount: 25
+    maxAmount: 40
+  completionTime: 30
+  minAnts: 7
+  maxAnts: 15
+  dangerLevel: 60

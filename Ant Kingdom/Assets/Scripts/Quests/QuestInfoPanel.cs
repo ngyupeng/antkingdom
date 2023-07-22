@@ -13,13 +13,23 @@ public class QuestInfoPanel : MonoBehaviour
     public void Init(QuestHolder nHolder) {
         holder = nHolder;
         holder.onSelectedAntsChange += UpdateSelectedList;
+        holder.onSelectedAntsChange += UpdateChances;
         foreach (QuestReward reward in holder.questData.rewards) {
             GameObject go = Instantiate(rewardHolderPrefab, rewardList);
             QuestRewardHolder rewardHolder = go.GetComponent<QuestRewardHolder>();
             rewardHolder.Init(reward);
         }
         UpdateButton();
+        UpdateChances();
         holder.quest.onStateChanged += UpdateButton;
+    }
+
+    public void UpdateChances() {
+        float sum = holder.GetTotalAntEfficiency();
+        foreach (Transform child in rewardList) {
+            QuestRewardHolder rewardHolder = child.gameObject.GetComponent<QuestRewardHolder>();
+            rewardHolder.UpdateChance(sum);
+        }
     }
 
     public void StartQuest() {
@@ -60,5 +70,6 @@ public class QuestInfoPanel : MonoBehaviour
     public void OnDestroy() {
         holder.onSelectedAntsChange -= UpdateSelectedList;
         holder.quest.onStateChanged -= UpdateButton;
+        holder.onSelectedAntsChange -= UpdateChances;
     }
 }

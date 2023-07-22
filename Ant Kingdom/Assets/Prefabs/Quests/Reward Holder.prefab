@@ -263,9 +263,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4eaf732d48f2af4bbdf4472483b24f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questReward:
+    resourceType: 0
+    baseChance: 0
+    multiplier: 0
+    minAmount: 0
+    maxAmount: 0
   resourceIcon: {fileID: 5120812118853308411}
   resourceAmount: {fileID: 6196132889313255133}
-  chance: {fileID: 7938746950188885683}
+  chanceText: {fileID: 7938746950188885683}
+  chance: 0
 --- !u!1 &7844898437458963258
 GameObject:
   m_ObjectHideFlags: 0

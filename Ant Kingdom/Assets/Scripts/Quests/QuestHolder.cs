@@ -12,6 +12,7 @@ public class QuestHolder : MonoBehaviour
     public Transform rewardList;
     public TimerTooltip timerTooltip;
     public TextMeshProUGUI antLimitText;
+    public TextMeshProUGUI dangerLevel;
     public Dictionary<AntManager.AntType, int> antSelected;
     public delegate void OnSelectedAntsChange();
     public event OnSelectedAntsChange onSelectedAntsChange;
@@ -32,6 +33,8 @@ public class QuestHolder : MonoBehaviour
 
         antLimitText.text = "Min Ants: " + questData.minAnts.ToString() + "\n"
                           + "Max Ants: " + questData.maxAnts.ToString();
+
+        dangerLevel.text = "Danger Level: " + questData.dangerLevel.ToString();
     
         foreach (QuestReward reward in questData.rewards) {
             Resource resource = GameResources.GetResourceFromType(reward.resourceType);
@@ -50,7 +53,7 @@ public class QuestHolder : MonoBehaviour
             antSelected[antType] = 0;
         }
 
-        quest = new QuestInstance(questData);
+        quest = new QuestInstance(questData, this);
         quest.onStateChanged += UpdateButton;
         UpdateButton();
     }
@@ -73,17 +76,28 @@ public class QuestHolder : MonoBehaviour
         return antSelected[type];
     }
 
+    public float GetTotalAntEfficiency() {
+        float sum = 0;
+        foreach (AntManager.AntType antType in System.Enum.GetValues(typeof(AntManager.AntType))) {
+            sum += antSelected[antType] * AntManager.GetAntData(antType).exploreEfficiency;
+        }
+        return sum;
+    }
+
     public void AddAntSelection(AntManager.AntType type) {
+        if (quest.state != QuestInstance.State.Inactive) return;
         antSelected[type]++;
         onSelectedAntsChange?.Invoke();
     }
 
     public void DecreaseAntSelection(AntManager.AntType type) {
+        if (quest.state != QuestInstance.State.Inactive) return;
         antSelected[type]--;
         onSelectedAntsChange?.Invoke();
     }
 
     public void ResetSelection() {
+        if (quest.state != QuestInstance.State.Inactive) return;
         foreach (AntManager.AntType antType in System.Enum.GetValues(typeof(AntManager.AntType))) {
             antSelected[antType] = 0;
         }

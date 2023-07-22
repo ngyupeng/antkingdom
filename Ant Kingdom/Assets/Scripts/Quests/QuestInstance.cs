@@ -20,8 +20,10 @@ public class QuestInstance
     public static event OnNotEnoughAnts onNotEnoughAnts;
     public delegate void OnAntCountOutsideLimits();
     public static event OnAntCountOutsideLimits onAntCountOutsideLimits;
-    public QuestInstance(QuestData data) {
+    public QuestHolder holder;
+    public QuestInstance(QuestData data, QuestHolder nholder) {
         questData = data;
+        holder = nholder;
         antSelected = new Dictionary<AntManager.AntType, int>();
         antSurvived = new Dictionary<AntManager.AntType, int>();
         resourceCollected = new Dictionary<GameResources.ResourceType, int>();
@@ -64,9 +66,10 @@ public class QuestInstance
             antSurvived[antType] = surviveCount;
         }
 
+        float efficiency = holder.GetTotalAntEfficiency();
         foreach (QuestReward reward in questData.rewards) {
             GameResources.ResourceType resourceType = reward.resourceType;
-            float getChance = reward.chance;
+            float getChance = reward.ComputeChance(efficiency);
             resourceCollected[resourceType] = 0;
             if (!RandomSuccess(getChance)) continue;
             int resourceGot = Random.Range(reward.minAmount, reward.maxAmount + 1);

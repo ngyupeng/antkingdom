@@ -6,7 +6,12 @@ using UnityEngine;
 public class QuestReward
 {
     public GameResources.ResourceType resourceType;
-    public float chance;
+    public float baseChance;
+    public float multiplier;
     public int minAmount;
     public int maxAmount;
+
+    public float ComputeChance(float efficiency) {
+        return Mathf.Min(baseChance + multiplier * efficiency, 100f);
+    }
 }

@@ -9,6 +9,7 @@ public class QuestSelectedAnt : MonoBehaviour
     private int antCount;
     private int reduceCount = 0;
     public TextMeshProUGUI antCountText;
+    public TextMeshProUGUI survivalText;
     public Image antImage;
     public QuestInfoPanel panel;
     public QuestInstance quest;
@@ -23,6 +24,9 @@ public class QuestSelectedAnt : MonoBehaviour
         quest = panel.holder.quest;
         quest.onStateChanged += UpdateView;
         UpdateView();
+
+        float survivalChance = Mathf.Min(Mathf.Floor(100f * ant.defence / quest.questData.dangerLevel), 100f);
+        survivalText.text = survivalChance.ToString() + "%";
     }
 
     public void UpdateView() {
