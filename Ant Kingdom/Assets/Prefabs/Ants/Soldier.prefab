@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5434589971351858419}
   - component: {fileID: 8659196197751762074}
   - component: {fileID: 2937143536869409251}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ant_Types_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 6700656678234475424}
   - component: {fileID: 3480351228135488298}
   - component: {fileID: 2795805445711733647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,5 +228,5 @@ MonoBehaviour:
   target: {fileID: 0}
   targetNode: {fileID: 0}
   speed: 200
-  nextWaypointDistance: 3
+  nextWaypointDistance: 0.3
   type: 1
