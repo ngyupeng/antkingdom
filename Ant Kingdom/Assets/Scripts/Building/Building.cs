@@ -195,6 +195,7 @@ public class Building : MonoBehaviour
         isBuilding = false;
         bought = true;
         onStateChanged.Invoke();
+        SaveSystem.buildings.Add(this);
     }
 
     public virtual void StartUpgrade() {
