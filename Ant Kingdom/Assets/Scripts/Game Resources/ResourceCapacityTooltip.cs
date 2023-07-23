@@ -9,11 +9,12 @@ public class ResourceCapacityTooltip : MonoBehaviour
     private Resource resource;
 
     private void Awake() {
-        GameResources.onResourceCapacityChanged += UpdateText;
+        
     }
     public void Initialise(Resource nResource) {
         resource = nResource;
         text.text = "Max: " + GameResources.GetResourceCapacity(resource.GetResourceType()).ToString();
+        GameResources.onResourceCapacityChanged += UpdateText;
     }
 
     public void UpdateText() {

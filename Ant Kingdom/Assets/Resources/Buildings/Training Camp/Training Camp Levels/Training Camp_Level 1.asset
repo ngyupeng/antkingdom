@@ -19,4 +19,4 @@ MonoBehaviour:
     cost: 15
   buildTime: 30
   buildingSprite: {fileID: -62484848, guid: c6911f2268189ec428b4861f197c0b3a, type: 3}
-  health: 300
+  health: 450

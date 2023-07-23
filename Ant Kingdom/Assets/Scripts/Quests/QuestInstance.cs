@@ -71,7 +71,7 @@ public class QuestInstance
         float efficiency = holder.GetTotalAntEfficiency();
         foreach (QuestReward reward in questData.rewards) {
             GameResources.ResourceType resourceType = reward.resourceType;
-            float getChance = reward.ComputeChance(efficiency);
+            float getChance = reward.ComputeChance(efficiency) / 100;
             resourceCollected[resourceType] = 0;
             if (!RandomSuccess(getChance)) continue;
             int resourceGot = Random.Range(reward.minAmount, reward.maxAmount + 1);

@@ -26,6 +26,7 @@ public class Building : MonoBehaviour
     public TimerTooltip timerTooltip;
 
     public UnityEvent onStateChanged;
+    private bool isAddedToDisaster = false;
     protected virtual void Awake() {
         col = gameObject.GetComponent<PolygonCollider2D>();
         col.enabled = false;
@@ -178,7 +179,11 @@ public class Building : MonoBehaviour
 
     #endregion
 
+    public void AddToDisaster() {
+        if (!isAddedToDisaster) DisasterSystem.buildings.Add(this);
+    }
     public virtual void StartBuilding() {
+        AddToDisaster();
         isBuilding = true;
         GameResources.UseResourceListAmounts(states.levels[0].resourceCostsList);
         timerTooltip = BuildingUIControl.current.CreateTimer(this);
@@ -193,7 +198,7 @@ public class Building : MonoBehaviour
         });
     }
 
-        public void RefundBuilding() { 
+    public void RefundBuilding() { 
         if (!isBuilding) return;
         int targetLevel = level;
         if (bought) targetLevel++;
@@ -204,6 +209,7 @@ public class Building : MonoBehaviour
     }
 
     public virtual void FinishBuilding() {
+        AddToDisaster();
         isBuilding = false;
         bought = true;
         onStateChanged.Invoke();
@@ -229,6 +235,20 @@ public class Building : MonoBehaviour
         isBuilding = false;
         level++;
         onStateChanged.Invoke();
+    }
+
+    public virtual void ReceiveDamage(float damage) {
+        if (damage >= states.levels[level].health) {
+            Destroyed();
+        }
+    }
+
+    public virtual void Destroyed() {
+        SaveSystem.buildings.Remove(this);
+        DisasterSystem.buildingsToRemove.Add(this);
+        if (isBuilding) {
+            SaveSystem.inProgress.Remove(this);
+        }
     }
 
     #region Clicking

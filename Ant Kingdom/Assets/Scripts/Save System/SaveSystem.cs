@@ -18,18 +18,35 @@ public class SaveSystem : MonoBehaviour
     public static List<Building> inProgress = new List<Building>();
     public static List<BreedingQueue> breeding = new List<BreedingQueue>();
     public static List<QuestInstance> quests = new List<QuestInstance>();
+    public static List<TrainingPanel> training = new List<TrainingPanel>();
     const string RES_SUB = "/resources";
     const string ANT_SUB = "/ants";
     const string BUILDING_SUB = "/buildings";
     const string BUILDING_COUNT_SUB = "/buildings";
+    const string DIS_SUB = "/disaster";
     
     void Start()
     {
-        if (!MainMenu.isNewGame) {
+        CheckGameOver();
+        if (!MainMenu.isNewGame && !DisasterSystem.isGameOver) {
+            buildings.Clear();
+            inProgress.Clear();
+            breeding.Clear();
+            quests.Clear();
             LoadBuildings();
             LoadAnt();
             LoadResource();
+            LoadDisaster();
+            DisasterInfo di = GameHandler.FindObjectOfType<DisasterInfo>();
+            di.UpdateText();
+            
+        } else {
+            buildings.Clear();
+            inProgress.Clear();
+            breeding.Clear();
+            quests.Clear();
         }
+        DisasterSystem.isGameOver = false;
     }
 
     void OnApplicationQuit() {
@@ -51,9 +68,18 @@ public class SaveSystem : MonoBehaviour
         {
             quests[k].RefundQuest();            
         }
+        for (int l = 0; l < training.Count; l++)
+        {
+            training[l].CancelTraining();
+        }
+        training.Clear();
+        quests.Clear();
+        breeding.Clear();
         SaveAnt();
         SaveBuildings();
         SaveResource();
+        SaveDisaster();
+        
     }
 
     void SaveResource()
@@ -77,9 +103,19 @@ public class SaveSystem : MonoBehaviour
 
     }
 
+    void SaveDisaster()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + DIS_SUB;
+        FileStream stream = new FileStream(path, FileMode.Create);
+        DisasterData data = new DisasterData();
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
     void SaveBuildings()
     {
-         Building building = Building.FindObjectOfType<QueenNest>();
+        Building building = Building.FindObjectOfType<QueenNest>();
         buildings.Add(building);
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + BUILDING_SUB + SceneManager.GetActiveScene().buildIndex;
@@ -95,6 +131,7 @@ public class SaveSystem : MonoBehaviour
             formatter.Serialize(stream, data);
             stream.Close();
         }
+
     }
 
     void LoadResource()
@@ -139,6 +176,43 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
+    void CheckGameOver()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + DIS_SUB;
+        if (File.Exists(path))
+        {
+            FileStream stream = new FileStream(path, FileMode.Open);
+            DisasterData data = formatter.Deserialize(stream) as DisasterData;
+            stream.Close();
+            DisasterSystem.isGameOver = data.isGameOver;
+        }
+        else
+        {
+            Debug.LogError("Path not found in " + path);
+        }
+    }
+
+    void LoadDisaster()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + DIS_SUB;
+        if (File.Exists(path))
+        {
+            FileStream stream = new FileStream(path, FileMode.Open);
+            DisasterData data = formatter.Deserialize(stream) as DisasterData;
+            stream.Close();
+            DisasterSystem.isGameOver = data.isGameOver;
+            DisasterSystem.minDamage = data.minDamage;
+            DisasterSystem.maxDamage = data.maxDamage;
+            DisasterSystem.timeToNextDisaster = data.timeToNextDisaster;
+        }
+        else
+        {
+            Debug.LogError("Path not found in " + path);
+        }
+    }
+
     void LoadBuildings()
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -155,6 +229,7 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.LogError("Path not found in " + countPath);
         }
+        
         for (int i = 0; i < buildingsCount; i++)
         {
             if (File.Exists(path + i))

@@ -50,4 +50,16 @@ public class StorageBuilding : Building
         GameResources.IncreaseStorage(storageStates.storedResource.GetResourceType(), 
             storageStates.storageLevels[level].storageAmount - storageStates.storageLevels[level - 1].storageAmount);
     }
+
+    public override void Destroyed()
+    {
+        base.Destroyed();
+
+        if (bought) {
+            GameResources.IncreaseStorage(storageStates.storedResource.GetResourceType(), 
+                -storageStates.storageLevels[level].storageAmount);
+        }
+
+        Destroy(gameObject);
+    }
 }
