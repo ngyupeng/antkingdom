@@ -17,6 +17,6 @@ MonoBehaviour:
     cost: 50
   - resource: {fileID: 11400000, guid: b3bda96ff5792ad45a7bce4b0b20d746, type: 2}
     cost: 15
-  buildTime: 15
+  buildTime: 1
   buildingSprite: {fileID: -62484848, guid: c6911f2268189ec428b4861f197c0b3a, type: 3}
   health: 300

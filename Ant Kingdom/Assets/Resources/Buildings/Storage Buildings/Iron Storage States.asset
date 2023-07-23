@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: Iron Storage
   description: Storage space for iron.
   levels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 21ff9b6023d1f954bae980f3aeedca2e, type: 2}
+  - {fileID: 11400000, guid: 7f2cb5eebf5bfac40b4144b99a08137b, type: 2}
+  - {fileID: 11400000, guid: fe0fa084f92b79944a91e58392c7b3df, type: 2}
   storedResource: {fileID: 11400000, guid: b3bda96ff5792ad45a7bce4b0b20d746, type: 2}
