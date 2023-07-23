@@ -29,6 +29,10 @@ public class SaveSystem : MonoBehaviour
     {
         CheckGameOver();
         if (!MainMenu.isNewGame && !DisasterSystem.isGameOver) {
+            buildings.Clear();
+            inProgress.Clear();
+            breeding.Clear();
+            quests.Clear();
             LoadBuildings();
             LoadAnt();
             LoadResource();
@@ -36,11 +40,12 @@ public class SaveSystem : MonoBehaviour
             DisasterInfo di = GameHandler.FindObjectOfType<DisasterInfo>();
             di.UpdateText();
             
+        } else {
+            buildings.Clear();
+            inProgress.Clear();
+            breeding.Clear();
+            quests.Clear();
         }
-        buildings.Clear();
-        inProgress.Clear();
-        breeding.Clear();
-        quests.Clear();
         DisasterSystem.isGameOver = false;
     }
 
@@ -75,7 +80,6 @@ public class SaveSystem : MonoBehaviour
         SaveResource();
         SaveDisaster();
         
-        Debug.Log("Saved");
     }
 
     void SaveResource()
@@ -127,9 +131,7 @@ public class SaveSystem : MonoBehaviour
             formatter.Serialize(stream, data);
             stream.Close();
         }
-        Debug.Log(buildings.Count);
-        //buildings.Clear();
-        //inProgress.Clear();
+
     }
 
     void LoadResource()
@@ -227,6 +229,7 @@ public class SaveSystem : MonoBehaviour
         {
             Debug.LogError("Path not found in " + countPath);
         }
+        
         for (int i = 0; i < buildingsCount; i++)
         {
             if (File.Exists(path + i))
