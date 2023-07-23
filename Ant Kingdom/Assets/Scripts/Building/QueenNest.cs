@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class QueenNest : Building
 {
+    public GameObject destroyedPopup;
+    public GameObject gameOverPopup;
     protected override void Awake() {
         col = gameObject.GetComponent<PolygonCollider2D>();
         bought = true;
@@ -15,6 +17,7 @@ public class QueenNest : Building
     private void Start() {
         area.position = GridBuildingSystem.current.gridLayout.WorldToCell(transform.position);
         GridBuildingSystem.current.TakeArea(area);
+        AddToDisaster();
     }
     public override void DisplayInfo(BuildingInfoPanel panel) {
         base.DisplayInfo(panel);
@@ -31,7 +34,13 @@ public class QueenNest : Building
 
     public override void Destroyed()
     {
-        
-
+        if (GameResources.GetResourceAmount(GameResources.ResourceType.MagicCrystal) >= 10) {
+            GameResources.UseResourceAmount(GameResources.ResourceType.MagicCrystal, 10);
+            destroyedPopup.SetActive(true);
+        } else {
+            gameOverPopup.SetActive(true);
+            DisasterSystem.isGameOver = true;
+            DisasterSystem.buildingsToRemove.Add(this);
+        }
     }
 }

@@ -245,7 +245,7 @@ public class Building : MonoBehaviour
 
     public virtual void Destroyed() {
         SaveSystem.buildings.Remove(this);
-        DisasterSystem.buildings.Remove(this);
+        DisasterSystem.buildingsToRemove.Add(this);
         if (isBuilding) {
             SaveSystem.inProgress.Remove(this);
         }

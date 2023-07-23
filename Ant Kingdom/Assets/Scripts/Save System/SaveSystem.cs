@@ -25,11 +25,12 @@ public class SaveSystem : MonoBehaviour
     
     void Start()
     {
-        if (!MainMenu.isNewGame) {
+        if (!MainMenu.isNewGame && !DisasterSystem.isGameOver) {
             LoadBuildings();
             LoadAnt();
             LoadResource();
         }
+        DisasterSystem.isGameOver = false;
     }
 
     void OnApplicationQuit() {
