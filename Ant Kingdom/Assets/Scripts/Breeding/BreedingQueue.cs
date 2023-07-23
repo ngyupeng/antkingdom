@@ -6,6 +6,11 @@ public class BreedingQueue : MonoBehaviour
 { 
     public GameObject breedingInstancePrefab;
     public Transform content;
+
+    void Awake()
+    {
+        SaveSystem.breeding.Add(this);
+    }
     
     public void AddBreeding(AntData antData) {
         BreedingInstance lastQueuedBreeding = null;
@@ -19,6 +24,7 @@ public class BreedingQueue : MonoBehaviour
             lastQueuedBreeding = go.GetComponent<BreedingInstance>();
             lastQueuedBreeding.Initialise(antData, this);
         }
+       
     }
 
     public void StartBreeding() {
@@ -33,5 +39,14 @@ public class BreedingQueue : MonoBehaviour
     public void DestroyInstance(GameObject go) {
         Destroy(go);
         Invoke("StartBreeding", Time.deltaTime);
+    }
+    public void RefundBreeding() {
+        int totalCost = 0;
+        foreach (Transform child in content) {
+            BreedingInstance bi = child.GetComponent<BreedingInstance>();
+            int cost = bi.number * bi.antData.foodCost;
+            totalCost += cost;
+        }
+        GameResources.AddResourceAmount(GameResources.ResourceType.Food, totalCost);
     }
 }
