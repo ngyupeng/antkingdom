@@ -184,11 +184,23 @@ public class Building : MonoBehaviour
         timerTooltip = BuildingUIControl.current.CreateTimer(this);
         timerTooltip.InitTimer(TimeSpan.FromSeconds(states.levels[0].buildTime));
         timerTooltip.timer.StartTimer();
+        SaveSystem.inProgress.Add(this);
         timerTooltip.timer.TimerFinishedEvent.AddListener(delegate
         {
             FinishBuilding();
+            SaveSystem.inProgress.Remove(this);
             Destroy(timerTooltip.gameObject);
         });
+    }
+
+        public void RefundBuilding() { 
+        if (!isBuilding) return;
+        int targetLevel = level;
+        if (bought) targetLevel++;
+        foreach (ResourceCost cost in states.levels[targetLevel].resourceCostsList) {
+            Resource resource = cost.resource;
+            GameResources.AddResourceAmount(resource.GetResourceType(), cost.cost);
+        }
     }
 
     public virtual void FinishBuilding() {
@@ -204,9 +216,11 @@ public class Building : MonoBehaviour
         timerTooltip = BuildingUIControl.current.CreateTimer(this);
         timerTooltip.InitTimer(TimeSpan.FromSeconds(states.levels[level + 1].buildTime));
         timerTooltip.timer.StartTimer();
+        SaveSystem.inProgress.Add(this);
         timerTooltip.timer.TimerFinishedEvent.AddListener(delegate
         {
             FinishUpgrade();
+            SaveSystem.inProgress.Remove(this);
             Destroy(timerTooltip.gameObject);
         });
     }

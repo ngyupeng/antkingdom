@@ -13,6 +13,9 @@ public class SaveSystem : MonoBehaviour
     [SerializeField] Building HousingPrefab;
 
     public static List<Building> buildings = new List<Building>();
+    public static List<Building> inProgress = new List<Building>();
+    public static List<BreedingQueue> breeding = new List<BreedingQueue>();
+    public static List<QuestInstance> quests = new List<QuestInstance>();
     const string RES_SUB = "/resources";
     const string ANT_SUB = "/ants";
     const string BUILDING_SUB = "/buildings";
@@ -26,6 +29,20 @@ public class SaveSystem : MonoBehaviour
     }
     void OnApplicationQuit()
     {
+        for (int i = 0; i < inProgress.Count; i++)
+        {
+            inProgress[i].RefundBuilding();
+        }
+       
+        for (int j = 0; j < breeding.Count; j++)
+        {
+            breeding[j].RefundBreeding();
+        }
+        
+        for (int k = 0; k < quests.Count; k++)
+        {
+            quests[k].RefundQuest();            
+        }
         SaveAnt();
         SaveBuildings();
         SaveResource();
@@ -54,6 +71,8 @@ public class SaveSystem : MonoBehaviour
 
     void SaveBuildings()
     {
+         Building building = Building.FindObjectOfType<QueenNest>();
+        buildings.Add(building);
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + BUILDING_SUB + SceneManager.GetActiveScene().buildIndex;
         string countPath = Application.persistentDataPath + BUILDING_COUNT_SUB + SceneManager.GetActiveScene().buildIndex;
@@ -104,6 +123,7 @@ public class SaveSystem : MonoBehaviour
             AntManager.AddAntAmount(AntManager.AntType.WorkerAnt, data.antCount[AntManager.AntType.WorkerAnt] - 5);
             AntManager.AddAntAmount(AntManager.AntType.EngineerAnt, data.antCount[AntManager.AntType.EngineerAnt]);
             AntManager.AddAntAmount(AntManager.AntType.SoldierAnt, data.antCount[AntManager.AntType.SoldierAnt]);
+            AntManager.antUnlocked = data.antUnlocked;
         }
         else
         {
@@ -171,6 +191,12 @@ public class SaveSystem : MonoBehaviour
                 {
                     building.FinishUpgrade();
                 }
+            }
+            else if (data.buildingName == "Queen Nest")
+            {
+                Building building = Building.FindObjectOfType<QueenNest>();
+                building.transform.position = position;
+                building.area.position = areaPos;
             }
             else 
             {
