@@ -11,6 +11,8 @@ public class SaveSystem : MonoBehaviour
     [SerializeField] Building StoneStoragePrefab;
     [SerializeField] Building WoodStoragePrefab;
     [SerializeField] Building HousingPrefab;
+    [SerializeField] Building TrainingCampPrefab;
+    [SerializeField] Building IronStoragePrefab;
 
     public static List<Building> buildings = new List<Building>();
     public static List<Building> inProgress = new List<Building>();
@@ -23,9 +25,11 @@ public class SaveSystem : MonoBehaviour
     
     void Start()
     {
-        LoadBuildings();
-        LoadAnt();
-        LoadResource();
+        if (!MainMenu.isNewGame) {
+            LoadBuildings();
+            LoadAnt();
+            LoadResource();
+        }
     }
 
     void OnApplicationQuit() {
@@ -201,6 +205,28 @@ public class SaveSystem : MonoBehaviour
                 Building building = Building.FindObjectOfType<QueenNest>();
                 building.transform.position = position;
                 building.area.position = areaPos;
+            }
+            else if (data.buildingName == "Iron Storage")
+            {
+                Building building = Instantiate(IronStoragePrefab, position, Quaternion.identity);
+                building.FinishBuilding();
+                building.Place();
+                building.area.position = areaPos;
+                for (int j = 0; j < data.level; j++)
+                {
+                    building.FinishUpgrade();
+                }
+            }
+            else if (data.buildingName == "Training Camp")
+            {
+                Building building = Instantiate(TrainingCampPrefab, position, Quaternion.identity);
+                building.FinishBuilding();
+                building.Place();
+                building.area.position = areaPos;
+                for (int j = 0; j < data.level; j++)
+                {
+                    building.FinishUpgrade();
+                }
             }
             else 
             {
