@@ -139,6 +139,7 @@ public static class GameResources
 
     public static void IncreaseStorage(ResourceType resourceType, int amount) {
         resourceCapacity[resourceType] += amount;
+        resourceAmountData[resourceType] = Mathf.Min(resourceAmountData[resourceType], resourceCapacity[resourceType]);
         onResourceCapacityChanged?.Invoke();
     }
 

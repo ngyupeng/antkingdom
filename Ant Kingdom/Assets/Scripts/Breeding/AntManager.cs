@@ -93,6 +93,7 @@ public static class AntManager
 
     public static void AddAntCapacity(int amount) {
         antCapacity += amount;
+        FixExcessCapacity();
         onAntNumberChanged?.Invoke();       
     }
 
@@ -149,7 +150,37 @@ public static class AntManager
     public static void AddIdleAnts(AntType type, int amount) {
         idleAntCount[type] += amount;
         idleAnts += amount;
+        FixExcessCapacity();
         onIdleAntNumberChanged?.Invoke();
+    }
+
+    public static float GetTotalDefence() {
+        float sum = 0;
+        foreach (AntType antType in System.Enum.GetValues(typeof(AntType))) {
+            sum += idleAntCount[antType] * antDataMap[antType].defence;
+        }
+        return sum;
+    }
+
+    public static void FixExcessCapacity() {
+        if (antCapacity >= idleAnts) {
+            return;
+        }
+        while (antCapacity < idleAnts) {
+            RemoveRandomIdleAnt();
+        }
+    }
+
+    public static void RemoveRandomIdleAnt() {
+        int value = Random.Range(1, idleAnts + 1);
+        int currentSum = 0;
+        foreach (AntType antType in System.Enum.GetValues(typeof(AntType))) {
+            currentSum += GetIdleAntCount(antType);
+            if (currentSum >= value) {
+                AddIdleAnts(antType, -1);
+                return;
+            }
+        }
     }
 }
 

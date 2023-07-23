@@ -440,7 +440,7 @@ TextureImporter:
         width: 202
         height: 62
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -448,6 +448,48 @@ TextureImporter:
       bones: []
       spriteID: b9a19aea50853824eae0cb88f26e4424
       internalID: 316961315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exclamation mark
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 260
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6950af9fd126c9b4f88bca372f69bd2a
+      internalID: -1666373510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tooltip 2
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 213
+        width: 78
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1bc745e37103084bbb5cd470295ac5c
+      internalID: 387834687
       vertices: []
       indices: 
       edges: []
@@ -464,6 +506,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Blueish Button: 1588142992
+      Exclamation mark: -1666373510
       Green Button: -538906959
       Grey Background: 806574603
       Grey Button: -925477827
@@ -478,6 +521,7 @@ TextureImporter:
       Quest Screen: 2069886821
       Quit Button: 1804204815
       Red Button: -164843935
+      Tooltip 2: 387834687
       White Background: 316961315
   spritePackingTag: 
   pSDRemoveMatte: 0

@@ -28,4 +28,10 @@ public class QueenNest : Building
         if (isBuilding) return;
         control.AddOptionButton(control.buildingBreedButtonPrefab);
     }
+
+    public override void Destroyed()
+    {
+        
+
+    }
 }

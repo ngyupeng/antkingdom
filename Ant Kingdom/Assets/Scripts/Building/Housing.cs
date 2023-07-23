@@ -40,4 +40,14 @@ public class Housing : Building
         AntManager.AddAntCapacity(housingStates.housingLevels[level].antCapacity 
             - housingStates.housingLevels[level - 1].antCapacity);
     }
+
+    public override void Destroyed()
+    {
+        base.Destroyed();
+        if (bought) {
+            AntManager.AddAntCapacity(-housingStates.housingLevels[level].antCapacity);
+        }
+
+        Destroy(gameObject);
+    }
 }
