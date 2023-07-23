@@ -34,7 +34,7 @@ public static class GameResources
         }
         resourceAmountData[ResourceType.MagicCrystal] = 0;
         resourceCapacity[ResourceType.MagicCrystal] = int.MaxValue;
-        
+        //
         string resourcePath = @"Game Resources\";
         Resource[] all = Resources.LoadAll<Resource>(resourcePath);
         foreach (var resource in all) {
