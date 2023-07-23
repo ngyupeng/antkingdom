@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Food Storage States
   m_EditorClassIdentifier: 
   buildingName: Food Storage
-  description: This is a food storage.
+  description: Storage space for food.
   levels:
   - {fileID: 11400000, guid: 46f009e706a6d2342ba5ccd6b4b08d70, type: 2}
   - {fileID: 11400000, guid: d3842771a69a9c64ab9567d819e2f571, type: 2}

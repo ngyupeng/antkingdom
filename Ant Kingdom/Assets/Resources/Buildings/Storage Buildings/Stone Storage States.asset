@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stone Storage States
   m_EditorClassIdentifier: 
   buildingName: Stone Storage
-  description: This is a stone storage.
+  description: Storage space for stone.
   levels:
   - {fileID: 11400000, guid: 54072f7a6bc666a4d830a288826b4d5c, type: 2}
   - {fileID: 11400000, guid: f122de94b76c7a645a8be36a92ee524a, type: 2}

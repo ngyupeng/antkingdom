@@ -263,6 +263,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Train Button
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6447747ead3479544b6da22f97cee3b1
+      internalID: 1027849033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -280,6 +301,7 @@ TextureImporter:
       Cancel Icon: 311474037
       Info Icon: -1312418890
       Move Icon: -1312418890
+      Train Button: 1027849033
       Upgrade Icon: 886201456
   spritePackingTag: 
   pSDRemoveMatte: 0

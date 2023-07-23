@@ -25,5 +25,6 @@ public class ShopItem : ScriptableObject
 
 public enum BuildingType {
     ResourceBuilding,
-    Housing
+    Housing,
+    Training
 }

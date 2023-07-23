@@ -20,11 +20,14 @@ public class BuildingUIControl : MonoBehaviour
     private GameObject upgradeInfoPanel;
     [SerializeField]
     private GameObject breedingPanel;
+    [SerializeField]
+    private GameObject trainingPanel;
     public GameObject buildingMoveButtonPrefab;
     public GameObject buildingInfoButtonPrefab;
     public GameObject buildingUpgradeButtonPrefab;
     public GameObject buildingCancelButtonPrefab;
     public GameObject buildingBreedButtonPrefab;
+    public GameObject buildingTrainButtonPrefab;
     public GameObject timerTooltipPrefab;
     private void Awake() {
         current = this;
@@ -35,6 +38,7 @@ public class BuildingUIControl : MonoBehaviour
         BuildingUpgradeButton.onClickedUpgrade += ShowBuildingUpgradeInfo;
         BuildingCancelButton.onClickedCancel += CancelBuilding;
         BuildingBreedButton.onClickedBreed += ShowBreedingPanel;
+        BuildingTrainButton.onClickedTrain += ShowTrainingPanel;
     }
 
     private void Update() {
@@ -99,6 +103,11 @@ public class BuildingUIControl : MonoBehaviour
         ClearBuildingSelection();
     }
 
+    public void ShowTrainingPanel() {
+        trainingPanel.SetActive(true);
+        ClearBuildingSelection();
+    }
+
     private void OnDestroy() {
         Building.onSelect -= ShowBuildingOptions;
         BuildingMoveButton.onClickedMove -= MoveBuilding;
@@ -106,5 +115,6 @@ public class BuildingUIControl : MonoBehaviour
         BuildingUpgradeButton.onClickedUpgrade -= ShowBuildingUpgradeInfo;
         BuildingCancelButton.onClickedCancel -= CancelBuilding;
         BuildingBreedButton.onClickedBreed -= ShowBreedingPanel;
+        BuildingTrainButton.onClickedTrain -= ShowTrainingPanel;
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac07dbb42b6fb304cb655e4a9a4da4d1, type: 3}
+  m_Name: 2 Stone Storage
+  m_EditorClassIdentifier: 
+  itemName: Stone Storage
+  type: 0
+  prefab: {fileID: 3903484398244372066, guid: 3f10390e94dae284fa849c90d23f0c92, type: 3}
+  states: {fileID: 11400000, guid: fb253140a4f16de45bb93bd3aaab1097, type: 2}
