@@ -29,8 +29,8 @@ public static class GameResources
         resourceCapacity = new Dictionary<ResourceType, int>();
         resourceMap = new Dictionary<ResourceType, Resource>();
         foreach (ResourceType resourceType in System.Enum.GetValues(typeof(ResourceType))) {
-            resourceAmountData[resourceType] = 500;
-            resourceCapacity[resourceType] = 500;
+            resourceAmountData[resourceType] = 0;
+            resourceCapacity[resourceType] = 50;
         }
         resourceAmountData[ResourceType.MagicCrystal] = 0;
         resourceCapacity[ResourceType.MagicCrystal] = int.MaxValue;
