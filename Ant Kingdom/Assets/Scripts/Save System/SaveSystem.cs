@@ -18,18 +18,29 @@ public class SaveSystem : MonoBehaviour
     public static List<Building> inProgress = new List<Building>();
     public static List<BreedingQueue> breeding = new List<BreedingQueue>();
     public static List<QuestInstance> quests = new List<QuestInstance>();
+    public static List<TrainingPanel> training = new List<TrainingPanel>();
     const string RES_SUB = "/resources";
     const string ANT_SUB = "/ants";
     const string BUILDING_SUB = "/buildings";
     const string BUILDING_COUNT_SUB = "/buildings";
+    const string DIS_SUB = "/disaster";
     
     void Start()
     {
+        CheckGameOver();
         if (!MainMenu.isNewGame && !DisasterSystem.isGameOver) {
             LoadBuildings();
             LoadAnt();
             LoadResource();
+            LoadDisaster();
+            DisasterInfo di = GameHandler.FindObjectOfType<DisasterInfo>();
+            di.UpdateText();
+            
         }
+        buildings.Clear();
+        inProgress.Clear();
+        breeding.Clear();
+        quests.Clear();
         DisasterSystem.isGameOver = false;
     }
 
@@ -52,9 +63,19 @@ public class SaveSystem : MonoBehaviour
         {
             quests[k].RefundQuest();            
         }
+        for (int l = 0; l < training.Count; l++)
+        {
+            training[l].CancelTraining();
+        }
+        training.Clear();
+        quests.Clear();
+        breeding.Clear();
         SaveAnt();
         SaveBuildings();
         SaveResource();
+        SaveDisaster();
+        
+        Debug.Log("Saved");
     }
 
     void SaveResource()
@@ -78,9 +99,19 @@ public class SaveSystem : MonoBehaviour
 
     }
 
+    void SaveDisaster()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + DIS_SUB;
+        FileStream stream = new FileStream(path, FileMode.Create);
+        DisasterData data = new DisasterData();
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
     void SaveBuildings()
     {
-         Building building = Building.FindObjectOfType<QueenNest>();
+        Building building = Building.FindObjectOfType<QueenNest>();
         buildings.Add(building);
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + BUILDING_SUB + SceneManager.GetActiveScene().buildIndex;
@@ -96,6 +127,9 @@ public class SaveSystem : MonoBehaviour
             formatter.Serialize(stream, data);
             stream.Close();
         }
+        Debug.Log(buildings.Count);
+        //buildings.Clear();
+        //inProgress.Clear();
     }
 
     void LoadResource()
@@ -109,8 +143,8 @@ public class SaveSystem : MonoBehaviour
             stream.Close();
             GameResources.AddResourceAmount(GameResources.ResourceType.Wood, data.resourceAmountData[GameResources.ResourceType.Wood]);
             GameResources.AddResourceAmount(GameResources.ResourceType.Stone, data.resourceAmountData[GameResources.ResourceType.Stone]);
-            GameResources.AddResourceAmount(GameResources.ResourceType.Food, data.resourceAmountData[GameResources.ResourceType.Food]);
-            GameResources.AddResourceAmount(GameResources.ResourceType.Iron, data.resourceAmountData[GameResources.ResourceType.Iron]);
+            GameResources.AddResourceAmount(GameResources.ResourceType.Food, 500 - data.resourceAmountData[GameResources.ResourceType.Food]);
+            GameResources.AddResourceAmount(GameResources.ResourceType.Iron, 500 - data.resourceAmountData[GameResources.ResourceType.Iron]);
             GameResources.AddResourceAmount(GameResources.ResourceType.MagicCrystal, data.resourceAmountData[GameResources.ResourceType.MagicCrystal]);
         }
         else
@@ -133,6 +167,43 @@ public class SaveSystem : MonoBehaviour
             AntManager.AddAntAmount(AntManager.AntType.EngineerAnt, data.antCount[AntManager.AntType.EngineerAnt]);
             AntManager.AddAntAmount(AntManager.AntType.SoldierAnt, data.antCount[AntManager.AntType.SoldierAnt]);
             AntManager.antUnlocked = data.antUnlocked;
+        }
+        else
+        {
+            Debug.LogError("Path not found in " + path);
+        }
+    }
+
+    void CheckGameOver()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + DIS_SUB;
+        if (File.Exists(path))
+        {
+            FileStream stream = new FileStream(path, FileMode.Open);
+            DisasterData data = formatter.Deserialize(stream) as DisasterData;
+            stream.Close();
+            DisasterSystem.isGameOver = data.isGameOver;
+        }
+        else
+        {
+            Debug.LogError("Path not found in " + path);
+        }
+    }
+
+    void LoadDisaster()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + DIS_SUB;
+        if (File.Exists(path))
+        {
+            FileStream stream = new FileStream(path, FileMode.Open);
+            DisasterData data = formatter.Deserialize(stream) as DisasterData;
+            stream.Close();
+            DisasterSystem.isGameOver = data.isGameOver;
+            DisasterSystem.minDamage = data.minDamage;
+            DisasterSystem.maxDamage = data.maxDamage;
+            DisasterSystem.timeToNextDisaster = data.timeToNextDisaster;
         }
         else
         {

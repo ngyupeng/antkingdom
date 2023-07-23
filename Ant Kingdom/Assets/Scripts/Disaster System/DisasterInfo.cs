@@ -14,7 +14,7 @@ public class DisasterInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
 
     public void UpdateText() {
-        disasterLevel.text = system.minDamage.ToString() + " - " + system.maxDamage.ToString();
+        disasterLevel.text = DisasterSystem.minDamage.ToString() + " - " + DisasterSystem.maxDamage.ToString();
     }
 
     public void OnPointerEnter(PointerEventData pointerEventData) {

@@ -30,12 +30,14 @@ public class TrainingPanel : MonoBehaviour
         GameObject go = Instantiate(trainingInstancePrefab, trainingInstance);
         TrainingInstance instance = go.GetComponent<TrainingInstance>();
         instance.Init(ant, this);
+        SaveSystem.training.Add(this);
         onStateChanged?.Invoke();
     }
 
     public void FinishTraining(AntData ant) {
         isActive = false;
         AntManager.UnlockAnt(ant.antType);
+        SaveSystem.training.Remove(this);
         onStateChanged?.Invoke();
     }
 
