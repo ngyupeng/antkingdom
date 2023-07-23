@@ -19,3 +19,11 @@ MonoBehaviour:
   antType: 2
   defence: 50
   exploreEfficiency: 4
+  trainingResourceCosts:
+  - resource: {fileID: 11400000, guid: ddfc341955a2a24458fce81b0ec74d4d, type: 2}
+    cost: 150
+  - resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
+    cost: 100
+  - resource: {fileID: 11400000, guid: b3bda96ff5792ad45a7bce4b0b20d746, type: 2}
+    cost: 50
+  trainingTime: 60

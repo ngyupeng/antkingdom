@@ -12,4 +12,6 @@ public class AntData : ScriptableObject
     public AntManager.AntType antType;
     public float defence;
     public float exploreEfficiency;
+    public ResourceCost[] trainingResourceCosts;
+    public float trainingTime;
 }

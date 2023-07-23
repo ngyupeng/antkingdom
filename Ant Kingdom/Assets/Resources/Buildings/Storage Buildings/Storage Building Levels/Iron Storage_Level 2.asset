@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1c42df12b91104abba6307d1508e6f, type: 3}
+  m_Name: Iron Storage_Level 2
+  m_EditorClassIdentifier: 
+  resourceCostsList:
+  - resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
+    cost: 400
+  - resource: {fileID: 11400000, guid: b3bda96ff5792ad45a7bce4b0b20d746, type: 2}
+    cost: 100
+  buildTime: 25
+  buildingSprite: {fileID: 332890076, guid: 9cfdf7e40fd29134da85f5ad2280f123, type: 3}
+  health: 450
+  storageAmount: 200

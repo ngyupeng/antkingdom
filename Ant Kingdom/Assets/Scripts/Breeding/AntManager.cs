@@ -6,8 +6,8 @@ public static class AntManager
 {
     public enum AntType {
         WorkerAnt,
-        SoldierAnt,
-        EngineerAnt
+        EngineerAnt,
+        SoldierAnt
     }
     public static Dictionary<AntType, int> antCount;
     public static Dictionary<AntType, int> idleAntCount;
@@ -41,7 +41,7 @@ public static class AntManager
             } else {
                 antCount[antType] = 0;
                 idleAntCount[antType] = 0;
-                antUnlocked[antType] = true;
+                antUnlocked[antType] = false;
             }
         }
 
@@ -77,6 +77,7 @@ public static class AntManager
 
     public static void UnlockAnt(AntType antType) {
         antUnlocked[antType] = true;
+        onAntUnlocked?.Invoke();
     }
 
     public static void AddAntAmount(AntType antType, int amount) {

@@ -11,6 +11,8 @@ public class SaveSystem : MonoBehaviour
     [SerializeField] Building StoneStoragePrefab;
     [SerializeField] Building WoodStoragePrefab;
     [SerializeField] Building HousingPrefab;
+    [SerializeField] Building TrainingCampPrefab;
+    [SerializeField] Building IronStoragePrefab;
 
     public static List<Building> buildings = new List<Building>();
     public static List<Building> inProgress = new List<Building>();
@@ -23,11 +25,17 @@ public class SaveSystem : MonoBehaviour
     
     void Start()
     {
-        LoadBuildings();
-        LoadAnt();
-        LoadResource();
+        if (!MainMenu.isNewGame) {
+            LoadBuildings();
+            LoadAnt();
+            LoadResource();
+        }
     }
-    void OnApplicationQuit()
+
+    void OnApplicationQuit() {
+        SaveStates();
+    }
+    public void SaveStates()
     {
         for (int i = 0; i < inProgress.Count; i++)
         {
@@ -98,10 +106,10 @@ public class SaveSystem : MonoBehaviour
             FileStream stream = new FileStream(path, FileMode.Open);
             ResourceData data = formatter.Deserialize(stream) as ResourceData;
             stream.Close();
-            GameResources.AddResourceAmount(GameResources.ResourceType.Wood, data.resourceAmountData[GameResources.ResourceType.Wood] - 500);
-            GameResources.AddResourceAmount(GameResources.ResourceType.Stone, data.resourceAmountData[GameResources.ResourceType.Stone] - 500);
-            GameResources.AddResourceAmount(GameResources.ResourceType.Food, data.resourceAmountData[GameResources.ResourceType.Food] - 500);
-            GameResources.AddResourceAmount(GameResources.ResourceType.Iron, data.resourceAmountData[GameResources.ResourceType.Iron] - 500);
+            GameResources.AddResourceAmount(GameResources.ResourceType.Wood, data.resourceAmountData[GameResources.ResourceType.Wood]);
+            GameResources.AddResourceAmount(GameResources.ResourceType.Stone, data.resourceAmountData[GameResources.ResourceType.Stone]);
+            GameResources.AddResourceAmount(GameResources.ResourceType.Food, data.resourceAmountData[GameResources.ResourceType.Food]);
+            GameResources.AddResourceAmount(GameResources.ResourceType.Iron, data.resourceAmountData[GameResources.ResourceType.Iron]);
             GameResources.AddResourceAmount(GameResources.ResourceType.MagicCrystal, data.resourceAmountData[GameResources.ResourceType.MagicCrystal]);
         }
         else
@@ -197,6 +205,28 @@ public class SaveSystem : MonoBehaviour
                 Building building = Building.FindObjectOfType<QueenNest>();
                 building.transform.position = position;
                 building.area.position = areaPos;
+            }
+            else if (data.buildingName == "Iron Storage")
+            {
+                Building building = Instantiate(IronStoragePrefab, position, Quaternion.identity);
+                building.FinishBuilding();
+                building.Place();
+                building.area.position = areaPos;
+                for (int j = 0; j < data.level; j++)
+                {
+                    building.FinishUpgrade();
+                }
+            }
+            else if (data.buildingName == "Training Camp")
+            {
+                Building building = Instantiate(TrainingCampPrefab, position, Quaternion.identity);
+                building.FinishBuilding();
+                building.Place();
+                building.area.position = areaPos;
+                for (int j = 0; j < data.level; j++)
+                {
+                    building.FinishUpgrade();
+                }
             }
             else 
             {

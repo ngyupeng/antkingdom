@@ -35,6 +35,7 @@ public class ShopManager : MonoBehaviour
         ShopItem[] items = Resources.LoadAll<ShopItem>("Shop Items");
         shopItems.Add(BuildingType.ResourceBuilding, new List<ShopItem>());
         shopItems.Add(BuildingType.Housing, new List<ShopItem>());
+        shopItems.Add(BuildingType.Training, new List<ShopItem>());
         foreach (var item in items) {
             shopItems[item.type].Add(item);
             item.Init();
