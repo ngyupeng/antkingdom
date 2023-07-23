@@ -15,7 +15,7 @@ public class DisasterSystem : MonoBehaviour
 
     private void Awake() {
         minDamage = 30000;
-        maxDamage = 60000;
+        maxDamage = 50000;
         timeToNextDisaster = 300f;
         buildings = new List<Building>();
         buildingsToRemove = new List<Building>();
@@ -26,8 +26,8 @@ public class DisasterSystem : MonoBehaviour
         if (timeToNextDisaster <= 0) {
             timeToNextDisaster = Random.Range(300f, 400f);
             ActivateDisaster();
-            minDamage += Random.Range(20000, 30000);
-            maxDamage += Random.Range(30000, 40000);
+            minDamage += Random.Range(15000, 20000);
+            maxDamage += Random.Range(22000, 28000);
             disasterInfo.UpdateText();
         }
     }

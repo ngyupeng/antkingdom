@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceCostsList:
   - resource: {fileID: 11400000, guid: 2d31c6a3a1e080c4490a1bb127ec8639, type: 2}
-    cost: 10
+    cost: 30
   buildTime: 5
   buildingSprite: {fileID: -824589979, guid: 6ba3927c1a80a14419aad27262fb7ce1, type: 3}
   health: 100
