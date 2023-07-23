@@ -11,12 +11,12 @@ public class DisasterSystem : MonoBehaviour
     public static float timeToNextDisaster;
     public DisasterInfo disasterInfo;
     public GameObject popup;
-    public static bool isGameOver = false;
+    public static bool isGameOver = true;
 
     private void Awake() {
-        minDamage = 30;
-        maxDamage = 50;
-        timeToNextDisaster = 5f;
+        minDamage = 30000;
+        maxDamage = 50000;
+        timeToNextDisaster = 300f;
         buildings = new List<Building>();
         buildingsToRemove = new List<Building>();
     }

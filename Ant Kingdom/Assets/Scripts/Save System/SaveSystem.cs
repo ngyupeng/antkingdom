@@ -145,8 +145,8 @@ public class SaveSystem : MonoBehaviour
             stream.Close();
             GameResources.AddResourceAmount(GameResources.ResourceType.Wood, data.resourceAmountData[GameResources.ResourceType.Wood]);
             GameResources.AddResourceAmount(GameResources.ResourceType.Stone, data.resourceAmountData[GameResources.ResourceType.Stone]);
-            GameResources.AddResourceAmount(GameResources.ResourceType.Food, 500 - data.resourceAmountData[GameResources.ResourceType.Food]);
-            GameResources.AddResourceAmount(GameResources.ResourceType.Iron, 500 - data.resourceAmountData[GameResources.ResourceType.Iron]);
+            GameResources.AddResourceAmount(GameResources.ResourceType.Food, data.resourceAmountData[GameResources.ResourceType.Food]);
+            GameResources.AddResourceAmount(GameResources.ResourceType.Iron, data.resourceAmountData[GameResources.ResourceType.Iron]);
             GameResources.AddResourceAmount(GameResources.ResourceType.MagicCrystal, data.resourceAmountData[GameResources.ResourceType.MagicCrystal]);
         }
         else
