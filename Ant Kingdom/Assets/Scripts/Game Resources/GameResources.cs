@@ -20,9 +20,9 @@ public static class GameResources
     public static event OnNotEnoughResources onNotEnoughResources;
     public delegate void OnResourceCapacityChanged();
     public static event OnResourceCapacityChanged onResourceCapacityChanged;
-    private static Dictionary<ResourceType, int> resourceAmountData;
-    private static Dictionary<ResourceType, int> resourceCapacity;
-    private static Dictionary<ResourceType, Resource> resourceMap;
+    public static Dictionary<ResourceType, int> resourceAmountData;
+    public static Dictionary<ResourceType, int> resourceCapacity;
+    public static Dictionary<ResourceType, Resource> resourceMap;
 
     public static void Init() {
         resourceAmountData = new Dictionary<ResourceType, int>();
@@ -32,6 +32,8 @@ public static class GameResources
             resourceAmountData[resourceType] = 500;
             resourceCapacity[resourceType] = 500;
         }
+        resourceAmountData[ResourceType.MagicCrystal] = 0;
+        resourceCapacity[ResourceType.MagicCrystal] = int.MaxValue;
         
         string resourcePath = @"Game Resources\";
         Resource[] all = Resources.LoadAll<Resource>(resourcePath);

@@ -40,7 +40,7 @@ public class QuestInstance
 
         state = State.Inactive;
     }
-
+    
     public bool StartQuest(QuestData data, Dictionary<AntManager.AntType, int> antSelect, TimerTooltip tooltip) {
         SetDetails(data, antSelect);
         if (!CheckAntCount()) return false;
@@ -48,6 +48,7 @@ public class QuestInstance
         state = State.Active;
         onStateChanged?.Invoke();
         tooltip.StartTimer();
+        SaveSystem.quests.Add(this);
         return true;
     }
 
@@ -62,7 +63,8 @@ public class QuestInstance
                     surviveCount++;
                 }
             }
-            AntManager.AddIdleAnts(antType, surviveCount);
+            AntManager.AddIdleAnts(antType, antCount);
+            AntManager.AddAntAmount(antType,surviveCount - antCount);
             antSurvived[antType] = surviveCount;
         }
 
@@ -76,12 +78,25 @@ public class QuestInstance
             GameResources.AddResourceAmount(resourceType, resourceGot);
             resourceCollected[resourceType] = resourceGot;
         }
-
         state = State.Completed;
         onStateChanged?.Invoke();
     }
 
+    public void RefundQuest() {
+        foreach (AntManager.AntType antType in System.Enum.GetValues(typeof(AntManager.AntType))) {
+            AntData ant = AntManager.GetAntData(antType);
+            float survivalRate = ant.defence / questData.dangerLevel;
+            int antCount = antSelected[antType];
+            int surviveCount = antCount;
+            AntManager.AddIdleAnts(antType, antCount);
+            AntManager.AddAntAmount(antType,surviveCount - antCount);
+            antSurvived[antType] = surviveCount;
+        }
+
+    }
+
     public void CompleteQuest() {
+        SaveSystem.quests.Remove(this);
         state = State.Inactive;
         onStateChanged?.Invoke();
     }

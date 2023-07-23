@@ -9,13 +9,13 @@ public static class AntManager
         EngineerAnt,
         SoldierAnt
     }
-    private static Dictionary<AntType, int> antCount;
-    private static Dictionary<AntType, int> idleAntCount;
-    private static Dictionary<AntType, AntData> antDataMap;
-    private static Dictionary<AntType, bool> antUnlocked;
-    private static int totalAnts;
-    private static int idleAnts;
-    private static int antCapacity;
+    public static Dictionary<AntType, int> antCount;
+    public static Dictionary<AntType, int> idleAntCount;
+    public static Dictionary<AntType, AntData> antDataMap;
+    public static Dictionary<AntType, bool> antUnlocked;
+    public static int totalAnts;
+    public static int idleAnts;
+    public static int antCapacity;
     public delegate void OnAntNumberChanged();
     public static event OnAntNumberChanged onAntNumberChanged;
     public delegate void OnIdleAntNumberChanged();
