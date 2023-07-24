@@ -177,7 +177,7 @@ public static class AntManager
         foreach (AntType antType in System.Enum.GetValues(typeof(AntType))) {
             currentSum += GetIdleAntCount(antType);
             if (currentSum >= value) {
-                AddIdleAnts(antType, -1);
+                AddAntAmount(antType, -1);
                 return;
             }
         }

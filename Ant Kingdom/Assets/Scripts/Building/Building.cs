@@ -180,7 +180,10 @@ public class Building : MonoBehaviour
     #endregion
 
     public void AddToDisaster() {
-        if (!isAddedToDisaster) DisasterSystem.buildings.Add(this);
+        if (!isAddedToDisaster) {
+            DisasterSystem.buildings.Add(this);
+            isAddedToDisaster = true;
+        }
     }
     public virtual void StartBuilding() {
         AddToDisaster();
@@ -248,6 +251,10 @@ public class Building : MonoBehaviour
         DisasterSystem.buildingsToRemove.Add(this);
         if (isBuilding) {
             SaveSystem.inProgress.Remove(this);
+        }
+        GridBuildingSystem.current.ClearMainArea(area);
+        if (isBuilding) {
+            Destroy(timerTooltip.gameObject);
         }
     }
 

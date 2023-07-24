@@ -14,8 +14,8 @@ public class DisasterSystem : MonoBehaviour
     public static bool isGameOver = true;
 
     private void Awake() {
-        minDamage = 30000;
-        maxDamage = 50000;
+        minDamage = 20000;
+        maxDamage = 30000;
         timeToNextDisaster = 300f;
         buildings = new List<Building>();
         buildingsToRemove = new List<Building>();
@@ -24,10 +24,10 @@ public class DisasterSystem : MonoBehaviour
         if (isGameOver) return;
         timeToNextDisaster -= Time.deltaTime;
         if (timeToNextDisaster <= 0) {
-            timeToNextDisaster = Random.Range(300f, 400f);
+            timeToNextDisaster = Random.Range(300f, 350f);
             ActivateDisaster();
-            minDamage += Random.Range(15000, 20000);
-            maxDamage += Random.Range(22000, 28000);
+            minDamage += Random.Range(10000, 15000);
+            maxDamage += Random.Range(17000, 22000);
             disasterInfo.UpdateText();
         }
     }
